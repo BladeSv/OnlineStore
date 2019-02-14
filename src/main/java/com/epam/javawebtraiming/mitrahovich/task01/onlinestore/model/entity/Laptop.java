@@ -7,6 +7,7 @@ public class Laptop extends AbstractElectricDisplayCpu{
 	private int batteryCapacity;
 	private String hddType;
 	private int hddCapacity;
+	
 	public Laptop() {
 		// TODO Auto-generated constructor stub
 	}
