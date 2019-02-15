@@ -1,6 +1,6 @@
 package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.abstractentity;
 
-public class AbstractElectricDisplayCpu extends AbstactElectricDisplay{
+public class CpuDisplayElectricDevice extends DisplayElectricDevice{
 	
 	private String cpu;	
 	private int clockFrequency;
@@ -12,7 +12,7 @@ public class AbstractElectricDisplayCpu extends AbstactElectricDisplay{
 	
 	
 
-	public AbstractElectricDisplayCpu() {
+	public CpuDisplayElectricDevice() {
 		// TODO Auto-generated constructor stub
 	}
 	/**
@@ -34,7 +34,7 @@ public class AbstractElectricDisplayCpu extends AbstactElectricDisplay{
 	public int getRam() {
 		return ram;
 	}
-	public AbstractElectricDisplayCpu(int id, String type, String manufacturer, String model, String color,
+	public CpuDisplayElectricDevice(int id, String type, String manufacturer, String model, String color,
 			double power, double weight, double displayDiagonal, String displayResolution, String cpu,
 			int clockFrequency, int ram, String operatingSystem) {
 		super(id, type, manufacturer, model, color, power, weight, displayDiagonal, displayResolution);
@@ -82,7 +82,7 @@ public class AbstractElectricDisplayCpu extends AbstactElectricDisplay{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		AbstractElectricDisplayCpu other = (AbstractElectricDisplayCpu) obj;
+		CpuDisplayElectricDevice other = (CpuDisplayElectricDevice) obj;
 		if (clockFrequency != other.clockFrequency)
 			return false;
 		if (cpu == null) {

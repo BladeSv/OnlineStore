@@ -2,18 +2,18 @@ package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.abstracten
 
 
 
-public abstract class AbstractDevice {
+public abstract class Device {
 	private int id;
 	private String type;
 	private String manufacturer;
 	private String model;
 	private String color;
-	public AbstractDevice() {
+	public Device() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public AbstractDevice(int id, String type, String manufacturer, String model, String color) {
+	public Device(int id, String type, String manufacturer, String model, String color) {
 		super();
 		this.id = id;
 		this.type = type;
@@ -73,7 +73,7 @@ public abstract class AbstractDevice {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		AbstractDevice other = (AbstractDevice) obj;
+		Device other = (Device) obj;
 		if (color == null) {
 			if (other.color != null)
 				return false;

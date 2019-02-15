@@ -1,8 +1,8 @@
 package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity;
 
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.abstractentity.AbstractElectricDisplayCpu;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.abstractentity.CpuDisplayElectricDevice;
 
-public class Laptop extends AbstractElectricDisplayCpu{
+public class Laptop extends CpuDisplayElectricDevice{
 
 	private int batteryCapacity;
 	private String hddType;

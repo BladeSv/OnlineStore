@@ -1,6 +1,6 @@
 package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.abstractentity;
 
-public class AbstactElectricDisplay extends AbstractElectric {
+public class DisplayElectricDevice extends ElectricDevice {
  
 	private double displayDiagonal;
 	private String displayResolution;
@@ -12,7 +12,7 @@ public class AbstactElectricDisplay extends AbstractElectric {
 	
 
 
-	public AbstactElectricDisplay() {
+	public DisplayElectricDevice() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -20,7 +20,7 @@ public class AbstactElectricDisplay extends AbstractElectric {
 
 
 	
-	public AbstactElectricDisplay(int id, String type, String manufacturer, String model, String color, double power,
+	public DisplayElectricDevice(int id, String type, String manufacturer, String model, String color, double power,
 			double weight, double displayDiagonal, String displayResolution) {
 		super(id, type, manufacturer, model, color, power, weight);
 		this.displayDiagonal = displayDiagonal;
@@ -71,7 +71,7 @@ public class AbstactElectricDisplay extends AbstractElectric {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		AbstactElectricDisplay other = (AbstactElectricDisplay) obj;
+		DisplayElectricDevice other = (DisplayElectricDevice) obj;
 		if (Double.doubleToLongBits(displayDiagonal) != Double.doubleToLongBits(other.displayDiagonal))
 			return false;
 		if (displayResolution == null) {

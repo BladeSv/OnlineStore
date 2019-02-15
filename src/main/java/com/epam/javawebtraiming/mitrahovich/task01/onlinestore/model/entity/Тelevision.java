@@ -1,8 +1,8 @@
 package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity;
 
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.abstractentity.AbstactElectricDisplay;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.abstractentity.DisplayElectricDevice;
 
-public class Тelevision extends AbstactElectricDisplay{
+public class Тelevision extends DisplayElectricDevice{
 	private String displayType;
 
 	
