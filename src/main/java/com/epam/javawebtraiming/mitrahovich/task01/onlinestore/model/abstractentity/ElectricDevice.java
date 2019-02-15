@@ -1,5 +1,7 @@
 package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.abstractentity;
 
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.type.DeviceType;
+
 public abstract class ElectricDevice extends Device {
 	private double power;
 	private double weight;
@@ -10,12 +12,16 @@ public abstract class ElectricDevice extends Device {
 
 	}
 
-	public ElectricDevice(int id, String type, String manufacturer, String model, String color, double power,
-			double weight) {
-		super(id, type, manufacturer, model, color);
+	
+
+	public ElectricDevice(int id, DeviceType type, String manufacturer, String model, String color, double price,
+			double power, double weight) {
+		super(id, type, manufacturer, model, color, price);
 		this.power = power;
 		this.weight = weight;
 	}
+
+
 
 	public double getWeight() {
 		return weight;

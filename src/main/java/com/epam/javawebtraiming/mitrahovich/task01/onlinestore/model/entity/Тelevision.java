@@ -1,6 +1,7 @@
 package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity;
 
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.abstractentity.DisplayElectricDevice;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.type.DeviceType;
 
 public class Тelevision extends DisplayElectricDevice{
 	private String displayType;
@@ -13,11 +14,32 @@ public class Тelevision extends DisplayElectricDevice{
 
 
 
-	public Тelevision(int id, String type, String manufacturer, String model, String color, double power, double weight,
-			double displayDiagonal, String displayResolution, String displayType) {
-		super(id, type, manufacturer, model, color, power, weight, displayDiagonal, displayResolution);
+	
+
+
+
+	/**
+	 * @param id
+	 * @param type
+	 * @param manufacturer
+	 * @param model
+	 * @param color
+	 * @param price
+	 * @param power
+	 * @param weight
+	 * @param displayDiagonal
+	 * @param displayResolution
+	 * @param displayType
+	 */
+	public Тelevision(int id, DeviceType type, String manufacturer, String model, String color, double price, double power,
+			double weight, double displayDiagonal, String displayResolution, String displayType) {
+		super(id, type, manufacturer, model, color, price, power, weight, displayDiagonal, displayResolution);
 		this.displayType = displayType;
 	}
+
+
+
+
 
 
 

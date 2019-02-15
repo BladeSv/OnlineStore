@@ -1,52 +1,42 @@
 package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.abstractentity;
 
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.type.DeviceType;
+
 public class DisplayElectricDevice extends ElectricDevice {
- 
+
 	private double displayDiagonal;
 	private String displayResolution;
-	
-	
-	
-	
-	
-	
-
 
 	public DisplayElectricDevice() {
 		// TODO Auto-generated constructor stub
 	}
 
-
-
-
 	
-	public DisplayElectricDevice(int id, String type, String manufacturer, String model, String color, double power,
-			double weight, double displayDiagonal, String displayResolution) {
-		super(id, type, manufacturer, model, color, power, weight);
+
+	public DisplayElectricDevice(int id, DeviceType type, String manufacturer, String model, String color, double price,
+			double power, double weight, double displayDiagonal, String displayResolution) {
+		super(id, type, manufacturer, model, color, price, power, weight);
 		this.displayDiagonal = displayDiagonal;
 		this.displayResolution = displayResolution;
 	}
 
 
 
-
-
 	public double getScreenDiagonal() {
 		return displayDiagonal;
 	}
+
 	public void setScreenDiagonal(double screenDiagonal) {
 		this.displayDiagonal = screenDiagonal;
 	}
+
 	public String getScreenResolution() {
 		return displayResolution;
 	}
+
 	public void setScreenResolution(String screenResolution) {
 		this.displayResolution = screenResolution;
 	}
-
-
-
-
 
 	@Override
 	public int hashCode() {
@@ -58,10 +48,6 @@ public class DisplayElectricDevice extends ElectricDevice {
 		result = prime * result + ((displayResolution == null) ? 0 : displayResolution.hashCode());
 		return result;
 	}
-
-
-
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -81,6 +67,5 @@ public class DisplayElectricDevice extends ElectricDevice {
 			return false;
 		return true;
 	}
-	
-	
+
 }

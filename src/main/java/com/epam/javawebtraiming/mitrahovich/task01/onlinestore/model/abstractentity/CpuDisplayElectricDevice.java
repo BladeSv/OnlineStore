@@ -1,5 +1,7 @@
 package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.abstractentity;
 
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.type.DeviceType;
+
 public class CpuDisplayElectricDevice extends DisplayElectricDevice{
 	
 	private String cpu;	
@@ -15,33 +17,35 @@ public class CpuDisplayElectricDevice extends DisplayElectricDevice{
 	public CpuDisplayElectricDevice() {
 		// TODO Auto-generated constructor stub
 	}
+
 	/**
 	 * @param id
 	 * @param type
 	 * @param manufacturer
 	 * @param model
 	 * @param color
+	 * @param price
 	 * @param power
 	 * @param weight
-	 * @param screenDiagonal
-	 * @param screenResolution
+	 * @param displayDiagonal
+	 * @param displayResolution
 	 * @param cpu
 	 * @param clockFrequency
 	 * @param ram
 	 * @param operatingSystem
 	 */
-
-	public int getRam() {
-		return ram;
-	}
-	public CpuDisplayElectricDevice(int id, String type, String manufacturer, String model, String color,
+	public CpuDisplayElectricDevice(int id, DeviceType type, String manufacturer, String model, String color, double price,
 			double power, double weight, double displayDiagonal, String displayResolution, String cpu,
 			int clockFrequency, int ram, String operatingSystem) {
-		super(id, type, manufacturer, model, color, power, weight, displayDiagonal, displayResolution);
+		super(id, type, manufacturer, model, color, price, power, weight, displayDiagonal, displayResolution);
 		this.cpu = cpu;
 		this.clockFrequency = clockFrequency;
 		this.ram = ram;
 		this.operatingSystem = operatingSystem;
+	}
+
+	public int getRam() {
+		return ram;
 	}
 	public void setRam(int ram) {
 		this.ram = ram;

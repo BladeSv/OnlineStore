@@ -1,31 +1,36 @@
 package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.abstractentity;
 
-
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.type.DeviceType;
 
 public abstract class Device {
 	private int id;
-	private String type;
+	private DeviceType type;
 	private String manufacturer;
 	private String model;
 	private String color;
+	private double price;
 	public Device() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Device(int id, String type, String manufacturer, String model, String color) {
-		super();
+
+
+	public Device(int id, DeviceType type, String manufacturer, String model, String color, double price) {
 		this.id = id;
 		this.type = type;
 		this.manufacturer = manufacturer;
 		this.model = model;
 		this.color = color;
+		this.price = price;
 	}
 
-	public String getType() {
+
+
+	public DeviceType getType() {
 		return type;
 	}
-	public void setType(String type) {
+	public void setType(DeviceType type) {
 		this.type = type;
 	}
 	public String getManufacturer() {
@@ -52,7 +57,14 @@ public abstract class Device {
 	public void setId(int id) {
 		this.id = id;
 	}
+	public double getPrice() {
+		return price;
+	}
 
+	public void setPrice(double price) {
+		this.price = price;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -61,6 +73,9 @@ public abstract class Device {
 		result = prime * result + id;
 		result = prime * result + ((manufacturer == null) ? 0 : manufacturer.hashCode());
 		result = prime * result + ((model == null) ? 0 : model.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(price);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		return result;
 	}
@@ -91,19 +106,19 @@ public abstract class Device {
 				return false;
 		} else if (!model.equals(other.model))
 			return false;
-		if (type == null) {
-			if (other.type != null)
-				return false;
-		} else if (!type.equals(other.type))
+		if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price))
+			return false;
+		if (type != other.type)
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "AbstractDevice [id=" + id + ", type=" + type + ", manufacturer=" + manufacturer + ", model=" + model
-				+ ", color=" + color + "]";
+		return "Device [id=" + id + ", type=" + type + ", manufacturer=" + manufacturer + ", model=" + model
+				+ ", color=" + color + ", price=" + price + "]";
 	}
+
 	
 	
 

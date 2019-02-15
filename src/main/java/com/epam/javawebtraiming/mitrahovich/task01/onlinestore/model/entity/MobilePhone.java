@@ -1,6 +1,7 @@
 package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity;
 
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.abstractentity.CpuDisplayElectricDevice;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.type.DeviceType;
 
 public class MobilePhone extends CpuDisplayElectricDevice {
 
@@ -11,14 +12,9 @@ public class MobilePhone extends CpuDisplayElectricDevice {
 		// TODO Auto-generated constructor stub
 	}
 
-	public MobilePhone(int id, String type, String manufacturer, String model, String color, double power,
-			double weight, double screenDiagonal, String screenResolution, String cpu, int clockFrequency, int ram,
-			String operatingSystem) {
+	
 
-		super(id, type, manufacturer, model, color, power, weight, screenDiagonal, screenResolution, cpu,
-				clockFrequency, ram, operatingSystem);
-		// TODO Auto-generated constructor stub
-	}
+	
 
 	/**
 	 * @param id
@@ -26,10 +22,11 @@ public class MobilePhone extends CpuDisplayElectricDevice {
 	 * @param manufacturer
 	 * @param model
 	 * @param color
+	 * @param price
 	 * @param power
 	 * @param weight
-	 * @param screenDiagonal
-	 * @param screenResolution
+	 * @param displayDiagonal
+	 * @param displayResolution
 	 * @param cpu
 	 * @param clockFrequency
 	 * @param ram
@@ -37,14 +34,18 @@ public class MobilePhone extends CpuDisplayElectricDevice {
 	 * @param batteryCapacity
 	 * @param mobileCconnection
 	 */
-	public MobilePhone(int id, String type, String manufacturer, String model, String color, double power,
-			double weight, double screenDiagonal, String screenResolution, String cpu, int clockFrequency, int ram,
+	public MobilePhone(int id, DeviceType type, String manufacturer, String model, String color, double price, double power,
+			double weight, double displayDiagonal, String displayResolution, String cpu, int clockFrequency, int ram,
 			String operatingSystem, int batteryCapacity, String mobileCconnection) {
-		super(id, type, manufacturer, model, color, power, weight, screenDiagonal, screenResolution, cpu,
+		super(id, type, manufacturer, model, color, price, power, weight, displayDiagonal, displayResolution, cpu,
 				clockFrequency, ram, operatingSystem);
 		this.batteryCapacity = batteryCapacity;
 		this.mobileCconnection = mobileCconnection;
 	}
+
+
+
+
 
 	public int getBatteryCapacity() {
 		return batteryCapacity;

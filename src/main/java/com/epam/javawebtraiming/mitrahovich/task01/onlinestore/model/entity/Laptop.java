@@ -1,6 +1,7 @@
 package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity;
 
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.abstractentity.CpuDisplayElectricDevice;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.type.DeviceType;
 
 public class Laptop extends CpuDisplayElectricDevice{
 
@@ -11,15 +12,36 @@ public class Laptop extends CpuDisplayElectricDevice{
 	public Laptop() {
 		// TODO Auto-generated constructor stub
 	}
-	public Laptop(int id, String type, String manufacturer, String model, String color, double power, double weight,
-			double screenDiagonal, String screenResolution, String cpu, int clockFrequency, int ram,
+
+	/**
+	 * @param id
+	 * @param type
+	 * @param manufacturer
+	 * @param model
+	 * @param color
+	 * @param price
+	 * @param power
+	 * @param weight
+	 * @param displayDiagonal
+	 * @param displayResolution
+	 * @param cpu
+	 * @param clockFrequency
+	 * @param ram
+	 * @param operatingSystem
+	 * @param batteryCapacity
+	 * @param hddType
+	 * @param hddCapacity
+	 */
+	public Laptop(int id, DeviceType type, String manufacturer, String model, String color, double price, double power,
+			double weight, double displayDiagonal, String displayResolution, String cpu, int clockFrequency, int ram,
 			String operatingSystem, int batteryCapacity, String hddType, int hddCapacity) {
-		super(id, type, manufacturer, model, color, power, weight, screenDiagonal, screenResolution, cpu,
+		super(id, type, manufacturer, model, color, price, power, weight, displayDiagonal, displayResolution, cpu,
 				clockFrequency, ram, operatingSystem);
 		this.batteryCapacity = batteryCapacity;
 		this.hddType = hddType;
 		this.hddCapacity = hddCapacity;
 	}
+
 	public int getBatteryCapacity() {
 		return batteryCapacity;
 	}

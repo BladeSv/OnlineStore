@@ -1,23 +1,24 @@
-package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.DAO.collectionimplemet;
+package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.DAO.daoimplemet;
 
 import java.util.Arrays;
-import java.util.List;
 
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.DAO.DAO;
+
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.DAO.IDaoStoreBase;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.abstractentity.Device;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.storebase.StoreBase;
 
-public class StoreCollection implements DAO {
+public class DaoStoreBaseArray implements IDaoStoreBase {
 
 	private Device[] deviceBase;
 
-	public StoreCollection() {
+	public DaoStoreBaseArray() {
 		super();
 		this.deviceBase = new Device[10];
 	}
 
-	public StoreCollection(Device[] deviceBase) {
+	public DaoStoreBaseArray(StoreBase storeBase) {
 		super();
-		this.deviceBase = deviceBase;
+		this.deviceBase = storeBase.getDeviceBase();
 	}
 
 	@Override
@@ -42,24 +43,31 @@ public class StoreCollection implements DAO {
 
 	@Override
 	public void removeById(int id) {
+		if(id>0) {
 		for (int i = 0; i < deviceBase.length; i++) {
 			if (deviceBase[i].getId() == id) {
 				deviceBase[i] = null;
 			}
-
+		}
 		}
 	}
 
 	@Override
 	public Device getById(int id) {
-		// TODO Auto-generated method stub
+		if(id>0) {
+			for (int i = 0; i < deviceBase.length; i++) {
+				if (deviceBase[i].getId() == id) {
+					return deviceBase[i];
+				}
+			}
+			}
 		return null;
 	}
 
 	@Override
-	public List<Device> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+	public Device[] getAll() {
+		return deviceBase;
+		
 	}
 
 	@Override
@@ -78,7 +86,7 @@ public class StoreCollection implements DAO {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		StoreCollection other = (StoreCollection) obj;
+		DaoStoreBaseArray other = (DaoStoreBaseArray) obj;
 		if (!Arrays.equals(deviceBase, other.deviceBase))
 			return false;
 		return true;
