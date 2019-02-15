@@ -25,6 +25,7 @@ public class DaoStoreBaseArray implements IDaoStoreBase {
 	public void add(Device device) {
 
 		if (device != null) {
+			device.toString();
 			int index = Arrays.binarySearch(deviceBase, null);
 
 			if (index != -1) {

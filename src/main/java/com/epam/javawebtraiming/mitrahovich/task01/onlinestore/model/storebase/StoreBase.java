@@ -11,7 +11,7 @@ public class StoreBase {
 	 * 
 	 */
 	public StoreBase() {
-		// TODO Auto-generated constructor stub
+		this.deviceBase =new Device[10];
 	}
 
 	/**

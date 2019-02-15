@@ -6,6 +6,7 @@ import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.type.Device
 public class MobilePhone extends CpuDisplayElectricDevice {
 
 	private int batteryCapacity;
+	private String mobileConnection;
 	private String mobileCconnection;
 
 	public MobilePhone() {
@@ -69,6 +70,7 @@ public class MobilePhone extends CpuDisplayElectricDevice {
 		int result = super.hashCode();
 		result = prime * result + batteryCapacity;
 		result = prime * result + ((mobileCconnection == null) ? 0 : mobileCconnection.hashCode());
+		result = prime * result + ((mobileConnection == null) ? 0 : mobileConnection.hashCode());
 		return result;
 	}
 
@@ -88,18 +90,18 @@ public class MobilePhone extends CpuDisplayElectricDevice {
 				return false;
 		} else if (!mobileCconnection.equals(other.mobileCconnection))
 			return false;
+		if (mobileConnection == null) {
+			if (other.mobileConnection != null)
+				return false;
+		} else if (!mobileConnection.equals(other.mobileConnection))
+			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "MobilePhone [batteryCapacity=" + batteryCapacity + ", mobileCconnection=" + mobileCconnection
-				+ ", getRam()=" + getRam() + ", getCpu()=" + getCpu() + ", getClockFrequency()=" + getClockFrequency()
-				+ ", getOperatingSystem()=" + getOperatingSystem() + ", getScreenDiagonal()=" + getScreenDiagonal()
-				+ ", getScreenResolution()=" + getScreenResolution() + ", getWeight()=" + getWeight() + ", getPower()="
-				+ getPower() + ", getType()=" + getType() + ", getManufacturer()=" + getManufacturer() + ", getModel()="
-				+ getModel() + ", getColor()=" + getColor() + ", getId()=" + getId() + ", toString()="
-				+ super.toString() + ", getClass()=" + getClass() + "]";
+		return "MobilePhone [batteryCapacity=" + batteryCapacity + ", mobileConnection=" + mobileConnection
+				+ ", mobileCconnection=" + mobileCconnection + "]";
 	}
 
 }
