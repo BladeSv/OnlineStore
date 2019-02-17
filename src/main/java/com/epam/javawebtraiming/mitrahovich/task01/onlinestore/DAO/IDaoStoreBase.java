@@ -3,6 +3,7 @@ package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.DAO;
 
 
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.abstractentity.Device;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.storebase.StoreBase;
 
 public interface IDaoStoreBase {
 	void add(Device device);
@@ -11,6 +12,6 @@ public interface IDaoStoreBase {
 
 	Device getById(int id);
 
-	Device[] getAll();
+	StoreBase getAll();
 
 }

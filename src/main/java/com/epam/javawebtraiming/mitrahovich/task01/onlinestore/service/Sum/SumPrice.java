@@ -13,8 +13,14 @@ public static double sumPrice( Order order) {
 }
 
 public static double sumPrice(StoreBase storeBase) {
-	return Arrays.stream(storeBase.getDeviceBase()).mapToDouble((d)->d.getPrice()).sum();
+	double sum=0;
+	int i=0;
+	while(storeBase.getDeviceBase()[i]!=null){
+		sum=+storeBase.getDeviceBase()[i].getPrice();
+		
+		i++;
+	}
 	
-	
+	return sum;
 }
 }

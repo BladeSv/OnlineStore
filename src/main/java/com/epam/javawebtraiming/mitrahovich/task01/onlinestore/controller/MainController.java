@@ -8,7 +8,9 @@ import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.Mobi
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.Тelevision;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.storebase.StoreBase;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.type.DeviceType;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.view.output.Output;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.service.Sum.SumPrice;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.view.printer.IPrinter;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.view.printer.Printer;
 
 public class MainController {
 
@@ -16,6 +18,7 @@ public class MainController {
 
 		StoreBase storeBase = new StoreBase();
 		IDaoStoreBase daoStoreBase = new DaoStoreBaseArray(storeBase);
+		IPrinter printet =new Printer();
 		Device d1 = new MobilePhone(1, DeviceType.MOBILE_PHONE, "Xiaomi", "Redmi 6A", "Black", 249.50, 5, 0.145, 5.45, "720x1440", "MediaTek Helio A22", 2000, 2, "Android 8.1 Oreo", 3000, "4G");
 		System.out.println(d1);
 
@@ -34,8 +37,12 @@ public class MainController {
 		daoStoreBase.add(d4);
 		daoStoreBase.add(d5);
 		daoStoreBase.add(d6);
+		System.out.println();
+		System.out.println(SumPrice.sumPrice(storeBase));
 
-		Output.output(storeBase);
+		
+
+		printet.print(storeBase);
 	}
 
 }
