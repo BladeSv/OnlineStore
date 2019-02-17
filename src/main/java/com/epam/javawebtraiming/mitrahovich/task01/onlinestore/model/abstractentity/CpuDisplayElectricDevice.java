@@ -2,17 +2,12 @@ package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.abstracten
 
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.type.DeviceType;
 
-public class CpuDisplayElectricDevice extends DisplayElectricDevice{
-	
-	private String cpu;	
+public class CpuDisplayElectricDevice extends DisplayElectricDevice {
+
+	private String cpu;
 	private int clockFrequency;
 	private int ram;
 	private String operatingSystem;
-	
-	
-	
-	
-	
 
 	public CpuDisplayElectricDevice() {
 		// TODO Auto-generated constructor stub
@@ -34,9 +29,8 @@ public class CpuDisplayElectricDevice extends DisplayElectricDevice{
 	 * @param ram
 	 * @param operatingSystem
 	 */
-	public CpuDisplayElectricDevice(int id, DeviceType type, String manufacturer, String model, String color, double price,
-			double power, double weight, double displayDiagonal, String displayResolution, String cpu,
-			int clockFrequency, int ram, String operatingSystem) {
+	public CpuDisplayElectricDevice(int id, DeviceType type, String manufacturer, String model, String color, double price, double power, double weight, double displayDiagonal, String displayResolution, String cpu, int clockFrequency, int ram,
+			String operatingSystem) {
 		super(id, type, manufacturer, model, color, price, power, weight, displayDiagonal, displayResolution);
 		this.cpu = cpu;
 		this.clockFrequency = clockFrequency;
@@ -47,27 +41,35 @@ public class CpuDisplayElectricDevice extends DisplayElectricDevice{
 	public int getRam() {
 		return ram;
 	}
+
 	public void setRam(int ram) {
 		this.ram = ram;
 	}
+
 	public String getCpu() {
 		return cpu;
 	}
+
 	public void setCpu(String cpu) {
 		this.cpu = cpu;
 	}
+
 	public int getClockFrequency() {
 		return clockFrequency;
 	}
+
 	public void setClockFrequency(int clockFrequency) {
 		this.clockFrequency = clockFrequency;
 	}
+
 	public String getOperatingSystem() {
 		return operatingSystem;
 	}
+
 	public void setOperatingSystem(String operatingSystem) {
 		this.operatingSystem = operatingSystem;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -78,6 +80,7 @@ public class CpuDisplayElectricDevice extends DisplayElectricDevice{
 		result = prime * result + ram;
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -103,6 +106,10 @@ public class CpuDisplayElectricDevice extends DisplayElectricDevice{
 			return false;
 		return true;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "CpuDisplayElectricDevice [cpu=" + cpu + ", clockFrequency=" + clockFrequency + ", ram=" + ram + ", operatingSystem=" + operatingSystem + ", toString()=" + super.toString() + "]";
+	}
+
 }

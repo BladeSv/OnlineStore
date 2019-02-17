@@ -3,20 +3,12 @@ package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.abstractentity.DisplayElectricDevice;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.type.DeviceType;
 
-public class Тelevision extends DisplayElectricDevice{
+public class Тelevision extends DisplayElectricDevice {
 	private String displayType;
 
-	
-	
 	public Тelevision() {
 		// TODO Auto-generated constructor stub
 	}
-
-
-
-	
-
-
 
 	/**
 	 * @param id
@@ -31,29 +23,18 @@ public class Тelevision extends DisplayElectricDevice{
 	 * @param displayResolution
 	 * @param displayType
 	 */
-	public Тelevision(int id, DeviceType type, String manufacturer, String model, String color, double price, double power,
-			double weight, double displayDiagonal, String displayResolution, String displayType) {
+	public Тelevision(int id, DeviceType type, String manufacturer, String model, String color, double price, double power, double weight, double displayDiagonal, String displayResolution, String displayType) {
 		super(id, type, manufacturer, model, color, price, power, weight, displayDiagonal, displayResolution);
 		this.displayType = displayType;
 	}
-
-
-
-
-
-
 
 	public String getDisplayType() {
 		return displayType;
 	}
 
-
-
 	public void setDisplayType(String displayType) {
 		this.displayType = displayType;
 	}
-
-
 
 	@Override
 	public int hashCode() {
@@ -62,8 +43,6 @@ public class Тelevision extends DisplayElectricDevice{
 		result = prime * result + ((displayType == null) ? 0 : displayType.hashCode());
 		return result;
 	}
-
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -82,17 +61,10 @@ public class Тelevision extends DisplayElectricDevice{
 		return true;
 	}
 
-
-
 	@Override
 	public String toString() {
-		return "Тelevision [displayType=" + displayType + ", getScreenDiagonal()=" + getScreenDiagonal()
-				+ ", getScreenResolution()=" + getScreenResolution() + ", getWeight()=" + getWeight() + ", getPower()="
-				+ getPower() + ", getType()=" + getType() + ", getManufacturer()=" + getManufacturer() + ", getModel()="
-				+ getModel() + ", getColor()=" + getColor() + ", getId()=" + getId() + ", toString()="
-				+ super.toString() + ", getClass()=" + getClass() + "]";
+		return "Тelevision [displayType=" + displayType + ", getScreenDiagonal()=" + getScreenDiagonal() + ", getScreenResolution()=" + getScreenResolution() + ", getWeight()=" + getWeight() + ", getPower()=" + getPower() + ", getType()=" + getType()
+				+ ", getManufacturer()=" + getManufacturer() + ", getModel()=" + getModel() + ", getColor()=" + getColor() + ", getId()=" + getId() + ", toString()=" + super.toString() + "]";
 	}
-	
-	
-	
+
 }

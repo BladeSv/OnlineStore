@@ -2,7 +2,6 @@ package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.DAO.daoimplemet;
 
 import java.util.Arrays;
 
-
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.DAO.IDaoStoreBase;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.abstractentity.Device;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.storebase.StoreBase;
@@ -26,17 +25,17 @@ public class DaoStoreBaseArray implements IDaoStoreBase {
 
 		if (device != null) {
 			device.toString();
-			int index = Arrays.binarySearch(deviceBase, null);
-
-			if (index != -1) {
-				deviceBase[index] = device;
-			} else {
-
-				Arrays.copyOf(deviceBase, (deviceBase.length * 2));
-				index = Arrays.binarySearch(deviceBase, null);
-				deviceBase[index] = device;
-
-			}
+//			int index = Arrays.binarySearch(deviceBase, null);
+//
+//			if (index != -1) {
+//				deviceBase[index] = device;
+//			} else {
+//
+//				Arrays.copyOf(deviceBase, (deviceBase.length * 2));
+//				index = Arrays.binarySearch(deviceBase, null);
+//				deviceBase[index] = device;
+//
+//			}
 
 		}
 
@@ -44,31 +43,31 @@ public class DaoStoreBaseArray implements IDaoStoreBase {
 
 	@Override
 	public void removeById(int id) {
-		if(id>0) {
-		for (int i = 0; i < deviceBase.length; i++) {
-			if (deviceBase[i].getId() == id) {
-				deviceBase[i] = null;
+		if (id > 0) {
+			for (int i = 0; i < deviceBase.length; i++) {
+				if (deviceBase[i].getId() == id) {
+					deviceBase[i] = null;
+				}
 			}
-		}
 		}
 	}
 
 	@Override
 	public Device getById(int id) {
-		if(id>0) {
+		if (id > 0) {
 			for (int i = 0; i < deviceBase.length; i++) {
 				if (deviceBase[i].getId() == id) {
 					return deviceBase[i];
 				}
 			}
-			}
+		}
 		return null;
 	}
 
 	@Override
 	public Device[] getAll() {
 		return deviceBase;
-		
+
 	}
 
 	@Override

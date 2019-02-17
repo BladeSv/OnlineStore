@@ -7,15 +7,10 @@ public class MobilePhone extends CpuDisplayElectricDevice {
 
 	private int batteryCapacity;
 	private String mobileConnection;
-	private String mobileCconnection;
 
 	public MobilePhone() {
 		// TODO Auto-generated constructor stub
 	}
-
-	
-
-	
 
 	/**
 	 * @param id
@@ -33,20 +28,14 @@ public class MobilePhone extends CpuDisplayElectricDevice {
 	 * @param ram
 	 * @param operatingSystem
 	 * @param batteryCapacity
-	 * @param mobileCconnection
+	 * @param mobileConnection
 	 */
-	public MobilePhone(int id, DeviceType type, String manufacturer, String model, String color, double price, double power,
-			double weight, double displayDiagonal, String displayResolution, String cpu, int clockFrequency, int ram,
-			String operatingSystem, int batteryCapacity, String mobileCconnection) {
-		super(id, type, manufacturer, model, color, price, power, weight, displayDiagonal, displayResolution, cpu,
-				clockFrequency, ram, operatingSystem);
+	public MobilePhone(int id, DeviceType type, String manufacturer, String model, String color, double price, double power, double weight, double displayDiagonal, String displayResolution, String cpu, int clockFrequency, int ram,
+			String operatingSystem, int batteryCapacity, String mobileConnection) {
+		super(id, type, manufacturer, model, color, price, power, weight, displayDiagonal, displayResolution, cpu, clockFrequency, ram, operatingSystem);
 		this.batteryCapacity = batteryCapacity;
-		this.mobileCconnection = mobileCconnection;
+		this.mobileConnection = mobileConnection;
 	}
-
-
-
-
 
 	public int getBatteryCapacity() {
 		return batteryCapacity;
@@ -56,12 +45,12 @@ public class MobilePhone extends CpuDisplayElectricDevice {
 		this.batteryCapacity = batteryCapacity;
 	}
 
-	public String getMobileCconnection() {
-		return mobileCconnection;
+	public String getMobileConnection() {
+		return mobileConnection;
 	}
 
 	public void setMobileCconnection(String mobileCconnection) {
-		this.mobileCconnection = mobileCconnection;
+		this.mobileConnection = mobileConnection;
 	}
 
 	@Override
@@ -69,7 +58,6 @@ public class MobilePhone extends CpuDisplayElectricDevice {
 		final int prime = 31;
 		int result = super.hashCode();
 		result = prime * result + batteryCapacity;
-		result = prime * result + ((mobileCconnection == null) ? 0 : mobileCconnection.hashCode());
 		result = prime * result + ((mobileConnection == null) ? 0 : mobileConnection.hashCode());
 		return result;
 	}
@@ -85,11 +73,6 @@ public class MobilePhone extends CpuDisplayElectricDevice {
 		MobilePhone other = (MobilePhone) obj;
 		if (batteryCapacity != other.batteryCapacity)
 			return false;
-		if (mobileCconnection == null) {
-			if (other.mobileCconnection != null)
-				return false;
-		} else if (!mobileCconnection.equals(other.mobileCconnection))
-			return false;
 		if (mobileConnection == null) {
 			if (other.mobileConnection != null)
 				return false;
@@ -100,8 +83,7 @@ public class MobilePhone extends CpuDisplayElectricDevice {
 
 	@Override
 	public String toString() {
-		return "MobilePhone [batteryCapacity=" + batteryCapacity + ", mobileConnection=" + mobileConnection
-				+ ", mobileCconnection=" + mobileCconnection + "]";
+		return "MobilePhone [batteryCapacity=" + batteryCapacity + ", mobileConnection=" + mobileConnection + ", toString()=" + super.toString() + "]";
 	}
 
 }

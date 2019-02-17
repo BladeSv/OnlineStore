@@ -2,7 +2,7 @@ package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.abstracten
 
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.type.DeviceType;
 
-public abstract class ElectricDevice extends Device {
+public class ElectricDevice extends Device {
 	private double power;
 	private double weight;
 
@@ -12,16 +12,11 @@ public abstract class ElectricDevice extends Device {
 
 	}
 
-	
-
-	public ElectricDevice(int id, DeviceType type, String manufacturer, String model, String color, double price,
-			double power, double weight) {
+	public ElectricDevice(int id, DeviceType type, String manufacturer, String model, String color, double price, double power, double weight) {
 		super(id, type, manufacturer, model, color, price);
 		this.power = power;
 		this.weight = weight;
 	}
-
-
 
 	public double getWeight() {
 		return weight;
@@ -65,6 +60,11 @@ public abstract class ElectricDevice extends Device {
 		if (Double.doubleToLongBits(weight) != Double.doubleToLongBits(other.weight))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "ElectricDevice [power=" + power + ", weight=" + weight + ", toString()=" + super.toString() + "]";
 	}
 
 }

@@ -11,7 +11,7 @@ public class StoreBase {
 	 * 
 	 */
 	public StoreBase() {
-		this.deviceBase =new Device[10];
+		this.deviceBase = new Device[10];
 	}
 
 	/**
@@ -55,5 +55,5 @@ public class StoreBase {
 	public String toString() {
 		return "StoreBase [deviceBase=" + Arrays.toString(deviceBase) + "]";
 	}
-	
+
 }
