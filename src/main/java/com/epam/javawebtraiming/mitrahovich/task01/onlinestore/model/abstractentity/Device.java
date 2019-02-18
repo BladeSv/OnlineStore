@@ -122,7 +122,8 @@ public class Device {
 
 	@Override
 	public String toString() {
-		return "Device [id=" + id + ", type=" + type + ", manufacturer=" + manufacturer + ", model=" + model + ", color=" + color + ", price=" + price + "]";
+		return "id: " + id + ", device type: " + type.getType() + ", manufacturer: " + manufacturer + ", model: "
+				+ model + ", color: " + color + ", price: " + price + "$";
 	}
 
 }

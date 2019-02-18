@@ -11,7 +11,8 @@ public class DisplayElectricDevice extends ElectricDevice {
 		// TODO Auto-generated constructor stub
 	}
 
-	public DisplayElectricDevice(int id, DeviceType type, String manufacturer, String model, String color, double price, double power, double weight, double displayDiagonal, String displayResolution) {
+	public DisplayElectricDevice(int id, DeviceType type, String manufacturer, String model, String color, double price,
+			double power, double weight, double displayDiagonal, String displayResolution) {
 		super(id, type, manufacturer, model, color, price, power, weight);
 		this.displayDiagonal = displayDiagonal;
 		this.displayResolution = displayResolution;
@@ -65,7 +66,8 @@ public class DisplayElectricDevice extends ElectricDevice {
 
 	@Override
 	public String toString() {
-		return "DisplayElectricDevice [displayDiagonal=" + displayDiagonal + ", displayResolution=" + displayResolution + ", toString()=" + super.toString() + "]";
+		return super.toString() + ", display diagonal: " + displayDiagonal + ", display resolution: "
+				+ displayResolution;
 	}
 
 }

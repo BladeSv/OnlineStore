@@ -9,38 +9,39 @@ import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.storebase.S
 public class DaoStoreBaseArray implements IDaoStoreBase {
 
 	private StoreBase storeBase;
+	private static int id = 1;
 
-	
 	public DaoStoreBaseArray(StoreBase storeBase) {
-	
+		super();
 		this.storeBase = storeBase;
+
 	}
 
 	@Override
 	public void add(Device device) {
-	
+
 		if (device != null) {
-			int i =0;
-		
-			while(i<storeBase.getDeviceBase().length) {
-				if(storeBase.getDeviceBase()[i]==null) {
-					storeBase.getDeviceBase()[i]=device;
-					
+			int i = 0;
+			device.setId(id);
+			while (i < storeBase.getDeviceBase().length) {
+				if (storeBase.getDeviceBase()[i] == null) {
+
+					storeBase.getDeviceBase()[i] = device;
+					id++;
 					return;
 				}
 				i++;
-				
+
 			}
-			if(i==storeBase.getDeviceBase().length) {
-				 
-				 Device[] temp=Arrays.copyOf(storeBase.getDeviceBase(), (i*2));
-				 temp[i]=device;
-				 storeBase.setDeviceBase(temp);
-		
-				
+			if (i == storeBase.getDeviceBase().length) {
+
+				Device[] temp = Arrays.copyOf(storeBase.getDeviceBase(), (i * 2));
+				temp[i] = device;
+				device.setId(id);
+				storeBase.setDeviceBase(temp);
+				id++;
 			}
-			
-			
+
 		}
 
 	}

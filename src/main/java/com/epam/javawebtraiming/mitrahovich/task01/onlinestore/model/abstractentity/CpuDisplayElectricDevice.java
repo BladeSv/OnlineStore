@@ -29,8 +29,9 @@ public class CpuDisplayElectricDevice extends DisplayElectricDevice {
 	 * @param ram
 	 * @param operatingSystem
 	 */
-	public CpuDisplayElectricDevice(int id, DeviceType type, String manufacturer, String model, String color, double price, double power, double weight, double displayDiagonal, String displayResolution, String cpu, int clockFrequency, int ram,
-			String operatingSystem) {
+	public CpuDisplayElectricDevice(int id, DeviceType type, String manufacturer, String model, String color,
+			double price, double power, double weight, double displayDiagonal, String displayResolution, String cpu,
+			int clockFrequency, int ram, String operatingSystem) {
 		super(id, type, manufacturer, model, color, price, power, weight, displayDiagonal, displayResolution);
 		this.cpu = cpu;
 		this.clockFrequency = clockFrequency;
@@ -109,7 +110,8 @@ public class CpuDisplayElectricDevice extends DisplayElectricDevice {
 
 	@Override
 	public String toString() {
-		return "CpuDisplayElectricDevice [cpu=" + cpu + ", clockFrequency=" + clockFrequency + ", ram=" + ram + ", operatingSystem=" + operatingSystem + ", toString()=" + super.toString() + "]";
+		return super.toString() + "CPU:" + cpu + ", cpu clock frequency:" + clockFrequency + "MHz, RAM:" + ram
+				+ "GB, operating system=" + operatingSystem;
 	}
 
 }

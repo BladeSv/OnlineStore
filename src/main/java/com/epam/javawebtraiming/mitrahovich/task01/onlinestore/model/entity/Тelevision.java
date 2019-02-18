@@ -23,7 +23,8 @@ public class Тelevision extends DisplayElectricDevice {
 	 * @param displayResolution
 	 * @param displayType
 	 */
-	public Тelevision(int id, DeviceType type, String manufacturer, String model, String color, double price, double power, double weight, double displayDiagonal, String displayResolution, String displayType) {
+	public Тelevision(int id, DeviceType type, String manufacturer, String model, String color, double price,
+			double power, double weight, double displayDiagonal, String displayResolution, String displayType) {
 		super(id, type, manufacturer, model, color, price, power, weight, displayDiagonal, displayResolution);
 		this.displayType = displayType;
 	}
@@ -63,8 +64,7 @@ public class Тelevision extends DisplayElectricDevice {
 
 	@Override
 	public String toString() {
-		return "Тelevision [displayType=" + displayType + ", getScreenDiagonal()=" + getScreenDiagonal() + ", getScreenResolution()=" + getScreenResolution() + ", getWeight()=" + getWeight() + ", getPower()=" + getPower() + ", getType()=" + getType()
-				+ ", getManufacturer()=" + getManufacturer() + ", getModel()=" + getModel() + ", getColor()=" + getColor() + ", getId()=" + getId() + ", toString()=" + super.toString() + "]";
+		return super.toString() + ", display type: " + displayType;
 	}
 
 }

@@ -30,9 +30,11 @@ public class MobilePhone extends CpuDisplayElectricDevice {
 	 * @param batteryCapacity
 	 * @param mobileConnection
 	 */
-	public MobilePhone(int id, DeviceType type, String manufacturer, String model, String color, double price, double power, double weight, double displayDiagonal, String displayResolution, String cpu, int clockFrequency, int ram,
-			String operatingSystem, int batteryCapacity, String mobileConnection) {
-		super(id, type, manufacturer, model, color, price, power, weight, displayDiagonal, displayResolution, cpu, clockFrequency, ram, operatingSystem);
+	public MobilePhone(int id, DeviceType type, String manufacturer, String model, String color, double price,
+			double power, double weight, double displayDiagonal, String displayResolution, String cpu,
+			int clockFrequency, int ram, String operatingSystem, int batteryCapacity, String mobileConnection) {
+		super(id, type, manufacturer, model, color, price, power, weight, displayDiagonal, displayResolution, cpu,
+				clockFrequency, ram, operatingSystem);
 		this.batteryCapacity = batteryCapacity;
 		this.mobileConnection = mobileConnection;
 	}
@@ -49,7 +51,7 @@ public class MobilePhone extends CpuDisplayElectricDevice {
 		return mobileConnection;
 	}
 
-	public void setMobileCconnection(String mobileCconnection) {
+	public void setMobileConnection(String mobileConnection) {
 		this.mobileConnection = mobileConnection;
 	}
 
@@ -83,7 +85,9 @@ public class MobilePhone extends CpuDisplayElectricDevice {
 
 	@Override
 	public String toString() {
-		return "MobilePhone [batteryCapacity=" + batteryCapacity + ", mobileConnection=" + mobileConnection + ", toString()=" + super.toString() + "]";
+		return super.toString() + ", battery capacity" + batteryCapacity + " mAh, mobile connection type:"
+				+ mobileConnection;
+
 	}
 
 }

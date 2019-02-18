@@ -32,9 +32,11 @@ public class Laptop extends CpuDisplayElectricDevice {
 	 * @param hddType
 	 * @param hddCapacity
 	 */
-	public Laptop(int id, DeviceType type, String manufacturer, String model, String color, double price, double power, double weight, double displayDiagonal, String displayResolution, String cpu, int clockFrequency, int ram, String operatingSystem,
-			int batteryCapacity, String hddType, int hddCapacity) {
-		super(id, type, manufacturer, model, color, price, power, weight, displayDiagonal, displayResolution, cpu, clockFrequency, ram, operatingSystem);
+	public Laptop(int id, DeviceType type, String manufacturer, String model, String color, double price, double power,
+			double weight, double displayDiagonal, String displayResolution, String cpu, int clockFrequency, int ram,
+			String operatingSystem, int batteryCapacity, String hddType, int hddCapacity) {
+		super(id, type, manufacturer, model, color, price, power, weight, displayDiagonal, displayResolution, cpu,
+				clockFrequency, ram, operatingSystem);
 		this.batteryCapacity = batteryCapacity;
 		this.hddType = hddType;
 		this.hddCapacity = hddCapacity;
@@ -97,9 +99,8 @@ public class Laptop extends CpuDisplayElectricDevice {
 
 	@Override
 	public String toString() {
-		return "Laptop [batteryCapacity=" + batteryCapacity + ", hddType=" + hddType + ", hddCapacity=" + hddCapacity + ", getRam()=" + getRam() + ", getCpu()=" + getCpu() + ", getClockFrequency()=" + getClockFrequency() + ", getOperatingSystem()="
-				+ getOperatingSystem() + ", getScreenDiagonal()=" + getScreenDiagonal() + ", getScreenResolution()=" + getScreenResolution() + ", getWeight()=" + getWeight() + ", getPower()=" + getPower() + ", getType()=" + getType()
-				+ ", getManufacturer()=" + getManufacturer() + ", getModel()=" + getModel() + ", getColor()=" + getColor() + ", getId()=" + getId() + ", toString()=" + super.toString() + "]";
+		return super.toString() + "battery capacity: " + batteryCapacity + "mAh, HDD type: " + hddType
+				+ ", HDD capacity: " + hddCapacity + "GB";
 	}
 
 }

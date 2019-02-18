@@ -12,7 +12,8 @@ public class ElectricDevice extends Device {
 
 	}
 
-	public ElectricDevice(int id, DeviceType type, String manufacturer, String model, String color, double price, double power, double weight) {
+	public ElectricDevice(int id, DeviceType type, String manufacturer, String model, String color, double price,
+			double power, double weight) {
 		super(id, type, manufacturer, model, color, price);
 		this.power = power;
 		this.weight = weight;
@@ -64,7 +65,7 @@ public class ElectricDevice extends Device {
 
 	@Override
 	public String toString() {
-		return "ElectricDevice [power=" + power + ", weight=" + weight + ", toString()=" + super.toString() + "]";
+		return super.toString() + ", power:" + power + " watt, weight:" + weight + " Kg";
 	}
 
 }

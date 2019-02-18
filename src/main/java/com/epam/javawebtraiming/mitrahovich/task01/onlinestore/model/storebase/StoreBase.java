@@ -12,6 +12,7 @@ public class StoreBase {
 	 */
 	public StoreBase() {
 		this.deviceBase = new Device[10];
+
 	}
 
 	/**
@@ -53,7 +54,15 @@ public class StoreBase {
 
 	@Override
 	public String toString() {
-		return "StoreBase [deviceBase=" + Arrays.toString(deviceBase) + "]";
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < deviceBase.length; i++) {
+			if (deviceBase[i] != null) {
+				sb.append(deviceBase[i]);
+				sb.append("\n");
+			}
+
+		}
+		return sb + "";
 	}
 
 }
