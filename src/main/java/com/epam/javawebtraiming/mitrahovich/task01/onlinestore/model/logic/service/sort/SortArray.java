@@ -1,7 +1,7 @@
-package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.service.sort;
+package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.logic.service.sort;
 
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.abstractentity.Device;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.storebase.StoreBase;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.abstractentity.Device;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.storebase.StoreBase;
 
 public class SortArray implements ISort {
 
@@ -11,11 +11,13 @@ public class SortArray implements ISort {
 
 		for (int i = 0; i < storeBase.getDeviceBase().length - 1; i++) {
 			if (((storeBase.getDeviceBase()[i] != null) && (storeBase.getDeviceBase()[i + 1] != null))
-					&& (storeBase.getDeviceBase()[i].getPrice() > storeBase.getDeviceBase()[i + 1].getPrice())) {
+
+					&& (storeBase.getDeviceBase()[i].getPrice()
+							.compareTo(storeBase.getDeviceBase()[i + 1].getPrice()) > 0)) {
 				temp = storeBase.getDeviceBase()[i + 1];
 				storeBase.getDeviceBase()[i + 1] = storeBase.getDeviceBase()[i];
 				j = i;
-				while (j > 0 && temp.getPrice() < storeBase.getDeviceBase()[j - 1].getPrice()) {
+				while (j > 0 && (storeBase.getDeviceBase()[j - 1].getPrice().compareTo(temp.getPrice()) > 0)) {
 					storeBase.getDeviceBase()[j] = storeBase.getDeviceBase()[j - 1];
 					j--;
 				}

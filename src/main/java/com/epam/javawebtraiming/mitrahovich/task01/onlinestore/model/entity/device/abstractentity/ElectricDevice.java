@@ -1,10 +1,11 @@
-package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.abstractentity;
+package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.abstractentity;
 
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.type.DeviceType;
+import java.math.BigDecimal;
+
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.type.DeviceType;
 
 public class ElectricDevice extends Device {
 	private double power;
-	private double weight;
 
 	public ElectricDevice() {
 		super();
@@ -12,19 +13,11 @@ public class ElectricDevice extends Device {
 
 	}
 
-	public ElectricDevice(int id, DeviceType type, String manufacturer, String model, String color, double price,
-			double power, double weight) {
+	public ElectricDevice(int id, DeviceType type, String manufacturer, String model, String color, BigDecimal price,
+			double power) {
 		super(id, type, manufacturer, model, color, price);
 		this.power = power;
-		this.weight = weight;
-	}
 
-	public double getWeight() {
-		return weight;
-	}
-
-	public void setWeight(double weight) {
-		this.weight = weight;
 	}
 
 	public double getPower() {
@@ -42,8 +35,6 @@ public class ElectricDevice extends Device {
 		long temp;
 		temp = Double.doubleToLongBits(power);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(weight);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
 	}
 
@@ -58,14 +49,12 @@ public class ElectricDevice extends Device {
 		ElectricDevice other = (ElectricDevice) obj;
 		if (Double.doubleToLongBits(power) != Double.doubleToLongBits(other.power))
 			return false;
-		if (Double.doubleToLongBits(weight) != Double.doubleToLongBits(other.weight))
-			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return super.toString() + ", power:" + power + " watt, weight:" + weight + " Kg";
+		return super.toString() + ", power:" + power + " watt";
 	}
 
 }

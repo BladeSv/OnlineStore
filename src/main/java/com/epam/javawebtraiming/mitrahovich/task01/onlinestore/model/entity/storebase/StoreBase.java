@@ -1,8 +1,8 @@
-package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.storebase;
+package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.storebase;
 
 import java.util.Arrays;
 
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.abstractentity.Device;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.abstractentity.Device;
 
 public class StoreBase {
 	private Device[] deviceBase;

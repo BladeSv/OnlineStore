@@ -1,10 +1,10 @@
-package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.util.creator;
+package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.util.factory;
 
 import static com.epam.javawebtraiming.mitrahovich.task01.onlinestore.util.PropertiesManager.getStatus;
 
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.DAO.IDaoStoreBase;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.DAO.daoimplemet.DaoStoreBaseArray;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.storebase.StoreBase;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.storebase.StoreBase;
 
 public class DaoStoreBaseFactory {
 	private static IDaoStoreBase storeBase;

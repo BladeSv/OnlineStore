@@ -1,8 +1,9 @@
-package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.type;
+package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.type;
 
 public enum DeviceType {
+
 	MOBILE_PHONE("Mobile phone"), LAPTOP("Laptop"), TV("Television");
-	
+
 	private String type;
 
 	/**
@@ -15,9 +16,5 @@ public enum DeviceType {
 	public String getType() {
 		return type;
 	}
-
-	
-	
-	
 
 }

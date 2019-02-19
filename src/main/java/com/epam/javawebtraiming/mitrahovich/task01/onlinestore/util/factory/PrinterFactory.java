@@ -1,4 +1,4 @@
-package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.util.creator;
+package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.util.factory;
 
 import static com.epam.javawebtraiming.mitrahovich.task01.onlinestore.util.PropertiesManager.getStatus;
 

@@ -1,7 +1,9 @@
-package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity;
+package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device;
 
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.abstractentity.DisplayElectricDevice;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.type.DeviceType;
+import java.math.BigDecimal;
+
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.abstractentity.DisplayElectricDevice;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.type.DeviceType;
 
 public class Тelevision extends DisplayElectricDevice {
 	private String displayType;
@@ -18,14 +20,12 @@ public class Тelevision extends DisplayElectricDevice {
 	 * @param color
 	 * @param price
 	 * @param power
-	 * @param weight
 	 * @param displayDiagonal
-	 * @param displayResolution
 	 * @param displayType
 	 */
-	public Тelevision(int id, DeviceType type, String manufacturer, String model, String color, double price,
-			double power, double weight, double displayDiagonal, String displayResolution, String displayType) {
-		super(id, type, manufacturer, model, color, price, power, weight, displayDiagonal, displayResolution);
+	public Тelevision(int id, DeviceType type, String manufacturer, String model, String color, BigDecimal price,
+			double power, double displayDiagonal, String displayType) {
+		super(id, type, manufacturer, model, color, price, power, displayDiagonal);
 		this.displayType = displayType;
 	}
 

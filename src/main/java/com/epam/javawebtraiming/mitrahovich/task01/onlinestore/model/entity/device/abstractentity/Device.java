@@ -1,6 +1,8 @@
-package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.abstractentity;
+package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.abstractentity;
 
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.type.DeviceType;
+import java.math.BigDecimal;
+
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.type.DeviceType;
 
 public class Device {
 	private int id;
@@ -8,14 +10,14 @@ public class Device {
 	private String manufacturer;
 	private String model;
 	private String color;
-	private double price;
+	private BigDecimal price;
 
 	public Device() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Device(int id, DeviceType type, String manufacturer, String model, String color, double price) {
+	public Device(int id, DeviceType type, String manufacturer, String model, String color, BigDecimal price) {
 		this.id = id;
 		this.type = type;
 		this.manufacturer = manufacturer;
@@ -64,11 +66,11 @@ public class Device {
 		this.id = id;
 	}
 
-	public double getPrice() {
+	public BigDecimal getPrice() {
 		return price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 
@@ -80,9 +82,7 @@ public class Device {
 		result = prime * result + id;
 		result = prime * result + ((manufacturer == null) ? 0 : manufacturer.hashCode());
 		result = prime * result + ((model == null) ? 0 : model.hashCode());
-		long temp;
-		temp = Double.doubleToLongBits(price);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((price == null) ? 0 : price.hashCode());
 		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		return result;
 	}
@@ -113,7 +113,10 @@ public class Device {
 				return false;
 		} else if (!model.equals(other.model))
 			return false;
-		if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price))
+		if (price == null) {
+			if (other.price != null)
+				return false;
+		} else if (!price.equals(other.price))
 			return false;
 		if (type != other.type)
 			return false;
@@ -123,7 +126,7 @@ public class Device {
 	@Override
 	public String toString() {
 		return "id: " + id + ", device type: " + type.getType() + ", manufacturer: " + manufacturer + ", model: "
-				+ model + ", color: " + color + ", price: " + price + "$";
+				+ model + ", color: " + color + ", price: " + price + " $";
 	}
 
 }

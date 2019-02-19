@@ -1,18 +1,18 @@
 package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.controller;
 
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.DAO.IDaoStoreBase;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.abstractentity.Device;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.Laptop;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.MobilePhone;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.Тelevision;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.type.DeviceType;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.service.Sum.ISum;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.service.Sum.SumArray;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.service.sort.ISort;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.service.sort.SortArray;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.util.creator.DaoStoreBaseFactory;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.util.creator.DeviceBuilder;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.util.creator.PrinterFactory;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.Laptop;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.MobilePhone;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.Тelevision;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.abstractentity.Device;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.type.DeviceType;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.logic.service.sort.ISort;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.logic.service.sort.SortArray;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.logic.service.sum.ISum;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.logic.service.sum.SumArray;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.util.creator.random.DeviceBuilder;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.util.factory.DaoStoreBaseFactory;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.util.factory.PrinterFactory;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.view.printer.IPrinter;
 
 public class MainController {
