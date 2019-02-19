@@ -4,9 +4,9 @@ import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.devi
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.storebase.StoreBase;
 
 public interface IDaoStoreBase {
-	void add(Device device);
+	boolean add(Device device);
 
-	void removeById(int id);
+	boolean removeById(int id);
 
 	Device getById(int id);
 

@@ -3,6 +3,7 @@ package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.dev
 import java.math.BigDecimal;
 
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.type.DeviceType;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.IncorrectDataEntryException;
 
 public class ElectricDevice extends Device {
 	private double power;
@@ -24,8 +25,13 @@ public class ElectricDevice extends Device {
 		return power;
 	}
 
-	public void setPower(double power) {
-		this.power = power;
+	public void setPower(double power) throws IncorrectDataEntryException {
+		if (power > 0) {
+			this.power = power;
+		} else {
+			throw new IncorrectDataEntryException("Incorrect enter of " + this.getClass().getSimpleName() + " color");
+		}
+
 	}
 
 	@Override

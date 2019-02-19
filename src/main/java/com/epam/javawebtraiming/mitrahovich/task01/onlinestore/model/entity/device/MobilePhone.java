@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.abstractentity.PortableCpuDisplayElectricDevice;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.type.DeviceType;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.IncorrectDataEntryException;
 
 public class MobilePhone extends PortableCpuDisplayElectricDevice {
 
@@ -37,8 +38,13 @@ public class MobilePhone extends PortableCpuDisplayElectricDevice {
 		return mobileConnection;
 	}
 
-	public void setMobileConnection(String mobileConnection) {
-		this.mobileConnection = mobileConnection;
+	public void setMobileConnection(String mobileConnection) throws IncorrectDataEntryException {
+		if (mobileConnection != null) {
+			this.mobileConnection = mobileConnection;
+		} else {
+			throw new IncorrectDataEntryException("Incorrect enter of " + this.getClass().getSimpleName() + " color");
+		}
+
 	}
 
 	@Override

@@ -12,7 +12,7 @@ public class IncorrectDataEntryException extends IOException {
 	public IncorrectDataEntryException(String str) {
 		super(str);
 
-		System.out.println(str + this.getClass().getName());
+		
 	}
 
 }

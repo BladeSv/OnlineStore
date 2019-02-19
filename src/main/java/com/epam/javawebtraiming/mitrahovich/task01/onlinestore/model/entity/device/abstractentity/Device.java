@@ -31,40 +31,65 @@ public class Device {
 		return type;
 	}
 
-	public void setType(DeviceType type) {
-		this.type = type;
+	public void setType(DeviceType type) throws IncorrectDataEntryException {
+		if (type != null) {
+			this.type = type;
+		} else {
+			throw new IncorrectDataEntryException("Incorrect enter of " + this.getClass().getSimpleName() + " type");
+		}
 	}
 
 	public String getManufacturer() {
 		return manufacturer;
 	}
 
-	public void setManufacturer(String manufacturer) {
-		this.manufacturer = manufacturer;
+	public void setManufacturer(String manufacturer) throws IncorrectDataEntryException {
+		if (manufacturer != null) {
+			this.manufacturer = manufacturer;
+		} else {
+			throw new IncorrectDataEntryException(
+					"Incorrect enter of " + this.getClass().getSimpleName() + " manufacturer");
+		}
+
 	}
 
 	public String getModel() {
 		return model;
 	}
 
-	public void setModel(String model) {
-		this.model = model;
+	public void setModel(String model) throws IncorrectDataEntryException {
+		if (model != null) {
+			this.model = model;
+		} else {
+			throw new IncorrectDataEntryException("Incorrect enter of " + this.getClass().getSimpleName() + " model");
+		}
+
 	}
 
 	public String getColor() {
 		return color;
 	}
 
-	public void setColor(String color) {
-		this.color = color;
+	public void setColor(String color) throws IncorrectDataEntryException {
+		if (color != null) {
+			this.color = color;
+		} else {
+			throw new IncorrectDataEntryException("Incorrect enter of " + this.getClass().getSimpleName() + " color");
+		}
+
 	}
 
 	public int getId() {
 		return id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setId(int id) throws IncorrectDataEntryException {
+		if (id > 0) {
+			this.id = id;
+		} else {
+			throw new IncorrectDataEntryException("Incorrect enter of " + this.getClass().getSimpleName() + " id");
+		}
+
 	}
 
 	public BigDecimal getPrice() {
@@ -74,8 +99,9 @@ public class Device {
 	public void setPrice(BigDecimal price) throws IncorrectDataEntryException {
 		if (price.compareTo(new BigDecimal(0)) >= 0) {
 			this.price = price;
-		} else
-			throw new IncorrectDataEntryException("Incorrect enter device price");
+		} else {
+			throw new IncorrectDataEntryException("Incorrect enter of " + this.getClass().getSimpleName() + " price");
+		}
 	}
 
 	@Override

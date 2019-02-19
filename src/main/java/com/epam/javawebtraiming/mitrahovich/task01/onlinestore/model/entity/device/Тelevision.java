@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.abstractentity.DisplayElectricDevice;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.type.DeviceType;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.IncorrectDataEntryException;
 
 public class Тelevision extends DisplayElectricDevice {
 	private String displayType;
@@ -33,8 +34,13 @@ public class Тelevision extends DisplayElectricDevice {
 		return displayType;
 	}
 
-	public void setDisplayType(String displayType) {
-		this.displayType = displayType;
+	public void setDisplayType(String displayType) throws IncorrectDataEntryException {
+		if (displayType != null) {
+			this.displayType = displayType;
+		} else {
+			throw new IncorrectDataEntryException("Incorrect enter of " + this.getClass().getSimpleName() + " color");
+		}
+
 	}
 
 	@Override

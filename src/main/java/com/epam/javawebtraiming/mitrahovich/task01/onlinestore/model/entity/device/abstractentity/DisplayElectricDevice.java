@@ -3,6 +3,7 @@ package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.dev
 import java.math.BigDecimal;
 
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.type.DeviceType;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.IncorrectDataEntryException;
 
 public class DisplayElectricDevice extends ElectricDevice {
 
@@ -32,8 +33,13 @@ public class DisplayElectricDevice extends ElectricDevice {
 		return displayDiagonal;
 	}
 
-	public void setScreenDiagonal(double screenDiagonal) {
-		this.displayDiagonal = screenDiagonal;
+	public void setScreenDiagonal(double screenDiagonal) throws IncorrectDataEntryException {
+		if (displayDiagonal > 0) {
+			this.displayDiagonal = screenDiagonal;
+		} else {
+			throw new IncorrectDataEntryException("Incorrect enter of " + this.getClass().getSimpleName() + " color");
+		}
+
 	}
 
 	@Override

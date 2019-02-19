@@ -1,11 +1,6 @@
 package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.controller;
 
-import java.math.BigDecimal;
-
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.DAO.IDaoStoreBase;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.Тelevision;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.abstractentity.Device;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.IncorrectDataEntryException;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.logic.service.find.FindArray;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.logic.service.find.IFind;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.logic.service.sort.ISort;
@@ -29,26 +24,26 @@ public class MainController {
 
 		AddEntitiesInBase.add(daoStoreBase);
 
-		Device d = new Тelevision();
-		try {
-			d.setPrice(new BigDecimal(-1));
-		} catch (IncorrectDataEntryException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		System.out.println(d.getPrice());
-		// printet.print(daoStoreBase.getAll());
-		// System.out.printf("%.2f", sum.sumPrice(daoStoreBase.getAll()));
-		// System.out.println();
-		// System.out.println();
-		//
-		// sort.sortByPrice(daoStoreBase.getAll());
-		// printet.print(daoStoreBase.getAll());
-		// sort.sortByManufacturerName(daoStoreBase.getAll());
-		// printet.print(daoStoreBase.getAll());
-		//
-		// System.out.println("max: " + find.findMaxPrice(daoStoreBase.getAll()));
-		// System.out.println("min: " + find.findMinPrice(daoStoreBase.getAll()));
+		// Device d = new Тelevision();
+		// try {
+		// d.setPrice(new BigDecimal(-1));
+		// } catch (IncorrectDataEntryException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
+		// System.out.println(d.getPrice());
+		printet.print(daoStoreBase.getAll());
+		System.out.printf("%.2f", sum.sumPrice(daoStoreBase.getAll()));
+		System.out.println();
+		System.out.println();
+
+		sort.sortByPrice(daoStoreBase.getAll());
+		printet.print(daoStoreBase.getAll());
+		sort.sortByManufacturerName(daoStoreBase.getAll());
+		printet.print(daoStoreBase.getAll());
+
+		System.out.println("max: " + find.findMaxPrice(daoStoreBase.getAll()));
+		System.out.println("min: " + find.findMinPrice(daoStoreBase.getAll()));
 	}
 
 }

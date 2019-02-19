@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.abstractentity.PortableCpuDisplayElectricDevice;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.type.DeviceType;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.IncorrectDataEntryException;
 
 public class Laptop extends PortableCpuDisplayElectricDevice {
 
@@ -37,8 +38,13 @@ public class Laptop extends PortableCpuDisplayElectricDevice {
 		return hddCapacity;
 	}
 
-	public void setHddCapacity(int hddCapacity) {
-		this.hddCapacity = hddCapacity;
+	public void setHddCapacity(int hddCapacity) throws IncorrectDataEntryException {
+		if (hddCapacity > 0) {
+			this.hddCapacity = hddCapacity;
+		} else {
+			throw new IncorrectDataEntryException("Incorrect enter of " + this.getClass().getSimpleName() + " color");
+		}
+
 	}
 
 	@Override

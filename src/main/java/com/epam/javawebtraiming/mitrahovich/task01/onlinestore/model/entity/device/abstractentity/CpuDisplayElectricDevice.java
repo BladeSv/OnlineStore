@@ -3,6 +3,7 @@ package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.dev
 import java.math.BigDecimal;
 
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.type.DeviceType;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.IncorrectDataEntryException;
 
 public class CpuDisplayElectricDevice extends DisplayElectricDevice {
 
@@ -36,16 +37,27 @@ public class CpuDisplayElectricDevice extends DisplayElectricDevice {
 		return ram;
 	}
 
-	public void setRam(int ram) {
-		this.ram = ram;
+	public void setRam(int ram) throws IncorrectDataEntryException {
+		if (ram > 0) {
+			this.ram = ram;
+		} else {
+			throw new IncorrectDataEntryException("Incorrect enter of " + this.getClass().getSimpleName() + " color");
+		}
+
 	}
 
 	public String getCpu() {
+
 		return cpu;
 	}
 
-	public void setCpu(String cpu) {
-		this.cpu = cpu;
+	public void setCpu(String cpu) throws IncorrectDataEntryException {
+		if (cpu != null) {
+			this.cpu = cpu;
+		} else {
+			throw new IncorrectDataEntryException("Incorrect enter of " + this.getClass().getSimpleName() + " color");
+		}
+
 	}
 
 	@Override

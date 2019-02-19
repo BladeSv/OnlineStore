@@ -8,12 +8,12 @@ public class SumArray implements ISum {
 
 	public BigDecimal sumPrice(StoreBase storeBase) {
 		BigDecimal sum = new BigDecimal("0");
-		int i = 0;
-		while (storeBase.getDeviceBase()[i] != null) {
 
-			sum = sum.add(storeBase.getDeviceBase()[i].getPrice());
+		for (int i = 0; i < storeBase.getDeviceBase().length; i++) {
+			if (storeBase.getDeviceBase()[i] != null) {
+				sum = sum.add(storeBase.getDeviceBase()[i].getPrice());
+			}
 
-			i++;
 		}
 
 		return sum;

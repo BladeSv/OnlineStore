@@ -3,6 +3,7 @@ package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.dev
 import java.math.BigDecimal;
 
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.type.DeviceType;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.IncorrectDataEntryException;
 
 public class PortableCpuDisplayElectricDevice extends CpuDisplayElectricDevice {
 
@@ -14,10 +15,6 @@ public class PortableCpuDisplayElectricDevice extends CpuDisplayElectricDevice {
 	public PortableCpuDisplayElectricDevice() {
 		super();
 		// TODO Auto-generated constructor stub
-	}
-
-	public int getBatteryCapacity() {
-		return batteryCapacity;
 	}
 
 	/**
@@ -39,8 +36,17 @@ public class PortableCpuDisplayElectricDevice extends CpuDisplayElectricDevice {
 		this.batteryCapacity = batteryCapacity;
 	}
 
-	public void setBatteryCapacity(int batteryCapacity) {
-		this.batteryCapacity = batteryCapacity;
+	public int getBatteryCapacity() {
+		return batteryCapacity;
+	}
+
+	public void setBatteryCapacity(int batteryCapacity) throws IncorrectDataEntryException {
+		if (batteryCapacity > 0) {
+			this.batteryCapacity = batteryCapacity;
+		} else {
+			throw new IncorrectDataEntryException("Incorrect enter of " + this.getClass().getSimpleName() + " color");
+		}
+
 	}
 
 	@Override
