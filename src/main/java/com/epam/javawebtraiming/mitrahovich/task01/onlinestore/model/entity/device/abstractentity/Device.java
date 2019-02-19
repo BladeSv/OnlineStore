@@ -3,6 +3,7 @@ package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.dev
 import java.math.BigDecimal;
 
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.type.DeviceType;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.IncorrectDataEntryException;
 
 public class Device {
 	private int id;
@@ -70,8 +71,11 @@ public class Device {
 		return price;
 	}
 
-	public void setPrice(BigDecimal price) {
-		this.price = price;
+	public void setPrice(BigDecimal price) throws IncorrectDataEntryException {
+		if (price.compareTo(new BigDecimal(0)) >= 0) {
+			this.price = price;
+		} else
+			throw new IncorrectDataEntryException("Incorrect enter device price");
 	}
 
 	@Override
