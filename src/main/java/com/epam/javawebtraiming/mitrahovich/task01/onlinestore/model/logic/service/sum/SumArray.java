@@ -10,7 +10,8 @@ public class SumArray implements ISum {
 		BigDecimal sum = new BigDecimal("0");
 		int i = 0;
 		while (storeBase.getDeviceBase()[i] != null) {
-			sum.add(storeBase.getDeviceBase()[i].getPrice());
+
+			sum = sum.add(storeBase.getDeviceBase()[i].getPrice());
 
 			i++;
 		}

@@ -78,7 +78,7 @@ public class CpuDisplayElectricDevice extends DisplayElectricDevice {
 
 	@Override
 	public String toString() {
-		return super.toString() + "CPU:" + cpu + ", RAM:" + ram + "GB";
+		return super.toString() + ", CPU: " + cpu + ", RAM: " + ram + "GB";
 	}
 
 }

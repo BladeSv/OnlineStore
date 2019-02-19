@@ -16,18 +16,6 @@ public class PortableCpuDisplayElectricDevice extends CpuDisplayElectricDevice {
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @param id
-	 * @param type
-	 * @param manufacturer
-	 * @param model
-	 * @param color
-	 * @param price
-	 * @param power
-	 * @param displayDiagonal
-	 * @param batteryCapacity
-	 */
-
 	public int getBatteryCapacity() {
 		return batteryCapacity;
 	}
@@ -79,7 +67,7 @@ public class PortableCpuDisplayElectricDevice extends CpuDisplayElectricDevice {
 
 	@Override
 	public String toString() {
-		return super.toString() + "battery capacity: " + batteryCapacity + "mAh";
+		return super.toString() + ", battery capacity: " + batteryCapacity + "mAh";
 	}
 
 }

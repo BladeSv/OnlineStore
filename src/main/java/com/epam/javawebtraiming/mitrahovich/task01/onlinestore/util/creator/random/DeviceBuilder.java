@@ -22,6 +22,7 @@ public class DeviceBuilder {
 	}
 
 	public static Device newInstans() {
+
 		switch (dc.getRd().nextInt(2)) {
 		case 0:
 
@@ -32,16 +33,15 @@ public class DeviceBuilder {
 			break;
 
 		case 1:
-			device = new Laptop(getId(), DeviceType.valueOf("MOBILE_PHONE"), dc.getRandomManufacturer(),
-					dc.getRandomModel(), dc.getRandomColor(), dc.getRandomPrice(), dc.getRandomPower(),
-					dc.getRandomDisplayDiagonal(), dc.getRandomCpu(), dc.getRandomRam(), dc.getRandomBatteryCapacity(),
-					dc.getHddCapacity());
+			device = new Laptop(getId(), DeviceType.valueOf("LAPTOP"), dc.getRandomManufacturer(), dc.getRandomModel(),
+					dc.getRandomColor(), dc.getRandomPrice(), dc.getRandomPower(), dc.getRandomDisplayDiagonal(),
+					dc.getRandomCpu(), dc.getRandomRam(), dc.getRandomBatteryCapacity(), dc.getHddCapacity());
 			break;
 		case 2:
 
-			device = new Тelevision(getId(), DeviceType.valueOf("MOBILE_PHONE"), dc.getRandomManufacturer(),
-					dc.getRandomModel(), dc.getRandomColor(), dc.getRandomPrice(), dc.getRandomPower(),
-					dc.getRandomDisplayDiagonal(), dc.getDisplayType());
+			device = new Тelevision(getId(), DeviceType.valueOf("TV"), dc.getRandomManufacturer(), dc.getRandomModel(),
+					dc.getRandomColor(), dc.getRandomPrice(), dc.getRandomPower(), dc.getRandomDisplayDiagonal(),
+					dc.getDisplayType());
 			break;
 		}
 

@@ -54,7 +54,7 @@ public class ElectricDevice extends Device {
 
 	@Override
 	public String toString() {
-		return super.toString() + ", power:" + power + " watt";
+		return super.toString() + ", power:" + String.format("%.2f", power) + " watt";
 	}
 
 }

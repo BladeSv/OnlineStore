@@ -75,34 +75,4 @@ public class DaoStoreBaseArray implements IDaoStoreBase {
 
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((storeBase == null) ? 0 : storeBase.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		DaoStoreBaseArray other = (DaoStoreBaseArray) obj;
-		if (storeBase == null) {
-			if (other.storeBase != null)
-				return false;
-		} else if (!storeBase.equals(other.storeBase))
-			return false;
-		return true;
-	}
-
-	@Override
-	public String toString() {
-		return "DaoStoreBaseArray [storeBase=" + storeBase + "]";
-	}
-
 }
