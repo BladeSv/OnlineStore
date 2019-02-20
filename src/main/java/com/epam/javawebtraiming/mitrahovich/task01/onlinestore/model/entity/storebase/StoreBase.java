@@ -1,10 +1,15 @@
 package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.storebase;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.abstractentity.Device;
 
-public class StoreBase {
+public class StoreBase implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3685331886334816171L;
 	private Device[] deviceBase;
 
 	/**

@@ -1,11 +1,16 @@
 package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.abstractentity;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.type.DeviceType;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.IncorrectDataEntryException;
 
-public class Device {
+public class Device implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4862222841587226943L;
 	private int id;
 	private DeviceType type;
 	private String manufacturer;
