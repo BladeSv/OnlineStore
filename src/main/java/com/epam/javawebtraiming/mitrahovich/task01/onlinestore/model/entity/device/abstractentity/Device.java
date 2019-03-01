@@ -48,20 +48,6 @@ public class Device implements Serializable {
 		return manufacturer;
 	}
 
-	public void setManufacturer(String manufacturer) throws IncorrectDataEntryException {
-		if (manufacturer != null) {
-			this.manufacturer = manufacturer;
-		} else {
-			throw new IncorrectDataEntryException(
-					"Incorrect enter of " + this.getClass().getSimpleName() + " manufacturer");
-		}
-
-	}
-
-	public String getModel() {
-		return model;
-	}
-
 	public void setModel(String model) throws IncorrectDataEntryException {
 		if (model != null) {
 			this.model = model;
@@ -69,6 +55,19 @@ public class Device implements Serializable {
 			throw new IncorrectDataEntryException("Incorrect enter of " + this.getClass().getSimpleName() + " model");
 		}
 
+	}
+
+	public void setManufacturer(String manufacturer) throws IncorrectDataEntryException {
+		if (manufacturer != null) {
+			this.manufacturer = manufacturer;
+		} else {
+			throw new IncorrectDataEntryException("Incorrect enter of " + this.getClass().getSimpleName() + " manufacturer");
+		}
+
+	}
+
+	public String getModel() {
+		return model;
 	}
 
 	public String getColor() {
@@ -160,8 +159,7 @@ public class Device implements Serializable {
 
 	@Override
 	public String toString() {
-		return "id: " + id + ", device type: " + type.getType() + ", manufacturer: " + manufacturer + ", model: "
-				+ model + ", color: " + color + ", price: " + String.format("%.2f", price) + "$";
+		return "id: " + id + ", device type: " + type.getType() + ", manufacturer: " + manufacturer + ", model: " + model + ", color: " + color + ", price: " + String.format("%.2f", price) + "$";
 	}
 
 }

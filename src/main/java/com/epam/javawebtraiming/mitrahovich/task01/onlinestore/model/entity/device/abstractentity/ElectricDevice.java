@@ -6,6 +6,10 @@ import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.devi
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.IncorrectDataEntryException;
 
 public class ElectricDevice extends Device {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4569752754226074162L;
 	private double power;
 
 	public ElectricDevice() {
@@ -14,8 +18,7 @@ public class ElectricDevice extends Device {
 
 	}
 
-	public ElectricDevice(int id, DeviceType type, String manufacturer, String model, String color, BigDecimal price,
-			double power) {
+	public ElectricDevice(int id, DeviceType type, String manufacturer, String model, String color, BigDecimal price, double power) {
 		super(id, type, manufacturer, model, color, price);
 		this.power = power;
 

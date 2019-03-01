@@ -8,6 +8,10 @@ import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exce
 
 public class Laptop extends PortableCpuDisplayElectricDevice {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8654025546412615402L;
 	private int hddCapacity;
 
 	public Laptop() {
@@ -28,8 +32,7 @@ public class Laptop extends PortableCpuDisplayElectricDevice {
 	 * @param batteryCapacity
 	 * @param hddCapacity
 	 */
-	public Laptop(int id, DeviceType type, String manufacturer, String model, String color, BigDecimal price,
-			double power, double displayDiagonal, String cpu, int ram, int batteryCapacity, int hddCapacity) {
+	public Laptop(int id, DeviceType type, String manufacturer, String model, String color, BigDecimal price, double power, double displayDiagonal, String cpu, int ram, int batteryCapacity, int hddCapacity) {
 		super(id, type, manufacturer, model, color, price, power, displayDiagonal, cpu, ram, batteryCapacity);
 		this.hddCapacity = hddCapacity;
 	}

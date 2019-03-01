@@ -7,6 +7,10 @@ import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exce
 
 public class CpuDisplayElectricDevice extends DisplayElectricDevice {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8820825523769343218L;
 	private String cpu;
 	private int ram;
 
@@ -26,8 +30,7 @@ public class CpuDisplayElectricDevice extends DisplayElectricDevice {
 	 * @param cpu
 	 * @param ram
 	 */
-	public CpuDisplayElectricDevice(int id, DeviceType type, String manufacturer, String model, String color,
-			BigDecimal price, double power, double displayDiagonal, String cpu, int ram) {
+	public CpuDisplayElectricDevice(int id, DeviceType type, String manufacturer, String model, String color, BigDecimal price, double power, double displayDiagonal, String cpu, int ram) {
 		super(id, type, manufacturer, model, color, price, power, displayDiagonal);
 		this.cpu = cpu;
 		this.ram = ram;

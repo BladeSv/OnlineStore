@@ -7,6 +7,10 @@ import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exce
 
 public class PortableCpuDisplayElectricDevice extends CpuDisplayElectricDevice {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5889305266388703238L;
 	private int batteryCapacity;
 
 	/**
@@ -30,8 +34,7 @@ public class PortableCpuDisplayElectricDevice extends CpuDisplayElectricDevice {
 	 * @param ram
 	 * @param batteryCapacity
 	 */
-	public PortableCpuDisplayElectricDevice(int id, DeviceType type, String manufacturer, String model, String color,
-			BigDecimal price, double power, double displayDiagonal, String cpu, int ram, int batteryCapacity) {
+	public PortableCpuDisplayElectricDevice(int id, DeviceType type, String manufacturer, String model, String color, BigDecimal price, double power, double displayDiagonal, String cpu, int ram, int batteryCapacity) {
 		super(id, type, manufacturer, model, color, price, power, displayDiagonal, cpu, ram);
 		this.batteryCapacity = batteryCapacity;
 	}

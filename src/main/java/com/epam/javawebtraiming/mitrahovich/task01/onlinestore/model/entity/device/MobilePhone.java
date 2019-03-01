@@ -8,6 +8,10 @@ import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exce
 
 public class MobilePhone extends PortableCpuDisplayElectricDevice {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5408307092477179856L;
 	private String mobileConnection;
 
 	public MobilePhone() {
@@ -28,8 +32,7 @@ public class MobilePhone extends PortableCpuDisplayElectricDevice {
 	 * @param batteryCapacity
 	 * @param mobileConnection
 	 */
-	public MobilePhone(int id, DeviceType type, String manufacturer, String model, String color, BigDecimal price,
-			double power, double displayDiagonal, String cpu, int ram, int batteryCapacity, String mobileConnection) {
+	public MobilePhone(int id, DeviceType type, String manufacturer, String model, String color, BigDecimal price, double power, double displayDiagonal, String cpu, int ram, int batteryCapacity, String mobileConnection) {
 		super(id, type, manufacturer, model, color, price, power, displayDiagonal, cpu, ram, batteryCapacity);
 		this.mobileConnection = mobileConnection;
 	}
