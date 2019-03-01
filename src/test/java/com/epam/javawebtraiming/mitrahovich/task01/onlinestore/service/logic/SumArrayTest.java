@@ -1,4 +1,4 @@
-package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.service;
+package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.service.logic;
 
 import static org.junit.Assert.assertEquals;
 
@@ -16,7 +16,7 @@ import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.stor
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.logic.service.find.FindArray;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.logic.service.sum.SumArray;
 
-public class FindArrayTest {
+public class SumArrayTest {
 	static DaoStoreBaseArray dao;
 	static StoreBase storeBase;
 	static FindArray find;
@@ -42,18 +42,6 @@ public class FindArrayTest {
 		dao.add(d1);
 		dao.add(d2);
 		dao.add(d3);
-	}
-
-	@Test
-	public void findMaxPriceTest() {
-		assertEquals(d2, find.findMaxPrice(storeBase));
-
-	}
-
-	@Test
-	public void findMinPriceTest() {
-
-		assertEquals(d1, find.findMinPrice(storeBase));
 	}
 
 	@Test
