@@ -4,7 +4,10 @@ import java.io.Serializable;
 import java.util.Arrays;
 
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.abstractentity.Device;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.logical.WrongSetStoreBaseExeption;
 
+// реализавать свои данные
+// 
 public class StoreBase implements Serializable {
 	/**
 	 * 
@@ -28,11 +31,15 @@ public class StoreBase implements Serializable {
 	}
 
 	public Device[] getDeviceBase() {
-		return deviceBase;
+		return Arrays.copyOf(deviceBase, deviceBase.length);
 	}
 
-	public void setDeviceBase(Device[] deviceBase) {
-		this.deviceBase = deviceBase;
+	public void setDeviceBase(Device[] deviceBase) throws WrongSetStoreBaseExeption {
+		if (deviceBase != null) {
+			this.deviceBase = deviceBase;
+		} else {
+			throw new WrongSetStoreBaseExeption();
+		}
 	}
 
 	@Override
