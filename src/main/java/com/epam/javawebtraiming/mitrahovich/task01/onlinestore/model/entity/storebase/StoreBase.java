@@ -8,7 +8,7 @@ import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exce
 
 // реализавать свои данные
 // 
-public class StoreBase implements Serializable {
+public class StoreBaseArray extends Base implements Serializable {
 	/**
 	 * 
 	 */
