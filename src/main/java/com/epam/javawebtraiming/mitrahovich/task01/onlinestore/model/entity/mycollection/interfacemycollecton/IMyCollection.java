@@ -1,5 +1,7 @@
 package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.mycollection.interfacemycollecton;
 
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.collection.MyIndexOutOfRangeException;
+
 public interface IMyCollection<T> extends Iterable<T> {
 	boolean add(T t);
 
@@ -13,7 +15,7 @@ public interface IMyCollection<T> extends Iterable<T> {
 
 	boolean clear();
 
-	T get(int index);
+	T get(int index) throws MyIndexOutOfRangeException;
 
 	IMyCollection<T> copy();
 

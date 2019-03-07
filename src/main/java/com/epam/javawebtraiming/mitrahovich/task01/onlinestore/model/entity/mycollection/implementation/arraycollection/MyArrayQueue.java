@@ -3,6 +3,7 @@ package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.myc
 import java.util.Arrays;
 import java.util.Iterator;
 
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.collection.MyIndexOutOfRangeException;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.mycollection.implementation.AbstractCollection;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.mycollection.interfacemycollecton.IMyCollection;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.mycollection.interfacemycollecton.IMyQueue;
@@ -24,6 +25,7 @@ public class MyArrayQueue<T> extends AbstractCollection<T> implements IMyQueue<T
 		if (capacity > 0) {
 			array = new Object[capacity];
 		} else {
+
 			array = DEFAULT_ARRAY;
 		}
 	}
@@ -42,14 +44,17 @@ public class MyArrayQueue<T> extends AbstractCollection<T> implements IMyQueue<T
 		boolean check = false;
 
 		if (array.length > size) {
-			size++;
+
 			array[size] = t;
+			size++;
 			check = true;
 
 		} else if (array.length == size) {
-			array = Arrays.copyOf(array, ((int) (array.length * EXPANSION_COEFFICIENT)));
-			size++;
+
+			array = Arrays.copyOf(array, getNewArrayLenght());
+
 			array[size] = t;
+			size++;
 			check = true;
 
 		}
@@ -85,10 +90,17 @@ public class MyArrayQueue<T> extends AbstractCollection<T> implements IMyQueue<T
 		return true;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public T get(int index) {
+	public T get(int index) throws MyIndexOutOfRangeException {
+		T temp = null;
 
-		return ((index > 0) && (index < size) && (array[index] != null)) ? ((T) array[index]) : null;
+		if (checkIndexRange(index)) {
+			if (temp != null) {
+				temp = (T) array[index];
+			}
+		}
+		return temp;
 	}
 
 	@Override
@@ -165,6 +177,23 @@ public class MyArrayQueue<T> extends AbstractCollection<T> implements IMyQueue<T
 	public IMyCollection<T> copy() {
 
 		return new MyArrayQueue<T>(Arrays.copyOf(array, array.length));
+
+	}
+
+	private int getNewArrayLenght() {
+		int lenght = (int) (array.length * EXPANSION_COEFFICIENT);
+
+		lenght = (lenght == array.length) ? ++lenght : lenght;
+
+		return lenght;
+	}
+
+	private boolean checkIndexRange(int index) throws MyIndexOutOfRangeException {
+		if ((index >= 0) && (index < size)) {
+			return true;
+		} else {
+			throw new MyIndexOutOfRangeException();
+		}
 
 	}
 
