@@ -3,7 +3,10 @@ package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.myc
 import java.util.Arrays;
 import java.util.Iterator;
 
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.abstractentity.Copyble;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.collection.MyIndexOutOfRangeException;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.collection.MyNotCopybleElementException;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.collection.iterator.NotNextElementException;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.mycollection.implementation.AbstractCollection;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.mycollection.interfacemycollecton.IMyCollection;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.mycollection.interfacemycollecton.IMyQueue;
@@ -125,23 +128,26 @@ public class MyArrayQueue<T> extends AbstractCollection<T> implements IMyQueue<T
 
 	private class Iter implements Iterator<T> {
 		int cursor = 0;
-		int lenght = size;
+
 		boolean checkRemove = false;
 
 		@Override
 		public boolean hasNext() {
 
-			return lenght != cursor;
+			return size != cursor;
 		}
 
 		@Override
 		public T next() {
 			T temp = null;
 
-			if (lenght > cursor) {
+			if (size > cursor) {
 				if (array[cursor] != null) {
 					temp = (T) array[cursor];
 				}
+
+			} else {
+				throw new NotNextElementException();
 
 			}
 			cursor++;
@@ -174,9 +180,26 @@ public class MyArrayQueue<T> extends AbstractCollection<T> implements IMyQueue<T
 	}
 
 	@Override
-	public IMyCollection<T> copy() {
+	public IMyCollection<T> copy() throws MyNotCopybleElementException {
 
-		return new MyArrayQueue<T>(Arrays.copyOf(array, array.length));
+		Object[] tempArray = Arrays.copyOf(array, array.length);
+		Object temp;
+		for (int i = 0; i < array.length; i++) {
+			temp = array[i];
+			if (temp != null) {
+				if (temp.getClass().isAssignableFrom(Copyble.class)) {
+					tempArray[i] = ((Copyble<T>) temp).copy();
+
+				} else {
+					throw new MyNotCopybleElementException();
+				}
+			} else {
+				tempArray[i] = temp;
+			}
+
+		}
+
+		return new MyArrayQueue<T>(tempArray);
 
 	}
 

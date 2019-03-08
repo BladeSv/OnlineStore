@@ -4,18 +4,19 @@ import java.math.BigDecimal;
 
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.abstractentity.PortableCpuDisplayElectricDevice;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.type.DeviceType;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.logical.IncorrectDataEntryException;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.logical.device.WrongSetMobileConnectionException;
 
+/**
+ * @author Mitrahovich
+ *
+ */
 public class MobilePhone extends PortableCpuDisplayElectricDevice {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 5408307092477179856L;
 	private String mobileConnection;
 
 	public MobilePhone() {
-		// TODO Auto-generated constructor stub
+
 	}
 
 	/**
@@ -32,20 +33,39 @@ public class MobilePhone extends PortableCpuDisplayElectricDevice {
 	 * @param batteryCapacity
 	 * @param mobileConnection
 	 */
-	public MobilePhone(int id, DeviceType type, String manufacturer, String model, String color, BigDecimal price, double power, double displayDiagonal, String cpu, int ram, int batteryCapacity, String mobileConnection) {
+	public MobilePhone(int id, DeviceType type, String manufacturer, String model, String color, BigDecimal price,
+			double power, double displayDiagonal, String cpu, int ram, int batteryCapacity, String mobileConnection) {
 		super(id, type, manufacturer, model, color, price, power, displayDiagonal, cpu, ram, batteryCapacity);
 		this.mobileConnection = mobileConnection;
 	}
 
+	/**
+	 * @param MobilePhone
+	 */
+	public MobilePhone(MobilePhone device) {
+		super(device.getId(), device.getType(), device.getManufacturer(), device.getModel(), device.getColor(),
+				device.getPrice(), device.getPower(), device.getScreenDiagonal(), device.getCpu(), device.getRam(),
+				device.getBatteryCapacity());
+		this.mobileConnection = device.getMobileConnection();
+	}
+
+	/**
+	 * @return mobileConnection
+	 */
 	public String getMobileConnection() {
 		return mobileConnection;
 	}
 
-	public void setMobileConnection(String mobileConnection) throws IncorrectDataEntryException {
+	/**
+	 * @param mobileConnection
+	 * @throws WrongSetMobileConnectionException
+	 */
+	public void setMobileConnection(String mobileConnection) throws WrongSetMobileConnectionException {
 		if (mobileConnection != null) {
 			this.mobileConnection = mobileConnection;
 		} else {
-			throw new IncorrectDataEntryException("Incorrect enter of " + this.getClass().getSimpleName() + " color");
+			throw new WrongSetMobileConnectionException(
+					"Incorrect enter of " + this.getClass().getSimpleName() + " color");
 		}
 
 	}
@@ -81,4 +101,12 @@ public class MobilePhone extends PortableCpuDisplayElectricDevice {
 
 	}
 
+	/**
+	 * @return MobilePhone
+	 */
+	@Override
+	public MobilePhone copy() {
+
+		return new MobilePhone(this);
+	}
 }

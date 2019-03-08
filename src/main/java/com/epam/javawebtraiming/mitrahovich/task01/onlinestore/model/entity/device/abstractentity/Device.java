@@ -4,12 +4,19 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.type.DeviceType;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.logical.IncorrectDataEntryException;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.logical.device.WrongSetColorException;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.logical.device.WrongSetIdException;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.logical.device.WrongSetManufacturerException;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.logical.device.WrongSetModelException;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.logical.device.WrongSetPriceException;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.logical.device.WrongSetTypeException;
 
-public class Device implements Serializable {
-	/**
-	 * 
-	 */
+/**
+ * @author Mitrahovich
+ *
+ */
+public class Device implements Serializable, Copyble<Device> {
+
 	private static final long serialVersionUID = -4862222841587226943L;
 	private int id;
 	private DeviceType type;
@@ -20,9 +27,17 @@ public class Device implements Serializable {
 
 	public Device() {
 		super();
-		// TODO Auto-generated constructor stub
+
 	}
 
+	/**
+	 * @param id
+	 * @param type
+	 * @param manufacturer
+	 * @param model
+	 * @param color
+	 * @param price
+	 */
 	public Device(int id, DeviceType type, String manufacturer, String model, String color, BigDecimal price) {
 		this.id = id;
 		this.type = type;
@@ -32,79 +47,134 @@ public class Device implements Serializable {
 		this.price = price;
 	}
 
-	public DeviceType getType() {
-		return type;
+	/**
+	 * @param device
+	 */
+	public Device(Device device) {
+		this.id = device.getId();
+		this.type = device.getType();
+		this.manufacturer = device.getManufacturer();
+		this.model = device.getModel();
+		this.color = device.getColor();
+		this.price = device.getPrice();
 	}
 
-	public void setType(DeviceType type) throws IncorrectDataEntryException {
-		if (type != null) {
-			this.type = type;
-		} else {
-			throw new IncorrectDataEntryException("Incorrect enter of " + this.getClass().getSimpleName() + " type");
-		}
-	}
-
-	public String getManufacturer() {
-		return manufacturer;
-	}
-
-	public void setModel(String model) throws IncorrectDataEntryException {
-		if (model != null) {
-			this.model = model;
-		} else {
-			throw new IncorrectDataEntryException("Incorrect enter of " + this.getClass().getSimpleName() + " model");
-		}
-
-	}
-
-	public void setManufacturer(String manufacturer) throws IncorrectDataEntryException {
-		if (manufacturer != null) {
-			this.manufacturer = manufacturer;
-		} else {
-			throw new IncorrectDataEntryException("Incorrect enter of " + this.getClass().getSimpleName() + " manufacturer");
-		}
-
-	}
-
-	public String getModel() {
-		return model;
-	}
-
-	public String getColor() {
-		return color;
-	}
-
-	public void setColor(String color) throws IncorrectDataEntryException {
-		if (color != null) {
-			this.color = color;
-		} else {
-			throw new IncorrectDataEntryException("Incorrect enter of " + this.getClass().getSimpleName() + " color");
-		}
-
-	}
-
+	/**
+	 * @return id
+	 */
 	public int getId() {
 		return id;
 	}
 
-	public void setId(int id) throws IncorrectDataEntryException {
+	/**
+	 * @param id
+	 * @throws WrongSetIdException
+	 */
+	public void setId(int id) throws WrongSetIdException {
 		if (id > 0) {
 			this.id = id;
 		} else {
-			throw new IncorrectDataEntryException("Incorrect enter of " + this.getClass().getSimpleName() + " id");
+			throw new WrongSetIdException("Incorrect enter of " + this.getClass().getSimpleName() + " id");
 		}
 
 	}
 
+	/**
+	 * @return type
+	 */
+	public DeviceType getType() {
+		return type;
+	}
+
+	/**
+	 * @param type
+	 * @throws WrongSetTypeException
+	 */
+	public void setType(DeviceType type) throws WrongSetTypeException {
+		if (type != null) {
+			this.type = type;
+		} else {
+			throw new WrongSetTypeException("Incorrect enter of " + this.getClass().getSimpleName() + " type");
+		}
+	}
+
+	/**
+	 * @return manufacturer
+	 */
+	public String getManufacturer() {
+		return manufacturer;
+	}
+
+	/**
+	 * @param manufacturer
+	 * @throws WrongSetManufacturerException
+	 */
+	public void setManufacturer(String manufacturer) throws WrongSetManufacturerException {
+		if (manufacturer != null) {
+			this.manufacturer = manufacturer;
+		} else {
+			throw new WrongSetManufacturerException(
+					"Incorrect enter of " + this.getClass().getSimpleName() + " manufacturer");
+		}
+
+	}
+
+	/**
+	 * @return model
+	 */
+	public String getModel() {
+		return model;
+	}
+
+	/**
+	 * @param model
+	 * @throws WrongSetModelException
+	 */
+	public void setModel(String model) throws WrongSetModelException {
+		if (model != null) {
+			this.model = model;
+		} else {
+			throw new WrongSetModelException("Incorrect enter of " + this.getClass().getSimpleName() + " model");
+		}
+
+	}
+
+	/**
+	 * @return color
+	 */
+	public String getColor() {
+		return color;
+	}
+
+	/**
+	 * @param color
+	 * @throws WrongSetColorException
+	 */
+	public void setColor(String color) throws WrongSetColorException {
+		if (color != null) {
+			this.color = color;
+		} else {
+			throw new WrongSetColorException("Incorrect enter of " + this.getClass().getSimpleName() + " color");
+		}
+
+	}
+
+	/**
+	 * @return price
+	 */
 	public BigDecimal getPrice() {
 		return price;
 	}
 
-	public void setPrice(BigDecimal price) throws IncorrectDataEntryException {
+	/**
+	 * @param price
+	 * @throws WrongSetPriceException
+	 */
+	public void setPrice(BigDecimal price) throws WrongSetPriceException {
 		if (price.compareTo(new BigDecimal(0)) >= 0) {
 			this.price = price;
 		} else {
-			throw new IncorrectDataEntryException("Incorrect enter of " + this.getClass().getSimpleName() + " price");
+			throw new WrongSetPriceException("Incorrect enter of " + this.getClass().getSimpleName() + " price");
 		}
 	}
 
@@ -159,7 +229,16 @@ public class Device implements Serializable {
 
 	@Override
 	public String toString() {
-		return "id: " + id + ", device type: " + type.getType() + ", manufacturer: " + manufacturer + ", model: " + model + ", color: " + color + ", price: " + String.format("%.2f", price) + "$";
+		return "id: " + id + ", device type: " + type.getType() + ", manufacturer: " + manufacturer + ", model: "
+				+ model + ", color: " + color + ", price: " + String.format("%.2f", price) + "$";
 	}
 
+	/**
+	 * @return Device
+	 */
+	public Device copy() {
+
+		return new Device(this);
+
+	}
 }

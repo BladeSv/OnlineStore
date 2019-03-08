@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.DAO.IDaoStoreBase;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.abstractentity.Device;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.logical.IncorrectDataEntryException;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.logical.device.IncorrectDataEntryException;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.storebase.StoreBase;
 
 public class DaoStoreBaseArray implements IDaoStoreBase {

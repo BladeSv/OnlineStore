@@ -3,22 +3,20 @@ package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.dev
 import java.math.BigDecimal;
 
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.type.DeviceType;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.logical.IncorrectDataEntryException;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.logical.device.WrongSetBatteryCapacityException;
 
+/**
+ * @author Mitrahovich
+ *
+ */
 public class PortableCpuDisplayElectricDevice extends CpuDisplayElectricDevice {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 5889305266388703238L;
 	private int batteryCapacity;
 
-	/**
-	 * 
-	 */
 	public PortableCpuDisplayElectricDevice() {
 		super();
-		// TODO Auto-generated constructor stub
+
 	}
 
 	/**
@@ -34,20 +32,38 @@ public class PortableCpuDisplayElectricDevice extends CpuDisplayElectricDevice {
 	 * @param ram
 	 * @param batteryCapacity
 	 */
-	public PortableCpuDisplayElectricDevice(int id, DeviceType type, String manufacturer, String model, String color, BigDecimal price, double power, double displayDiagonal, String cpu, int ram, int batteryCapacity) {
+	public PortableCpuDisplayElectricDevice(int id, DeviceType type, String manufacturer, String model, String color,
+			BigDecimal price, double power, double displayDiagonal, String cpu, int ram, int batteryCapacity) {
 		super(id, type, manufacturer, model, color, price, power, displayDiagonal, cpu, ram);
 		this.batteryCapacity = batteryCapacity;
 	}
 
+	/**
+	 * @param PortableCpuDisplayElectricDevice
+	 */
+	public PortableCpuDisplayElectricDevice(PortableCpuDisplayElectricDevice device) {
+		super(device.getId(), device.getType(), device.getManufacturer(), device.getModel(), device.getColor(),
+				device.getPrice(), device.getPower(), device.getScreenDiagonal(), device.getCpu(), device.getRam());
+		this.batteryCapacity = device.getBatteryCapacity();
+	}
+
+	/**
+	 * @return batteryCapacity
+	 */
 	public int getBatteryCapacity() {
 		return batteryCapacity;
 	}
 
-	public void setBatteryCapacity(int batteryCapacity) throws IncorrectDataEntryException {
+	/**
+	 * @param batteryCapacity
+	 * @throws WrongSetBatteryCapacityException
+	 */
+	public void setBatteryCapacity(int batteryCapacity) throws WrongSetBatteryCapacityException {
 		if (batteryCapacity > 0) {
 			this.batteryCapacity = batteryCapacity;
 		} else {
-			throw new IncorrectDataEntryException("Incorrect enter of " + this.getClass().getSimpleName() + " color");
+			throw new WrongSetBatteryCapacityException(
+					"Incorrect enter of " + this.getClass().getSimpleName() + " color");
 		}
 
 	}
@@ -77,6 +93,15 @@ public class PortableCpuDisplayElectricDevice extends CpuDisplayElectricDevice {
 	@Override
 	public String toString() {
 		return super.toString() + ", battery capacity: " + batteryCapacity + "mAh";
+	}
+
+	/**
+	 * @return PortableCpuDisplayElectricDevice
+	 */
+	@Override
+	public PortableCpuDisplayElectricDevice copy() {
+
+		return new PortableCpuDisplayElectricDevice(this);
 	}
 
 }

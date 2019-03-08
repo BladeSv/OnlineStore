@@ -1,5 +1,7 @@
 package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.logical;
 
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.logical.device.IncorrectDataEntryException;
+
 public class WrongSetStoreBaseExeption extends IncorrectDataEntryException {
 
 	/**
