@@ -1,9 +1,11 @@
 package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.logic.service.sort;
 
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.storebase.StoreBase;
+import java.util.Comparator;
+
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.DAO.IDaoBase;
 
 public interface ISort {
-	void sortByPrice(StoreBase storeBase);
+	void sortByPrice(IDaoBase<T> base, Comparator<T> comp);
 
-	void sortByManufacturerName(StoreBase storeBase);
+	void sortByManufacturerName(IDaoBase base);
 }

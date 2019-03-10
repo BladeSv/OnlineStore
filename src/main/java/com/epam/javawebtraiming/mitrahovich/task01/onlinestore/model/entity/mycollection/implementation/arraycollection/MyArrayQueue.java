@@ -6,6 +6,7 @@ import java.util.Iterator;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.abstractentity.Copyble;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.collection.MyIndexOutOfRangeException;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.collection.MyNotCopybleElementException;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.collection.MyNotInCollectionException;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.collection.iterator.NotNextElementException;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.mycollection.implementation.AbstractCollection;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.mycollection.interfacemycollecton.IMyCollection;
@@ -65,19 +66,22 @@ public class MyArrayQueue<T> extends AbstractCollection<T> implements IMyQueue<T
 	}
 
 	@Override
-	public boolean remove(T t) {
+	public boolean remove(T t) throws MyNotInCollectionException {
 		boolean check = false;
 		T temp;
 		Iterator<T> iter = iterator();
 		while (iter.hasNext()) {
 
 			temp = iter.next();
-			if ((temp.equals(t)) || (temp == t)) {
+			if (temp == t) {
 				iter.remove();
 				check = true;
 			}
 		}
+		if (!check) {
 
+			throw new MyNotInCollectionException();
+		}
 		return check;
 	}
 

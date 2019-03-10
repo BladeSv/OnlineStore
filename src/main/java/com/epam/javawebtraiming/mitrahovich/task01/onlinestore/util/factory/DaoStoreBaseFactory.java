@@ -2,29 +2,31 @@ package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.util.factory;
 
 import static com.epam.javawebtraiming.mitrahovich.task01.onlinestore.util.PropertiesManager.getStatus;
 
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.DAO.IDaoStoreBase;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.DAO.daoimplemet.DaoStoreBaseArray;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.storebase.StoreBase;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.util.serializableutil.SerializableStoreBase;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.DAO.IDaoBase;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.DAO.daoimplemet.DaoStoreBaseCollection;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.abstractentity.Device;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.mycollection.implementation.arraycollection.MyArrayQueue;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.storebase.Base;
 
 public class DaoStoreBaseFactory {
-	private static IDaoStoreBase storeBase;
+
+	private static DaoStoreBaseCollection<Device> storeBase;
 
 	private DaoStoreBaseFactory() {
 		super();
-		// TODO Auto-generated constructor stub
+
 	}
 
-	public static IDaoStoreBase newInstance() {
+	public static IDaoBase newInstance() {
 		switch (getStatus()) {
-		case "Array":
+		case "Collertion":
 
-			storeBase = new DaoStoreBaseArray(new StoreBase());
+			storeBase = new DaoStoreBaseCollection<Device>(new Base<Device>(new MyArrayQueue<Device>()));
 
 			break;
-		case "Serializable":
-			storeBase = new DaoStoreBaseArray(SerializableStoreBase.inputStoreBase());
-
+		// case "Serializable":
+		// storeBase = new DaoStoreBaseArray(SerializableStoreBase.inputStoreBase());
+		// break;
 		default:
 			System.out.println("The online store product base didn't creat");
 

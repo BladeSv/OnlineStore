@@ -1,13 +1,13 @@
 package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.view.printer;
 
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.storebase.StoreBase;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.storebase.Base;
 
 public class Printer implements IPrinter {
 
 	@Override
-	public void print(StoreBase storeBase) {
+	public void print(Base base) {
 		System.out.println("Online store products base:");
-		System.out.println(storeBase.toString());
+		System.out.println(base.toString());
 
 	}
 }
