@@ -1,6 +1,7 @@
 package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.DAO.daoimplemet;
 
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.DAO.IDaoBase;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.base.Base;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.abstractentity.Device;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.collection.MyIndexOutOfRangeException;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.collection.MyNotInCollectionException;
@@ -8,7 +9,6 @@ import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exce
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.technical.daobase.NotAddElementBaseException;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.technical.daobase.NotFoundElementException;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.technical.daobase.NotRemoveElementBaseException;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.storebase.Base;
 
 public class DaoStoreBaseCollection<T extends Device> implements IDaoBase<T> {
 
@@ -82,6 +82,12 @@ public class DaoStoreBaseCollection<T extends Device> implements IDaoBase<T> {
 	public Base<T> getAll() {
 
 		return base;
+	}
+
+	@Override
+	public Object[] toArray() {
+
+		return base.toArray();
 	}
 
 }

@@ -2,16 +2,17 @@ package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.util;
 
 import java.math.BigDecimal;
 
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.DAO.IDaoStoreBase;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.DAO.IDaoBase;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.Laptop;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.MobilePhone;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.Тelevision;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.abstractentity.Device;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.type.DeviceType;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.technical.daobase.NotAddElementBaseException;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.util.creator.random.DeviceBuilder;
 
 public class AddEntitiesInBase {
-	public static void add(IDaoStoreBase daoStoreBase) {
+	public static void add(IDaoBase<Device> daoStoreBase) {
 
 		Device d1 = new MobilePhone(1, DeviceType.MOBILE_PHONE, "Xiaomi", "Redmi 6A", "Black", new BigDecimal(250.50),
 				5, 5.45, "MediaTek Helio A22", 2, 3000, "4G");
@@ -32,13 +33,19 @@ public class AddEntitiesInBase {
 
 		Device d7 = DeviceBuilder.newInstans();
 
-		daoStoreBase.add(d1);
-		daoStoreBase.add(d2);
-		daoStoreBase.add(d3);
-		daoStoreBase.add(d4);
-		daoStoreBase.add(d5);
-		daoStoreBase.add(d6);
-		daoStoreBase.add(d7);
+		try {
+			daoStoreBase.add(d1);
+
+			daoStoreBase.add(d2);
+			daoStoreBase.add(d3);
+			daoStoreBase.add(d4);
+			daoStoreBase.add(d5);
+			daoStoreBase.add(d6);
+			daoStoreBase.add(d7);
+		} catch (NotAddElementBaseException e) {
+
+			e.printStackTrace();
+		}
 		System.out.println();
 
 	}

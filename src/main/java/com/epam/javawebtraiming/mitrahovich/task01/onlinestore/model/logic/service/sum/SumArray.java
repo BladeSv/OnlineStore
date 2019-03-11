@@ -2,18 +2,20 @@ package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.logic.serv
 
 import java.math.BigDecimal;
 
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.storebase.StoreBase;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.DAO.IDaoBase;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.base.Base;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.abstractentity.Device;
 
-public class SumArray implements ISum {
+public class SumArray<T extends Device> implements ISum<T> {
 
-	public BigDecimal sumPrice(StoreBase storeBase) {
+	@Override
+	public BigDecimal sumPrice(IDaoBase<T> base) {
 		BigDecimal sum = new BigDecimal("0");
-
-		for (int i = 0; i < storeBase.getDeviceBase().length; i++) {
-			if (storeBase.getDeviceBase()[i] != null) {
-				sum = sum.add(storeBase.getDeviceBase()[i].getPrice());
+		Base<T> tempBase = base.getAll();
+		for (T dev : tempBase.getDeviceBase()) {
+			if (dev != null) {
+				sum = sum.add(dev.getPrice());
 			}
-
 		}
 
 		return sum;

@@ -1,10 +1,10 @@
 package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.logic.service.find;
 
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.abstractentity.Device;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.storebase.StoreBase;
+import java.util.Comparator;
 
-public interface IFind {
-	Device findMaxPrice(StoreBase storeBase);
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.DAO.IDaoBase;
 
-	Device findMinPrice(StoreBase storeBase);
+public interface IFind<T> {
+	T find(IDaoBase<T> base, Comparator<T> comp);
+
 }

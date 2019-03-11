@@ -2,8 +2,8 @@ package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.logic.serv
 
 import java.math.BigDecimal;
 
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.storebase.StoreBase;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.DAO.IDaoBase;
 
-public interface ISum {
-	BigDecimal sumPrice(StoreBase storeBase);
+public interface ISum<T> {
+	BigDecimal sumPrice(IDaoBase<T> base);
 }

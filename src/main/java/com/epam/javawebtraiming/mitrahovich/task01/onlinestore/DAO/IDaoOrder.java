@@ -1,10 +1,10 @@
 package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.DAO;
 
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.abstractentity.Device;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.order.Order;
 
-public interface IDaoOrder {
-	void add(Device device);
+public interface IDaoOrder<T> {
+	void add(Order order);
 
-	void remote(Device device);
+	void remote(Order order);
 
 }

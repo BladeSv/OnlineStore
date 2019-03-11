@@ -7,6 +7,8 @@ import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exce
 public interface IMyCollection<T> extends Iterable<T> {
 	boolean add(T t);
 
+	boolean set(int index, T t) throws MyIndexOutOfRangeException;
+
 	boolean remove(T t) throws MyNotInCollectionException;
 
 	boolean contains(T t);
@@ -20,5 +22,7 @@ public interface IMyCollection<T> extends Iterable<T> {
 	T get(int index) throws MyIndexOutOfRangeException;
 
 	IMyCollection<T> copy() throws MyNotCopybleElementException;
+
+	Object[] toArray();
 
 }

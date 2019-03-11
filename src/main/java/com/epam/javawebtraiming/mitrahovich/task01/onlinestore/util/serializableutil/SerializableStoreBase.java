@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.storebase.StoreBase;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.base.StoreBase;
 
 public class SerializableStoreBase {
 

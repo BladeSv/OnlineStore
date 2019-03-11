@@ -1,59 +1,60 @@
 package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.order;
 
-import java.util.Arrays;
+import java.util.GregorianCalendar;
 
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.client.Client;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.abstractentity.Device;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.mycollection.interfacemycollecton.IMyCollection;
 
 public class Order {
-	private Device[] order;
+	private IMyCollection<Device> device;
 
-	/**
-	 * 
-	 */
+	private Client clint;
+	private GregorianCalendar date;
+
 	public Order() {
 		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @param order
+	 * @param device
+	 * @param clint
+	 * @param date
 	 */
-	public Order(Device[] order) {
-		this.order = order;
+	public Order(IMyCollection<Device> device, Client clint, GregorianCalendar date) {
+		super();
+		this.device = device;
+		this.clint = clint;
+		this.date = date;
 	}
 
-	public Device[] getOrder() {
-		return order;
+	public IMyCollection<Device> getDevice() {
+		return device;
 	}
 
-	public void setOrder(Device[] order) {
-		this.order = order;
+	public void setDevice(IMyCollection<Device> device) {
+		this.device = device;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + Arrays.hashCode(order);
-		return result;
+	public Client getClint() {
+		return clint;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Order other = (Order) obj;
-		if (!Arrays.equals(order, other.order))
-			return false;
-		return true;
+	public void setClint(Client clint) {
+		this.clint = clint;
+	}
+
+	public GregorianCalendar getDate() {
+		return date;
+	}
+
+	public void setDate(GregorianCalendar date) {
+		this.date = date;
 	}
 
 	@Override
 	public String toString() {
-		return "Order [order=" + Arrays.toString(order) + "]";
+		return "clint: " + clint + ", device: " + device + ", date: " + date;
 	}
 
 }

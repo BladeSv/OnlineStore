@@ -66,6 +66,16 @@ public class MyArrayQueue<T> extends AbstractCollection<T> implements IMyQueue<T
 	}
 
 	@Override
+	public boolean set(int index, T t) throws MyIndexOutOfRangeException {
+		boolean check = false;
+		if (checkIndexRange(index)) {
+			array[index] = t;
+			check = true;
+		}
+		return check;
+	}
+
+	@Override
 	public boolean remove(T t) throws MyNotInCollectionException {
 		boolean check = false;
 		T temp;
@@ -221,6 +231,15 @@ public class MyArrayQueue<T> extends AbstractCollection<T> implements IMyQueue<T
 		} else {
 			throw new MyIndexOutOfRangeException();
 		}
+
+	}
+
+	@Override
+	public Object[] toArray() {
+		if (array != null) {
+			return Arrays.copyOf(array, size);
+		}
+		return null;
 
 	}
 

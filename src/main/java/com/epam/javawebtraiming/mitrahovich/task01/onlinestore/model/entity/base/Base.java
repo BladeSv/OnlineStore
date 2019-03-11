@@ -1,4 +1,4 @@
-package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.storebase;
+package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.base;
 
 import java.io.Serializable;
 
@@ -19,15 +19,15 @@ public class Base<T> implements Serializable {
 	protected IMyCollection<T> base;
 
 	public Base() {
-		base = new MyArrayQueue<>();
+		base = new MyArrayQueue<T>();
 	}
 
 	public Base(IMyCollection<T> base) {
 		this.base = base;
 	}
 
-	public IMyCollection<T> getDeviceBase() throws MyNotCopybleElementException {
-		return base.copy();
+	public IMyCollection<T> getDeviceBase() {
+		return base;
 	}
 
 	public void setDeviceBase(IMyCollection<T> base) throws WrongSetStoreBaseExeption {
@@ -48,6 +48,12 @@ public class Base<T> implements Serializable {
 		}
 	}
 
+	public boolean set(int index, T t) throws MyIndexOutOfRangeException {
+
+		return base.set(index, t);
+
+	}
+
 	public boolean remove(T t) throws MyNotInCollectionException {
 
 		if (t != null) {
@@ -63,6 +69,17 @@ public class Base<T> implements Serializable {
 
 		return base.get(index);
 
+	}
+
+	public Base<T> copy() throws MyNotCopybleElementException {
+
+		return new Base<>(base.copy());
+
+	}
+
+	public Object[] toArray() {
+
+		return base.toArray();
 	}
 
 	@Override

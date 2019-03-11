@@ -1,53 +1,40 @@
 package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.logic.service.sort;
 
+import java.util.Comparator;
+
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.DAO.IDaoBase;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.base.Base;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.abstractentity.Device;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.logical.WrongSetStoreBaseExeption;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.storebase.StoreBase;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.collection.MyIndexOutOfRangeException;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.technical.service.CantSortException;
 
-public class SortArray implements ISort {
+public class SortArray<T extends Device> implements ISort<T> {
 
-	public void sortByPrice(StoreBase storeBase) {
-		int j;
-		Device temp;
-		Device[] deviceBase = storeBase.getDeviceBase();
+	@Override
+	public Base<T> sort(IDaoBase<T> base, Comparator<T> comp) throws CantSortException {
+		Base<T> tempBase = base.getAll();
+		T temp = null;
+		for (int i = 0; i < tempBase.getDeviceBase().size(); i++) {
+			for (int j = 0; j < tempBase.getDeviceBase().size(); j++) {
+				try {
+					if (((tempBase.getDeviceBase().get(i) != null) && (tempBase.getDeviceBase().get(j) != null))
+							&& (comp.compare(tempBase.getDeviceBase().get(i), tempBase.getDeviceBase().get(j)) < 0))
 
-		for (int i = 0; i < deviceBase.length - 1; i++) {
-			if (((deviceBase[i] != null) && (deviceBase[i + 1] != null))
+					{
+						temp = tempBase.getDeviceBase().get(i);
 
-					&& (deviceBase[i].getPrice().compareTo(deviceBase[i + 1].getPrice()) > 0)) {
-				temp = deviceBase[i + 1];
-				deviceBase[i + 1] = storeBase.getDeviceBase()[i];
-				j = i;
-				while (j > 0 && (deviceBase[j - 1].getPrice().compareTo(temp.getPrice()) > 0)) {
-					deviceBase[j] = deviceBase[j - 1];
-					j--;
-				}
-				deviceBase[j] = temp;
-			}
-		}
-		try {
-			storeBase.setDeviceBase(deviceBase);
-		} catch (WrongSetStoreBaseExeption e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+						tempBase.getDeviceBase().set(i, tempBase.getDeviceBase().get(j));
 
-	public void sortByManufacturerName(StoreBase storeBase) {
-		Device temp;
-		for (int i = 0; i < storeBase.getDeviceBase().length; i++) {
-			for (int j = 0; j < storeBase.getDeviceBase().length; j++) {
-				if (((storeBase.getDeviceBase()[i] != null) && (storeBase.getDeviceBase()[j] != null)) && (storeBase.getDeviceBase()[i].getManufacturer().compareToIgnoreCase(storeBase.getDeviceBase()[j].getManufacturer()) < 0))
-
-				{
-					temp = storeBase.getDeviceBase()[i];
-					storeBase.getDeviceBase()[i] = storeBase.getDeviceBase()[j];
-					storeBase.getDeviceBase()[j] = temp;
+						tempBase.getDeviceBase().set(j, temp);
+					}
+				} catch (MyIndexOutOfRangeException e) {
+					throw new CantSortException(e.getCause());
 
 				}
-
 			}
 		}
+
+		return tempBase;
 
 	}
 
