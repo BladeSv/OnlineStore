@@ -4,10 +4,10 @@ import java.util.GregorianCalendar;
 
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.client.Client;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.abstractentity.Device;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.mycollection.interfacemycollecton.IMyCollection;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.mycollection.interfacemycollecton.Collection;
 
 public class Order {
-	private IMyCollection<Device> device;
+	private Collection<Device> device;
 
 	private Client clint;
 	private GregorianCalendar date;
@@ -21,18 +21,18 @@ public class Order {
 	 * @param clint
 	 * @param date
 	 */
-	public Order(IMyCollection<Device> device, Client clint, GregorianCalendar date) {
+	public Order(Collection<Device> device, Client clint, GregorianCalendar date) {
 		super();
 		this.device = device;
 		this.clint = clint;
 		this.date = date;
 	}
 
-	public IMyCollection<Device> getDevice() {
+	public Collection<Device> getDevice() {
 		return device;
 	}
 
-	public void setDevice(IMyCollection<Device> device) {
+	public void setDevice(Collection<Device> device) {
 		this.device = device;
 	}
 

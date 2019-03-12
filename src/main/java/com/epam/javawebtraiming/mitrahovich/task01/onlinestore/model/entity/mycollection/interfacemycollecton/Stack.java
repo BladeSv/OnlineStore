@@ -1,9 +1,10 @@
 package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.mycollection.interfacemycollecton;
 
-public interface IMyDeque<T> extends IMyQueue<T> {
-	boolean addFist(T t);
+public interface Stack<T> extends Collection<T> {
 
-	T poolLast();
+	boolean push(T t);
 
-	T peekLast();
+	T pop();
+
+	T peek();
 }

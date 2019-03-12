@@ -4,12 +4,12 @@ import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exce
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.collection.MyNotCopybleElementException;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.collection.MyNotInCollectionException;
 
-public interface IMyCollection<T> extends Iterable<T> {
+public interface Collection<T> extends Iterable<T> {
 	boolean add(T t);
 
 	boolean set(int index, T t) throws MyIndexOutOfRangeException;
 
-	boolean remove(T t) throws MyNotInCollectionException;
+	void remove(T t) throws MyNotInCollectionException;
 
 	boolean contains(T t);
 
@@ -17,11 +17,11 @@ public interface IMyCollection<T> extends Iterable<T> {
 
 	int size();
 
-	boolean clear();
+	void clear();
 
 	T get(int index) throws MyIndexOutOfRangeException;
 
-	IMyCollection<T> copy() throws MyNotCopybleElementException;
+	Collection<T> copy() throws MyNotCopybleElementException;
 
 	Object[] toArray();
 

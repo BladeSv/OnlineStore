@@ -9,38 +9,28 @@ import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exce
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.collection.MyNotInCollectionException;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.collection.iterator.NotNextElementException;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.mycollection.implementation.AbstractCollection;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.mycollection.interfacemycollecton.IMyCollection;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.mycollection.interfacemycollecton.IMyQueue;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.mycollection.interfacemycollecton.Collection;
 
-public class MyArrayQueue<T> extends AbstractCollection<T> implements IMyQueue<T> {
+public class ArrayList<T> extends AbstractCollection<T> implements Collection<T> {
 
-	private Object[] array;
-	private int size = 0;
+	protected Object[] array;
+
 	private static final int DEFAULT_CAPACITY = 10;
 	private static final Object[] DEFAULT_ARRAY = new Object[] {};
 	private static final double EXPANSION_COEFFICIENT = 1.3;
 
-	public MyArrayQueue() {
+	public ArrayList() {
 		array = new Object[DEFAULT_CAPACITY];
 
 	}
 
-	public MyArrayQueue(int capacity) {
+	public ArrayList(int capacity) {
 		if (capacity > 0) {
 			array = new Object[capacity];
 		} else {
 
 			array = DEFAULT_ARRAY;
 		}
-	}
-
-	public MyArrayQueue(Object[] array) {
-		if (array != null) {
-			this.array = array;
-		} else {
-			this.array = new Object[DEFAULT_CAPACITY];
-		}
-
 	}
 
 	@Override
@@ -76,7 +66,7 @@ public class MyArrayQueue<T> extends AbstractCollection<T> implements IMyQueue<T
 	}
 
 	@Override
-	public boolean remove(T t) throws MyNotInCollectionException {
+	public void remove(T t) throws MyNotInCollectionException {
 		boolean check = false;
 		T temp;
 		Iterator<T> iter = iterator();
@@ -92,19 +82,13 @@ public class MyArrayQueue<T> extends AbstractCollection<T> implements IMyQueue<T
 
 			throw new MyNotInCollectionException();
 		}
-		return check;
+
 	}
 
 	@Override
-	public int size() {
-
-		return size;
-	}
-
-	@Override
-	public boolean clear() {
+	public void clear() {
 		array = DEFAULT_ARRAY;
-		return true;
+
 	}
 
 	@SuppressWarnings("unchecked")
@@ -124,20 +108,6 @@ public class MyArrayQueue<T> extends AbstractCollection<T> implements IMyQueue<T
 	public Iterator<T> iterator() {
 
 		return new Iter();
-	}
-
-	@Override
-	public T peek() {
-
-		return ((size > 0) && (array[0] != null)) ? ((T) array[0]) : null;
-	}
-
-	@Override
-	public T pool() {
-		T temp = ((size > 0) && (array[0] != null)) ? ((T) array[0]) : null;
-		array = Arrays.copyOfRange(array, 1, size);
-		size--;
-		return temp;
 	}
 
 	private class Iter implements Iterator<T> {
@@ -194,26 +164,25 @@ public class MyArrayQueue<T> extends AbstractCollection<T> implements IMyQueue<T
 	}
 
 	@Override
-	public IMyCollection<T> copy() throws MyNotCopybleElementException {
+	public Collection<T> copy() throws MyNotCopybleElementException {
+		ArrayList<T> tempArray = new ArrayList<T>(array.length);
 
-		Object[] tempArray = Arrays.copyOf(array, array.length);
-		Object temp;
 		for (int i = 0; i < array.length; i++) {
-			temp = array[i];
+			Object temp = array[i];
 			if (temp != null) {
 				if (temp.getClass().isAssignableFrom(Copyble.class)) {
-					tempArray[i] = ((Copyble<T>) temp).copy();
+					tempArray.add(((Copyble<T>) temp).copy());
 
 				} else {
 					throw new MyNotCopybleElementException();
 				}
 			} else {
-				tempArray[i] = temp;
+				tempArray.add(null);
 			}
 
 		}
 
-		return new MyArrayQueue<T>(tempArray);
+		return tempArray;
 
 	}
 
@@ -223,15 +192,6 @@ public class MyArrayQueue<T> extends AbstractCollection<T> implements IMyQueue<T
 		lenght = (lenght == array.length) ? ++lenght : lenght;
 
 		return lenght;
-	}
-
-	private boolean checkIndexRange(int index) throws MyIndexOutOfRangeException {
-		if ((index >= 0) && (index < size)) {
-			return true;
-		} else {
-			throw new MyIndexOutOfRangeException();
-		}
-
 	}
 
 	@Override

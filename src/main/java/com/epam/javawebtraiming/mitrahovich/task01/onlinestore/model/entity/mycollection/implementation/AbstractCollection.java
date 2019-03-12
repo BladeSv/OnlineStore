@@ -2,9 +2,12 @@ package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.myc
 
 import java.util.Iterator;
 
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.mycollection.interfacemycollecton.IMyCollection;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.collection.MyIndexOutOfRangeException;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.mycollection.interfacemycollecton.Collection;
 
-public abstract class AbstractCollection<T> implements IMyCollection<T> {
+public abstract class AbstractCollection<T> implements Collection<T> {
+
+	protected int size = 0;
 
 	@Override
 	public boolean contains(T t) {
@@ -20,9 +23,24 @@ public abstract class AbstractCollection<T> implements IMyCollection<T> {
 	}
 
 	@Override
+	public int size() {
+
+		return size;
+	}
+
+	@Override
 	public boolean isEmpty() {
 
 		return size() == 0;
+
+	}
+
+	protected boolean checkIndexRange(int index) throws MyIndexOutOfRangeException {
+		if ((index >= 0) && (index < size)) {
+			return true;
+		} else {
+			throw new MyIndexOutOfRangeException();
+		}
 
 	}
 

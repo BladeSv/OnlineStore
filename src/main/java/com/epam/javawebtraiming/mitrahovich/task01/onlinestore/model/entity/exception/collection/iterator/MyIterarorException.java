@@ -6,8 +6,6 @@ package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exc
  */
 public class MyIterarorException extends RuntimeException {
 
-	private static final long serialVersionUID = 6308114516271857132L;
-
 	public MyIterarorException() {
 
 	}

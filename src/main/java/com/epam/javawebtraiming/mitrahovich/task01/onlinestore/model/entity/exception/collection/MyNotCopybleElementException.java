@@ -6,8 +6,6 @@ package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exc
  */
 public class MyNotCopybleElementException extends MyCollectionException {
 
-	private static final long serialVersionUID = -7079889077804553411L;
-
 	public MyNotCopybleElementException() {
 
 	}

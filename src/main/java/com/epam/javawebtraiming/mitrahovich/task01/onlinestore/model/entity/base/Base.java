@@ -6,8 +6,8 @@ import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exce
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.collection.MyNotCopybleElementException;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.collection.MyNotInCollectionException;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.logical.WrongSetStoreBaseExeption;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.mycollection.implementation.arraycollection.MyArrayQueue;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.mycollection.interfacemycollecton.IMyCollection;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.mycollection.implementation.arraycollection.ArrayList;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.mycollection.interfacemycollecton.Collection;
 
 /**
  * @author Mitrahovich
@@ -16,21 +16,21 @@ import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.myco
 public class Base<T> implements Serializable {
 
 	private static final long serialVersionUID = 5925438773205805016L;
-	protected IMyCollection<T> base;
+	protected Collection<T> base;
 
 	public Base() {
-		base = new MyArrayQueue<T>();
+		base = new ArrayList<T>();
 	}
 
-	public Base(IMyCollection<T> base) {
+	public Base(Collection<T> base) {
 		this.base = base;
 	}
 
-	public IMyCollection<T> getDeviceBase() {
+	public Collection<T> getDeviceBase() {
 		return base;
 	}
 
-	public void setDeviceBase(IMyCollection<T> base) throws WrongSetStoreBaseExeption {
+	public void setDeviceBase(Collection<T> base) throws WrongSetStoreBaseExeption {
 		if (base != null) {
 			this.base = base;
 		} else {

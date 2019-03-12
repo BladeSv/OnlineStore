@@ -12,16 +12,16 @@ public class SortByPriceIncrease<T extends Device> implements Comparator<T> {
 
 	@Override
 	public int compare(T o1, T o2) {
+		int result = 0;
 		if (o1 != null && o2 != null) {
-			return o1.getPrice().compareTo(o2.getPrice());
+			result = o1.getPrice().compareTo(o2.getPrice());
 		} else if (o1 != null && o2 == null) {
-			return 1;
+			result = 1;
 		} else if (o2 != null && o1 == null) {
 
-			return -1;
-		} else {
-			return 0;
+			result = -1;
 		}
+		return result;
 
 	}
 

@@ -1,13 +1,13 @@
 package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.client;
 
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.abstractentity.Device;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.mycollection.interfacemycollecton.IMyCollection;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.mycollection.interfacemycollecton.Collection;
 
 public class Client {
 	private int id;
 	private String name;
 
-	private IMyCollection<Device> bought;
+	private Collection<Device> bought;
 
 	public Client() {
 
@@ -18,7 +18,7 @@ public class Client {
 	 * @param name
 	 * @param bought
 	 */
-	public Client(int id, String name, IMyCollection<Device> bought) {
+	public Client(int id, String name, Collection<Device> bought) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -41,11 +41,11 @@ public class Client {
 		this.name = name;
 	}
 
-	public IMyCollection<Device> getBought() {
+	public Collection<Device> getBought() {
 		return bought;
 	}
 
-	public void setBought(IMyCollection<Device> bought) {
+	public void setBought(Collection<Device> bought) {
 		this.bought = bought;
 	}
 

@@ -2,8 +2,6 @@ package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exc
 
 public class MyNotInCollectionException extends MyCollectionException {
 
-	private static final long serialVersionUID = 2181781877073833502L;
-
 	public MyNotInCollectionException() {
 
 	}
