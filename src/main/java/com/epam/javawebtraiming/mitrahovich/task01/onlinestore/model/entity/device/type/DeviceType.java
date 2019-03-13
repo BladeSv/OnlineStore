@@ -2,19 +2,12 @@ package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.dev
 
 public enum DeviceType {
 
-	MOBILE_PHONE("Mobile phone"), LAPTOP("Laptop"), TV("Television");
+	MOBILE_PHONE(), LAPTOP(), TV();
 
-	private String type;
+	@Override
+	public String toString() {
 
-	/**
-	 * @param type
-	 */
-	private DeviceType(String type) {
-		this.type = type;
-	}
-
-	public String getType() {
-		return type;
+		return name().substring(0, 1).toUpperCase() + name().substring(1).toLowerCase().replaceAll("_", " ");
 	}
 
 }

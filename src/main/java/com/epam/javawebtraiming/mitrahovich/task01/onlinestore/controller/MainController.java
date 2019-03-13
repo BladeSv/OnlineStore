@@ -23,31 +23,26 @@ public class MainController {
 	public void run() throws NotAddElementBaseException {
 
 		DaoBase<Device> daoStoreBase = DaoStoreBaseFactory.newInstance();
-		IPrinter<Device> printet = PrinterFactory.newInstance();
+		IPrinter<Device> printer = PrinterFactory.newInstance();
 		Sorter<Device> sort = new SorterCollection();
 		Calculator<Device> sum = new CalculatorCollection();
 		Finder<Device> find = new FinderCollection();
 		Comparator<Device> comp = new SortByPriceIncrease<>();
+
 		CreatedEntityAdd.add(daoStoreBase);
 
-		printet.print(daoStoreBase.getAll());
-		System.out.printf("%.2f", sum.sumPrice(daoStoreBase));
-		System.out.println();
-		System.out.println();
+		printer.print(daoStoreBase);
 
-		printet.print(daoStoreBase.getAll());
-		System.out.println(daoStoreBase.toArray());
+		printer.print(String.format("%.2f", sum.sumPrice(daoStoreBase)));
+
 		try {
-			printet.print(sort.sort(daoStoreBase, comp));
+			printer.print(sort.sort(daoStoreBase, comp));
 		} catch (CantSortException e) {
 
 			e.printStackTrace();
 		}
 
-		System.out.println("min: " + find.find(daoStoreBase, comp));
-		// SerializableStoreBase.outputStoreBase(daoStoreBase.getAll());
-		// StoreBase sb = SerializableStoreBase.inputStoreBase();
-		// System.out.println(sb);
+		printer.print("min: " + find.find(daoStoreBase, comp));
 
 	}
 

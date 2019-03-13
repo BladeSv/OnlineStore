@@ -229,8 +229,8 @@ public class Device implements Serializable, Copyble<Device> {
 
 	@Override
 	public String toString() {
-		return "id: " + id + ", device type: " + type.getType() + ", manufacturer: " + manufacturer + ", model: "
-				+ model + ", color: " + color + ", price: " + String.format("%.2f", price) + "$";
+		return "id: " + id + ", device type: " + type + ", manufacturer: " + manufacturer + ", model: " + model
+				+ ", color: " + color + ", price: " + String.format("%.2f", price) + "$";
 	}
 
 	/**

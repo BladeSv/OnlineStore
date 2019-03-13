@@ -64,6 +64,7 @@ public class SortArrayTest {
 
 		DaoStoreBaseCollection expectedDao = new DaoStoreBaseCollection<Device>(new Base<Device>());
 		try {
+
 			expectedDao.add(d1);
 			expectedDao.add(d3);
 			expectedDao.add(d2);

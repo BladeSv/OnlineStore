@@ -5,7 +5,7 @@ public class ConsolePrinter<T> implements IPrinter<T> {
 	@Override
 	public void print(Object obj) {
 
-		System.out.println(obj.toString());
+		System.out.println(obj);
 
 	}
 }

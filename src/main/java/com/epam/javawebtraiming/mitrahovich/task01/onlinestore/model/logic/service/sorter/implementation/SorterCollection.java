@@ -14,7 +14,7 @@ public class SorterCollection<T extends Device> implements Sorter<T> {
 	@Override
 	public Base<T> sort(DaoBase<T> base, Comparator<T> comp) throws CantSortException {
 		Base<T> tempBase = base.getAll();
-		T temp = null;
+
 		for (int i = 0; i < tempBase.getBase().size(); i++) {
 			for (int j = 0; j < tempBase.getBase().size(); j++) {
 				try {
@@ -22,7 +22,7 @@ public class SorterCollection<T extends Device> implements Sorter<T> {
 							&& (comp.compare(tempBase.getBase().get(i), tempBase.getBase().get(j)) < 0))
 
 					{
-						temp = tempBase.getBase().get(i);
+						T temp = tempBase.getBase().get(i);
 
 						tempBase.getBase().set(i, tempBase.getBase().get(j));
 
