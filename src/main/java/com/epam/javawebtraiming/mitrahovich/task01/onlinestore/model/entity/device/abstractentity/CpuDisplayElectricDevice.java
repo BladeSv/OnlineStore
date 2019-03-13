@@ -3,8 +3,8 @@ package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.dev
 import java.math.BigDecimal;
 
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.type.DeviceType;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.logical.device.WrongSetCpuException;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.logical.device.WrongSetRamException;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.exception.logic.device.WrongSetCpuException;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.exception.logic.device.WrongSetRamException;
 
 /**
  * @author Mitrahovich

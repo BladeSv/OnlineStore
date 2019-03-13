@@ -8,23 +8,23 @@ import java.util.Comparator;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.DAO.IDaoBase;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.DAO.daoimplemet.DaoStoreBaseCollection;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.comparator.SortByPriceDecrease;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.comparator.SortByPriceIncrease;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.dao.DaoBase;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.dao.implementation.DaoStoreBaseCollection;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.base.Base;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.Laptop;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.MobilePhone;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.abstractentity.Device;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.type.DeviceType;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.technical.daobase.NotAddElementBaseException;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.technical.service.CantSortException;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.logic.service.sort.SortArray;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.exception.technical.dao.NotAddElementBaseException;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.exception.technical.service.CantSortException;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.logic.service.sorter.implementation.SorterCollection;
 
 public class SortArrayTest {
-	private IDaoBase dao;
+	private DaoBase dao;
 	private Base storeBase;
-	private SortArray sort;
+	private SorterCollection sort;
 
 	private Device d2;
 	private Device d1;
@@ -36,7 +36,7 @@ public class SortArrayTest {
 	public void BeforeTest() {
 		storeBase = new Base<Device>();
 		dao = new DaoStoreBaseCollection(storeBase);
-		sort = new SortArray();
+		sort = new SorterCollection();
 		comp = new SortByPriceIncrease<Device>();
 		comp2 = new SortByPriceDecrease<Device>();
 

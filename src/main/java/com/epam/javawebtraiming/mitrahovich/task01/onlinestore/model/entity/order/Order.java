@@ -2,9 +2,9 @@ package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.ord
 
 import java.util.GregorianCalendar;
 
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.collection.interfacecollection.Collection;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.client.Client;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.abstractentity.Device;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.mycollection.interfacemycollecton.Collection;
 
 public class Order {
 	private Collection<Device> device;
@@ -13,7 +13,7 @@ public class Order {
 	private GregorianCalendar date;
 
 	public Order() {
-		// TODO Auto-generated constructor stub
+
 	}
 
 	/**

@@ -1,7 +1,7 @@
 package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.client;
 
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.collection.interfacecollection.Collection;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.abstractentity.Device;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.mycollection.interfacemycollecton.Collection;
 
 public class Client {
 	private int id;

@@ -7,21 +7,21 @@ import java.math.BigDecimal;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.DAO.IDaoBase;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.DAO.daoimplemet.DaoStoreBaseCollection;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.dao.DaoBase;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.dao.implementation.DaoStoreBaseCollection;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.base.Base;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.Laptop;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.MobilePhone;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.abstractentity.Device;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.type.DeviceType;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.technical.daobase.NotAddElementBaseException;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.logic.service.sum.SumArray;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.exception.technical.dao.NotAddElementBaseException;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.logic.service.calculator.implemenatation.CalculatorCollection;
 
 public class SumArrayTest {
-	private IDaoBase dao;
+	private DaoBase dao;
 	private Base storeBase;
 
-	private SumArray sum;
+	private CalculatorCollection sum;
 	private Device d2;
 	private Device d1;
 	private Device d3;
@@ -30,7 +30,7 @@ public class SumArrayTest {
 	public void BeforeTest() {
 		dao = new DaoStoreBaseCollection(new Base<Device>());
 
-		sum = new SumArray();
+		sum = new CalculatorCollection();
 		d1 = new MobilePhone(1, DeviceType.MOBILE_PHONE, "Xiaomi", "Redmi 6A", "Black", new BigDecimal(250.50), 5, 5.45,
 				"MediaTek Helio A22", 2, 3000, "4G");
 

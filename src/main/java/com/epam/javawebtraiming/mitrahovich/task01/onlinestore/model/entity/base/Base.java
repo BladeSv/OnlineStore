@@ -2,12 +2,12 @@ package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.bas
 
 import java.io.Serializable;
 
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.collection.MyIndexOutOfRangeException;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.collection.MyNotCopybleElementException;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.collection.MyNotInCollectionException;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.exception.logical.WrongSetStoreBaseExeption;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.mycollection.implementation.arraycollection.ArrayList;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.mycollection.interfacemycollecton.Collection;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.collection.implementation.array.ArrayList;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.collection.interfacecollection.Collection;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.exception.collection.IndexOutOfRangeException;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.exception.collection.NotCopybleElementException;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.exception.collection.NotInCollectionException;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.exception.logic.base.WrongSetStoreBaseExeption;
 
 /**
  * @author Mitrahovich
@@ -26,11 +26,11 @@ public class Base<T> implements Serializable {
 		this.base = base;
 	}
 
-	public Collection<T> getDeviceBase() {
+	public Collection<T> getBase() {
 		return base;
 	}
 
-	public void setDeviceBase(Collection<T> base) throws WrongSetStoreBaseExeption {
+	public void setBase(Collection<T> base) throws WrongSetStoreBaseExeption {
 		if (base != null) {
 			this.base = base;
 		} else {
@@ -48,13 +48,13 @@ public class Base<T> implements Serializable {
 		}
 	}
 
-	public boolean set(int index, T t) throws MyIndexOutOfRangeException {
+	public boolean set(int index, T t) throws IndexOutOfRangeException {
 
 		return base.set(index, t);
 
 	}
 
-	public boolean remove(T t) throws MyNotInCollectionException {
+	public boolean remove(T t) throws NotInCollectionException {
 
 		if (t != null) {
 			base.remove(t);
@@ -65,13 +65,13 @@ public class Base<T> implements Serializable {
 
 	}
 
-	public T get(int index) throws MyIndexOutOfRangeException {
+	public T get(int index) throws IndexOutOfRangeException {
 
 		return base.get(index);
 
 	}
 
-	public Base<T> copy() throws MyNotCopybleElementException {
+	public Base<T> copy() throws NotCopybleElementException {
 
 		return new Base<>(base.copy());
 

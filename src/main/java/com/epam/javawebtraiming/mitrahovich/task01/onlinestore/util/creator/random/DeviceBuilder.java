@@ -14,7 +14,7 @@ public class DeviceBuilder {
 
 	private DeviceBuilder() {
 		super();
-		// TODO Auto-generated constructor stub
+
 	}
 
 	private static int getId() {
@@ -23,7 +23,7 @@ public class DeviceBuilder {
 
 	public static Device newInstans() {
 
-		switch (dc.getRd().nextInt(2)) {
+		switch (dc.getRd().nextInt(3)) {
 		case 0:
 
 			device = new MobilePhone(getId(), DeviceType.valueOf("MOBILE_PHONE"), dc.getRandomManufacturer(),
