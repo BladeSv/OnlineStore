@@ -44,7 +44,7 @@ public class MobilePhone extends PortableCpuDisplayElectricDevice {
 	 */
 	public MobilePhone(MobilePhone device) {
 		super(device.getId(), device.getType(), device.getManufacturer(), device.getModel(), device.getColor(),
-				device.getPrice(), device.getPower(), device.getScreenDiagonal(), device.getCpu(), device.getRam(),
+				device.getPrice(), device.getPower(), device.getDisplayDiagonal(), device.getCpu(), device.getRam(),
 				device.getBatteryCapacity());
 		this.mobileConnection = device.getMobileConnection();
 	}

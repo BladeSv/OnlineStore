@@ -44,7 +44,7 @@ public class CpuDisplayElectricDevice extends DisplayElectricDevice {
 	 */
 	public CpuDisplayElectricDevice(CpuDisplayElectricDevice device) {
 		super(device.getId(), device.getType(), device.getManufacturer(), device.getModel(), device.getColor(),
-				device.getPrice(), device.getPower(), device.getScreenDiagonal());
+				device.getPrice(), device.getPower(), device.getDisplayDiagonal());
 		this.cpu = device.getCpu();
 		this.ram = device.getRam();
 

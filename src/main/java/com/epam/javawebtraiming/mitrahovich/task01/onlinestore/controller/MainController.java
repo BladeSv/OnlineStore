@@ -2,10 +2,10 @@ package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.controller;
 
 import java.util.Comparator;
 
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.dao.DaoBase;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.dao.exception.NotAddElementBaseException;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.comparator.SortByPriceIncrease;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.dao.DaoBase;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.abstractentity.Device;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.exception.technical.dao.NotAddElementBaseException;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.exception.technical.service.CantSortException;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.logic.service.calculator.Calculator;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.logic.service.calculator.implemenatation.CalculatorCollection;

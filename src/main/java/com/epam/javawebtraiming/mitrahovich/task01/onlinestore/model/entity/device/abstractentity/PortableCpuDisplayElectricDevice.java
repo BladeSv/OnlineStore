@@ -43,7 +43,7 @@ public class PortableCpuDisplayElectricDevice extends CpuDisplayElectricDevice {
 	 */
 	public PortableCpuDisplayElectricDevice(PortableCpuDisplayElectricDevice device) {
 		super(device.getId(), device.getType(), device.getManufacturer(), device.getModel(), device.getColor(),
-				device.getPrice(), device.getPower(), device.getScreenDiagonal(), device.getCpu(), device.getRam());
+				device.getPrice(), device.getPower(), device.getDisplayDiagonal(), device.getCpu(), device.getRam());
 		this.batteryCapacity = device.getBatteryCapacity();
 	}
 

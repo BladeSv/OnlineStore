@@ -44,7 +44,7 @@ public class Laptop extends PortableCpuDisplayElectricDevice {
 	 */
 	public Laptop(Laptop device) {
 		super(device.getId(), device.getType(), device.getManufacturer(), device.getModel(), device.getColor(),
-				device.getPrice(), device.getPower(), device.getScreenDiagonal(), device.getCpu(), device.getRam(),
+				device.getPrice(), device.getPower(), device.getDisplayDiagonal(), device.getCpu(), device.getRam(),
 				device.getBatteryCapacity());
 		this.hddCapacity = device.getHddCapacity();
 	}

@@ -2,7 +2,7 @@ package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.logic.serv
 
 import java.util.Comparator;
 
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.dao.DaoBase;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.dao.DaoBase;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.base.Base;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.abstractentity.Device;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.logic.service.finder.Finder;

@@ -2,13 +2,13 @@ package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.util;
 
 import java.math.BigDecimal;
 
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.dao.DaoBase;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.dao.DaoBase;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.dao.exception.NotAddElementBaseException;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.Laptop;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.MobilePhone;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.Тelevision;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.abstractentity.Device;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.type.DeviceType;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.exception.technical.dao.NotAddElementBaseException;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.util.creator.random.DeviceBuilder;
 
 public class CreatedEntityAdd {

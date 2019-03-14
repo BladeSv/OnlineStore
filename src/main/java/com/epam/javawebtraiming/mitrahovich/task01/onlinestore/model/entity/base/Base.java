@@ -2,12 +2,12 @@ package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.bas
 
 import java.io.Serializable;
 
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.collection.implementation.array.ArrayList;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.collection.interfacecollection.Collection;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.exception.collection.IndexOutOfRangeException;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.exception.collection.NotCopybleElementException;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.exception.collection.NotInCollectionException;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.exception.logic.base.WrongSetStoreBaseExeption;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.exception.logic.base.WrongSetBaseExeption;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.util.collection.exception.IndexOutOfRangeException;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.util.collection.exception.NotCopybleElementException;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.util.collection.exception.NotInCollectionException;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.util.collection.implementation.array.ArrayList;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.util.collection.interfacecollection.Collection;
 
 /**
  * @author Mitrahovich
@@ -30,11 +30,11 @@ public class Base<T> implements Serializable {
 		return base;
 	}
 
-	public void setBase(Collection<T> base) throws WrongSetStoreBaseExeption {
+	public void setBase(Collection<T> base) throws WrongSetBaseExeption {
 		if (base != null) {
 			this.base = base;
 		} else {
-			throw new WrongSetStoreBaseExeption();
+			throw new WrongSetBaseExeption();
 		}
 
 	}

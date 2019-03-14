@@ -40,13 +40,13 @@ public class DisplayElectricDevice extends ElectricDevice {
 	public DisplayElectricDevice(DisplayElectricDevice device) {
 		super(device.getId(), device.getType(), device.getManufacturer(), device.getModel(), device.getColor(),
 				device.getPrice(), device.getPower());
-		this.displayDiagonal = device.getScreenDiagonal();
+		this.displayDiagonal = device.getDisplayDiagonal();
 	}
 
 	/**
 	 * @return displayDiagonal
 	 */
-	public double getScreenDiagonal() {
+	public double getDisplayDiagonal() {
 		return displayDiagonal;
 	}
 
@@ -54,7 +54,7 @@ public class DisplayElectricDevice extends ElectricDevice {
 	 * @param displayDiagonal
 	 * @throws WrongSetScreenDiagonalException
 	 */
-	public void setScreenDiagonal(double displayDiagonal) throws WrongSetScreenDiagonalException {
+	public void setDisplayDiagonal(double displayDiagonal) throws WrongSetScreenDiagonalException {
 		if (displayDiagonal > 0) {
 			this.displayDiagonal = displayDiagonal;
 		} else {
