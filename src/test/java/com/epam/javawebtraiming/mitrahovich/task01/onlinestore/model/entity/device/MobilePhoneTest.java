@@ -35,10 +35,140 @@ import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.exception.l
  */
 public class MobilePhoneTest {
 
-	private MobilePhone phone;
+	private static MobilePhone phone;
 
 	static Stream<Integer> intValue() {
 		return Stream.of(0, -1);
+	}
+
+	static Stream<String> stringValue() {
+		return Stream.of("", null);
+	}
+
+	static Stream<BigDecimal> bigDecimalValue() {
+		return Stream.of(new BigDecimal(-1), null);
+	}
+
+	static Stream<Double> doubleValue() {
+
+		return Stream.of(-1.1, new Double(0));
+	}
+
+	@BeforeEach
+	public void init() {
+
+		phone = new MobilePhone();
+	}
+
+	@Tag("exception")
+	@ParameterizedTest
+	@MethodSource("intValue")
+	public void testExceptionSetId(Integer arg) {
+
+		Throwable e = assertThrows(WrongSetIdException.class, () -> phone.setId(arg));
+		assertNotNull(e.getMessage());
+	}
+
+	@Tag("exception")
+	@Test
+	public void testExceptionSetType() {
+
+		Throwable e = assertThrows(WrongSetTypeException.class, () -> phone.setType(null));
+		assertNotNull(e.getMessage());
+
+	}
+
+	@Tag("exception")
+	@ParameterizedTest
+	@MethodSource("stringValue")
+	public void testExceptionSetManufacturer(String arg) {
+		Throwable e = assertThrows(WrongSetManufacturerException.class, () -> phone.setManufacturer(arg));
+		assertNotNull(e.getMessage());
+
+	}
+
+	@Tag("exception")
+	@ParameterizedTest
+	@MethodSource("stringValue")
+	public void testExceptionSetModel(String arg) {
+		Throwable e = assertThrows(WrongSetModelException.class, () -> phone.setModel(arg));
+		assertNotNull(e.getMessage());
+
+	}
+
+	@Tag("exception")
+	@ParameterizedTest
+	@MethodSource("stringValue")
+	public void testExceptionSetColor(String arg) {
+
+		Throwable e = assertThrows(WrongSetColorException.class, () -> phone.setColor(arg));
+		assertNotNull(e.getMessage());
+
+	}
+
+	@Tag("exception")
+	@ParameterizedTest
+	@MethodSource("bigDecimalValue")
+	public void testExceptionSetPrice(BigDecimal arg) {
+		Throwable e = assertThrows(WrongSetPriceException.class, () -> phone.setPrice(arg));
+		assertNotNull(e.getMessage());
+
+	}
+
+	@Tag("exception")
+	@ParameterizedTest
+	@MethodSource("doubleValue")
+	public void testExceptionSetPower(double arg) {
+
+		Throwable e = assertThrows(WrongSetPowerException.class, () -> phone.setPower(arg));
+		assertNotNull(e.getMessage());
+	}
+
+	@Tag("exception")
+	@ParameterizedTest
+	@MethodSource("doubleValue")
+	public void testExceptionSetisplayDiagona(double arg) {
+
+		Throwable e = assertThrows(WrongSetScreenDiagonalException.class, () -> phone.setDisplayDiagonal(arg));
+		assertNotNull(e.getMessage());
+	}
+
+	@Tag("exception")
+	@ParameterizedTest
+	@MethodSource("stringValue")
+	public void testExceptionSetCpu(String arg) {
+
+		Throwable e = assertThrows(WrongSetCpuException.class, () -> phone.setCpu(arg));
+		assertNotNull(e.getMessage());
+
+	}
+
+	@Tag("exception")
+	@ParameterizedTest
+	@MethodSource("intValue")
+	public void testExceptionSetRam(Integer arg) {
+
+		Throwable e = assertThrows(WrongSetRamException.class, () -> phone.setRam(arg));
+		assertNotNull(e.getMessage());
+	}
+
+	@Tag("exception")
+	@ParameterizedTest
+	@MethodSource("intValue")
+
+	public void testExceptionSetBatteryCapacity(Integer arg) {
+
+		Throwable e = assertThrows(WrongSetBatteryCapacityException.class, () -> phone.setBatteryCapacity(arg));
+		assertNotNull(e.getMessage());
+	}
+
+	@Tag("exception")
+	@ParameterizedTest
+	@MethodSource("stringValue")
+	public void testExceptionSetMobileConnection(String arg) {
+
+		Throwable e = assertThrows(WrongSetMobileConnectionException.class, () -> phone.setMobileConnection(arg));
+		assertNotNull(e.getMessage());
 	}
 
 	@Nested
@@ -242,7 +372,6 @@ public class MobilePhoneTest {
 	}
 
 	@Nested
-	@Tag("exception")
 	class ExceptionTest {
 		@BeforeEach
 		public void init() {
@@ -250,12 +379,15 @@ public class MobilePhoneTest {
 			phone = new MobilePhone();
 		}
 
+		@Tag("exception")
 		@ParameterizedTest
-		@MethodSource("intValue")
-		public void testExceptionSetId(Integer arg) throws WrongSetIdException {
+		@MethodSource("com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.MobilePhoneTest#intValue")
+		public void testExceptionSetId(Integer arg) {
 
-			assertThrows(WrongSetIdException.class, () -> phone.setId(arg));
+			Throwable e = assertThrows(WrongSetIdException.class, () -> phone.setId(arg));
+			assertNotNull(e.getMessage());
 		}
 
 	}
+
 }

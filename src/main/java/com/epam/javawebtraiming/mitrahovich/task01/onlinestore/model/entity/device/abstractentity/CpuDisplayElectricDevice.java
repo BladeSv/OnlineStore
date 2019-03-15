@@ -83,7 +83,7 @@ public class CpuDisplayElectricDevice extends DisplayElectricDevice {
 	 * @throws WrongSetCpuException
 	 */
 	public void setCpu(String cpu) throws WrongSetCpuException {
-		if (cpu != null) {
+		if (cpu != null && cpu != "") {
 			this.cpu = cpu;
 		} else {
 			throw new WrongSetCpuException("Incorrect enter of " + this.getClass().getSimpleName() + " color");

@@ -57,7 +57,7 @@ public class Тelevision extends DisplayElectricDevice {
 	 * @throws WrongSetDisplayTypeException
 	 */
 	public void setDisplayType(String displayType) throws WrongSetDisplayTypeException {
-		if (displayType != null) {
+		if (displayType != null && displayType != "") {
 			this.displayType = displayType;
 		} else {
 			throw new WrongSetDisplayTypeException("Incorrect enter of " + this.getClass().getSimpleName() + " color");

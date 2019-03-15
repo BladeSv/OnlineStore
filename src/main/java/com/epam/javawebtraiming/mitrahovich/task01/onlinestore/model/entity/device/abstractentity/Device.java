@@ -110,7 +110,7 @@ public class Device implements Serializable, Copyable<Device> {
 	 * @throws WrongSetManufacturerException
 	 */
 	public void setManufacturer(String manufacturer) throws WrongSetManufacturerException {
-		if (manufacturer != null) {
+		if (manufacturer != null && manufacturer != "") {
 			this.manufacturer = manufacturer;
 		} else {
 			throw new WrongSetManufacturerException(
@@ -131,7 +131,7 @@ public class Device implements Serializable, Copyable<Device> {
 	 * @throws WrongSetModelException
 	 */
 	public void setModel(String model) throws WrongSetModelException {
-		if (model != null) {
+		if (model != null && model != "") {
 			this.model = model;
 		} else {
 			throw new WrongSetModelException("Incorrect enter of " + this.getClass().getSimpleName() + " model");
@@ -151,7 +151,7 @@ public class Device implements Serializable, Copyable<Device> {
 	 * @throws WrongSetColorException
 	 */
 	public void setColor(String color) throws WrongSetColorException {
-		if (color != null) {
+		if (color != null && color != "") {
 			this.color = color;
 		} else {
 			throw new WrongSetColorException("Incorrect enter of " + this.getClass().getSimpleName() + " color");
@@ -171,7 +171,7 @@ public class Device implements Serializable, Copyable<Device> {
 	 * @throws WrongSetPriceException
 	 */
 	public void setPrice(BigDecimal price) throws WrongSetPriceException {
-		if (price.compareTo(new BigDecimal(0)) >= 0) {
+		if (price != null && price.compareTo(new BigDecimal(0)) >= 0) {
 			this.price = price;
 		} else {
 			throw new WrongSetPriceException("Incorrect enter of " + this.getClass().getSimpleName() + " price");

@@ -61,7 +61,7 @@ public class MobilePhone extends PortableCpuDisplayElectricDevice {
 	 * @throws WrongSetMobileConnectionException
 	 */
 	public void setMobileConnection(String mobileConnection) throws WrongSetMobileConnectionException {
-		if (mobileConnection != null) {
+		if (mobileConnection != null && mobileConnection != "") {
 			this.mobileConnection = mobileConnection;
 		} else {
 			throw new WrongSetMobileConnectionException(
