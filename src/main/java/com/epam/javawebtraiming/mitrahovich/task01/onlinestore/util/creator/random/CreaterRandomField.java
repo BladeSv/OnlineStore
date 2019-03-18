@@ -8,6 +8,22 @@ import java.util.Random;
 public class CreaterRandomField {
 
 	private Random rd = new Random();
+	private static final int MODEL_RANGE = 100;
+	private static final int MIN_SIZE_PRICE = 250;
+	private static final int MAX_SIZE_PRICE = 1000;
+	private static final int MIN_SIZE_POWER = 50;
+	private static final int MAX_SIZE_POWER = 1000;
+	private static final int MIN_SIZE_DISPLAY = 5;
+	private static final int MAX_SIZE_DISPLAY = 45;
+
+	private static final int MIN_SIZE_RAM = 1;
+	private static final int MAX_SIZE_RAM = 7;
+	private static final int MIN_SIZE_BATTERY = 1000;
+	private static final int MAX_SIZE_BATTERY = 7000;
+	private static final int MIN_SIZE_MOBILE_CONECTION = 1;
+	private static final int MAX_SIZE_MOBILE_CONECTION = 4;
+	private static final int MIN_SIZE_HDD_CAPACITY = 100;
+	private static final int MAX_SIZE_HDD_CAPACIT = 400;
 
 	public Random getRd() {
 		return rd;
@@ -26,7 +42,7 @@ public class CreaterRandomField {
 
 	public String getRandomModel() {
 
-		return "model" + rd.nextInt(100);
+		return "model" + rd.nextInt(MODEL_RANGE);
 	}
 
 	public String getRandomColor() {
@@ -43,18 +59,17 @@ public class CreaterRandomField {
 
 	public BigDecimal getRandomPrice() {
 
-		return new BigDecimal(rd.nextDouble() * 1000 + 250);
+		return new BigDecimal(rd.nextDouble() * MAX_SIZE_PRICE + MIN_SIZE_PRICE);
 	}
 
 	public double getRandomPower() {
 
-		return (rd.nextDouble() * 1000 + 50);
+		return (rd.nextDouble() * MAX_SIZE_POWER + MIN_SIZE_POWER);
 	}
 
 	public double getRandomDisplayDiagonal() {
 		double diagonal = 0;
-		diagonal = (rd.nextDouble() * 45 + 5);
-		;
+		diagonal = (rd.nextDouble() * MAX_SIZE_DISPLAY + MIN_SIZE_DISPLAY);
 
 		return diagonal;
 	}
@@ -73,22 +88,22 @@ public class CreaterRandomField {
 
 	public int getRandomRam() {
 
-		return rd.nextInt(7) + 1;
+		return rd.nextInt(MAX_SIZE_RAM) + MIN_SIZE_RAM;
 	}
 
 	public int getRandomBatteryCapacity() {
 
-		return rd.nextInt(7000) + 1000;
+		return rd.nextInt(MAX_SIZE_BATTERY) + MIN_SIZE_BATTERY;
 	}
 
 	public String getRandomMobileConnection() {
 
-		return "G" + (rd.nextInt(4) + 1);
+		return "G" + (rd.nextInt(MAX_SIZE_MOBILE_CONECTION) + MIN_SIZE_MOBILE_CONECTION);
 	}
 
 	public int getHddCapacity() {
 
-		return rd.nextInt(400) + 100;
+		return rd.nextInt(MAX_SIZE_HDD_CAPACIT) + MIN_SIZE_HDD_CAPACITY;
 
 	}
 

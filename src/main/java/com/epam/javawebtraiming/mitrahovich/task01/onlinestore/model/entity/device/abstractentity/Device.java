@@ -15,7 +15,7 @@ import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.exception.l
  * @author Mitrahovich
  *
  */
-public class Device implements Serializable, Copyable<Device> {
+public class Device implements Serializable, Copyable {
 
 	private static final long serialVersionUID = -4862222841587226943L;
 	private int id;

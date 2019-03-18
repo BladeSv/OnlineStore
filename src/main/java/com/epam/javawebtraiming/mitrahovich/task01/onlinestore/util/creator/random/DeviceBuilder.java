@@ -21,10 +21,10 @@ public class DeviceBuilder {
 		return ++id_count;
 	}
 
-	public static Device newInstans() {
+	public static Device newInstans(DeviceType deviceType) {
 
-		switch (dc.getRd().nextInt(3)) {
-		case 0:
+		switch (deviceType) {
+		case MOBILE_PHONE:
 
 			device = new MobilePhone(getId(), DeviceType.valueOf("MOBILE_PHONE"), dc.getRandomManufacturer(),
 					dc.getRandomModel(), dc.getRandomColor(), dc.getRandomPrice(), dc.getRandomPower(),
@@ -32,12 +32,12 @@ public class DeviceBuilder {
 					dc.getRandomMobileConnection());
 			break;
 
-		case 1:
+		case LAPTOP:
 			device = new Laptop(getId(), DeviceType.valueOf("LAPTOP"), dc.getRandomManufacturer(), dc.getRandomModel(),
 					dc.getRandomColor(), dc.getRandomPrice(), dc.getRandomPower(), dc.getRandomDisplayDiagonal(),
 					dc.getRandomCpu(), dc.getRandomRam(), dc.getRandomBatteryCapacity(), dc.getHddCapacity());
 			break;
-		case 2:
+		case TV:
 
 			device = new Тelevision(getId(), DeviceType.valueOf("TV"), dc.getRandomManufacturer(), dc.getRandomModel(),
 					dc.getRandomColor(), dc.getRandomPrice(), dc.getRandomPower(), dc.getRandomDisplayDiagonal(),
@@ -46,6 +46,11 @@ public class DeviceBuilder {
 		}
 
 		return device;
+	}
+
+	public static Device newRandomInstans() {
+
+		return newInstans(DeviceType.values()[dc.getRd().nextInt(DeviceType.values().length)]);
 	}
 
 }

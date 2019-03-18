@@ -127,7 +127,7 @@ public class LinkinList<T> extends AbstractCollection<T> implements Collection<T
 			temp = iter.next();
 			if (temp != null) {
 				if (temp.getClass().isAssignableFrom(Copyable.class)) {
-					tempList.add(((Copyable<T>) temp).copy());
+					tempList.add((T) ((Copyable) temp).copy());
 
 				} else {
 					throw new NotCopybleElementException();

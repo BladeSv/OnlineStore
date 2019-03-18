@@ -31,7 +31,7 @@ public class CreatedEntityAdd {
 		Device d6 = new Тelevision(6, DeviceType.TV, "LG", "OLED55B8PLA", "Silver", new BigDecimal(3146.18), 135, 55,
 				"OLED");
 
-		Device d7 = DeviceBuilder.newInstans();
+		Device d7 = DeviceBuilder.newRandomInstans();
 
 		try {
 			daoStoreBase.add(d1);

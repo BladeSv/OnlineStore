@@ -68,12 +68,12 @@ public class ArrayList<T> extends AbstractCollection<T> implements Collection<T>
 	@Override
 	public void remove(T t) throws NotInCollectionException {
 		boolean check = false;
-		T temp;
+		// System.out.println("t-" + t);
 		Iterator<T> iter = iterator();
 		while (iter.hasNext()) {
 
-			temp = iter.next();
-			if (temp == t) {
+			T temp = iter.next();
+			if (temp.equals(t)) {
 				iter.remove();
 				check = true;
 			}
@@ -148,12 +148,14 @@ public class ArrayList<T> extends AbstractCollection<T> implements Collection<T>
 
 					}
 					size--;
+					cursor--;
 					checkRemove = false;
 
 				} else {
 
 					array[cursor] = null;
 					size--;
+					cursor--;
 					checkRemove = false;
 
 				}
@@ -167,17 +169,18 @@ public class ArrayList<T> extends AbstractCollection<T> implements Collection<T>
 	public Collection<T> copy() throws NotCopybleElementException {
 		ArrayList<T> tempArray = new ArrayList<T>(array.length);
 
-		for (int i = 0; i < array.length; i++) {
-			Object temp = array[i];
-			if (temp != null) {
-				if (temp.getClass().isAssignableFrom(Copyable.class)) {
-					tempArray.add(((Copyable<T>) temp).copy());
+		for (int i = 0; i < size; i++) {
 
+			if (array[i] != null) {
+
+				if (array[i] instanceof Copyable) {
+					tempArray.add((T) ((Copyable) array[i]).copy());
 				} else {
 					throw new NotCopybleElementException();
 				}
 			} else {
 				tempArray.add(null);
+
 			}
 
 		}

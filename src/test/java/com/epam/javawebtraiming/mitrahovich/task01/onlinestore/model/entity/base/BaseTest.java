@@ -1,12 +1,23 @@
 package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.base;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import java.math.BigDecimal;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.Laptop;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.MobilePhone;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.abstractentity.Device;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.type.DeviceType;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.util.collection.exception.IndexOutOfRangeException;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.util.collection.exception.NotCopybleElementException;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.util.collection.exception.NotInCollectionException;
 
 /**
  * @author Mitrahovich
@@ -21,66 +32,97 @@ public class BaseTest<T> {
 	}
 
 	@Test
-	void id() {
-		Device d = new Device();
+	void testPositiveSet() throws IndexOutOfRangeException {
 
-		base.add(d);
-		assertAll("sdsddsd", () -> assertEquals(d, base.get(0)));
+		Device expected = new Laptop(3, DeviceType.LAPTOP, "HP", "250 G6 4QW22ES", "Black", new BigDecimal(556.0), 31,
+				15.6, "Intel Celeron N4000", 8, 7000, 500);
+		base.add(expected);
+		assertEquals(expected, base.get(0));
+	}
+
+	@Test
+	void testNegativeSet() throws IndexOutOfRangeException {
+
+		Device expected = new Laptop(3, DeviceType.LAPTOP, "HP", "250 G6 4QW22ES", "Black", new BigDecimal(556.0), 31,
+				15.6, "Intel Celeron N4000", 8, 7000, 500);
+		Device notExpected = new MobilePhone(2, DeviceType.MOBILE_PHONE, "Huawei", "P20 Pro CLT-L29", "While",
+				new BigDecimal(1440.50), 5, 6.1, "HiSilicon Kirin 970", 6, 5000, "5G");
+		base.add(expected);
+		base.add(notExpected);
+		assertNotEquals(expected, base.get(1));
 
 	}
 
-	// @Nested
-	// @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
-	// class A_year_is_not_supported {
-	//
-	// @Test
-	// void if_it_is_zero() {
-	// }
-	//
-	// @DisplayName("A negative value for year is not supported by the leap year
-	// computation.")
-	// @ParameterizedTest(name = "For example, year {0} is not supported.")
-	// @ValueSource(ints = { -1, -4 })
-	// void if_it_is_negative(int year) {
-	// }
-	//
-	// }
-	//
-	// @Nested
-	// @DisplayNameGeneration(IndicativeSentences.class)
-	// class A_year_is_a_leap_year {
-	//
-	// @Test
-	// void if_it_is_divisible_by_4_but_not_by_100() {
-	// }
-	//
-	// @ParameterizedTest(name = "Year {0} is a leap year.")
-	// @ValueSource(ints = { 2016, 2020, 2048 })
-	// void if_it_is_one_of_the_following_years(int year) {
-	// }
-	//
-	// }
-	//
-	// static class IndicativeSentences extends
-	// DisplayNameGenerator.ReplaceUnderscores {
-	//
-	// @Override
-	// public String generateDisplayNameForClass(Class<?> testClass) {
-	// return super.generateDisplayNameForClass(testClass);
-	// }
-	//
-	// @Override
-	// public String generateDisplayNameForNestedClass(Class<?> nestedClass) {
-	// return super.generateDisplayNameForNestedClass(nestedClass) + "...";
-	// }
-	//
-	// @Override
-	// public String generateDisplayNameForMethod(Class<?> testClass, Method
-	// testMethod) {
-	// String name = testClass.getSimpleName() + ' ' + testMethod.getName();
-	// return name.replace('_', ' ') + '.';
-	// }
-	//
-	// }
+	@Test
+	void testExceptionSet() throws IndexOutOfRangeException {
+
+		Device expected = new Laptop(3, DeviceType.LAPTOP, "HP", "250 G6 4QW22ES", "Black", new BigDecimal(556.0), 31,
+				15.6, "Intel Celeron N4000", 8, 7000, 500);
+
+		base.add(expected);
+
+		assertThrows(IndexOutOfRangeException.class, () -> base.get(1));
+
+	}
+
+	@Test
+	void testCheckAdd() throws IndexOutOfRangeException {
+
+		Device expected = null;
+
+		base.add(expected);
+
+		assertEquals(false, base.add(expected));
+
+	}
+
+	@Test
+	void testPositiveRevove() throws NotInCollectionException {
+
+		Device expected = new Laptop(3, DeviceType.LAPTOP, "HP", "250 G6 4QW22ES", "Black", new BigDecimal(556.0), 31,
+				15.6, "Intel Celeron N4000", 8, 7000, 500);
+		Device expected2 = new MobilePhone(2, DeviceType.MOBILE_PHONE, "Huawei", "P20 Pro CLT-L29", "While",
+				new BigDecimal(1440.50), 5, 6.1, "HiSilicon Kirin 970", 6, 5000, "5G");
+
+		base.add(expected);
+		base.add(expected2);
+		// System.out.println("expected-" + expected);
+		assertEquals(true, base.remove(expected));
+
+	}
+
+	@Test
+	void testExceptionRevove() {
+
+		Device expected = new Laptop(3, DeviceType.LAPTOP, "HP", "250 G6 4QW22ES", "Black", new BigDecimal(556.0), 31,
+				15.6, "Intel Celeron N4000", 8, 7000, 500);
+		Device notExpected = new MobilePhone(2, DeviceType.MOBILE_PHONE, "Huawei", "P20 Pro CLT-L29", "While",
+				new BigDecimal(1440.50), 5, 6.1, "HiSilicon Kirin 970", 6, 5000, "5G");
+		base.add(expected);
+
+		assertAll(() -> assertThrows(NotInCollectionException.class, () -> base.remove(notExpected)),
+				() -> assertEquals(false, base.remove(null))
+
+		);
+
+	}
+
+	@Test
+	void testPositiveCopy() throws NotCopybleElementException {
+
+		Device expected = new Laptop(3, DeviceType.LAPTOP, "HP", "250 G6 4QW22ES", "Black", new BigDecimal(556.0), 31,
+				15.6, "Intel Celeron N4000", 8, 7000, 500);
+
+		Device expected2 = new MobilePhone(2, DeviceType.MOBILE_PHONE, "Huawei", "P20 Pro CLT-L29", "While",
+				new BigDecimal(1440.50), 5, 6.1, "HiSilicon Kirin 970", 6, 5000, "5G");
+
+		base.add(expected);
+		base.add(expected2);
+
+		Base baseCopy = base.copy();
+
+		assertArrayEquals(base.toArray(), baseCopy.toArray());
+
+	}
 
 }

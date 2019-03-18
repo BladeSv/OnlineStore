@@ -4,6 +4,6 @@ package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.dev
  * @author Mitrahovich
  *
  */
-public interface Copyable<T> {
+public interface Copyable<T extends Device> {
 	T copy();
 }
