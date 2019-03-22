@@ -1,28 +1,34 @@
 package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.io;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.FileInputStream;
+import static com.epam.javawebtraiming.mitrahovich.task01.onlinestore.util.PropertiesManager.getInputTextFileName;
+import static com.epam.javawebtraiming.mitrahovich.task01.onlinestore.util.PropertiesManager.getOutputTextFileName;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
+import org.apache.log4j.Logger;
+
 public class WorkerTextFile {
+	private static final Logger log = Logger.getRootLogger();
+	private static String inputTexFileName = getInputTextFileName();
+	private static String outpuStringtTexFileName = getOutputTextFileName();
 
 	public WorkerTextFile() {
 
 	}
 
 	public static void write(String string, String fileName) {
-		try (DataOutputStream os = new DataOutputStream(new BufferedOutputStream(new FileOutputStream(fileName)))) {
+		try (BufferedWriter os = new BufferedWriter(new FileWriter(inputTexFileName + fileName))) {
 
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			log.warn("doesnt find file for write text", e);
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			log.warn("cant write text", e);
 			e.printStackTrace();
 		}
 
@@ -31,17 +37,17 @@ public class WorkerTextFile {
 	public static String read(String fileName) {
 
 		StringBuilder sb = null;
-		try (DataInputStream is = new DataInputStream(new BufferedInputStream(new FileInputStream(fileName)))) {
+		try (BufferedReader is = new BufferedReader(new FileReader(outpuStringtTexFileName + fileName))) {
 			sb = new StringBuilder();
-			while (is.readBoolean()) {
-				sb.append(is.readUTF());
+			while (is.ready()) {
+				sb.append(is.readLine()).append("\n");
 			}
 
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			log.warn("doesnt find file for read text", e);
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			log.warn("cant read text", e);
 			e.printStackTrace();
 		}
 

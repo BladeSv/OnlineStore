@@ -8,13 +8,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.dao.DaoBase;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.dao.exception.NotAddElementBaseException;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.dao.implementation.DaoStoreBaseCollection;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.comparator.SortByPriceDecrease;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.comparator.SortByPriceIncrease;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.base.Base;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.abstractentity.Device;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.exception.technical.service.CantSortException;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.exception.OnlineStoreException;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.logic.service.DeviceBaseForTest;
 
 public class SorterCollectionTest {
@@ -30,7 +29,7 @@ public class SorterCollectionTest {
 	}
 
 	@Test
-	public void testSortPriceDecrease() throws NotAddElementBaseException, CantSortException {
+	public void testSortPriceDecrease() throws OnlineStoreException {
 		comp = new SortByPriceDecrease();
 
 		Base<Device> base = new Base<>();
@@ -45,7 +44,7 @@ public class SorterCollectionTest {
 	}
 
 	@Test
-	public void testSortPriceIncrease() throws NotAddElementBaseException, CantSortException {
+	public void testSortPriceIncrease() throws OnlineStoreException {
 
 		comp = new SortByPriceIncrease();
 		Base<Device> base = new Base<>();

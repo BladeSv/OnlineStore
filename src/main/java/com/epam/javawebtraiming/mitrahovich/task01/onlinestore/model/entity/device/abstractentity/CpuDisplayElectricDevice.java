@@ -2,6 +2,8 @@ package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.dev
 
 import java.math.BigDecimal;
 
+import org.apache.log4j.Logger;
+
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.type.DeviceType;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.exception.logic.device.WrongSetCpuException;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.exception.logic.device.WrongSetRamException;
@@ -11,7 +13,7 @@ import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.exception.l
  *
  */
 public class CpuDisplayElectricDevice extends DisplayElectricDevice {
-
+	private static final Logger log = Logger.getRootLogger();
 	private static final long serialVersionUID = 8820825523769343218L;
 	private String cpu;
 	private int ram;
@@ -32,8 +34,7 @@ public class CpuDisplayElectricDevice extends DisplayElectricDevice {
 	 * @param cpu
 	 * @param ram
 	 */
-	public CpuDisplayElectricDevice(int id, DeviceType type, String manufacturer, String model, String color,
-			BigDecimal price, double power, double displayDiagonal, String cpu, int ram) {
+	public CpuDisplayElectricDevice(int id, DeviceType type, String manufacturer, String model, String color, BigDecimal price, double power, double displayDiagonal, String cpu, int ram) {
 		super(id, type, manufacturer, model, color, price, power, displayDiagonal);
 		this.cpu = cpu;
 		this.ram = ram;
@@ -43,8 +44,7 @@ public class CpuDisplayElectricDevice extends DisplayElectricDevice {
 	 * @param CpuDisplayElectricDevice
 	 */
 	public CpuDisplayElectricDevice(CpuDisplayElectricDevice device) {
-		super(device.getId(), device.getType(), device.getManufacturer(), device.getModel(), device.getColor(),
-				device.getPrice(), device.getPower(), device.getDisplayDiagonal());
+		super(device.getId(), device.getType(), device.getManufacturer(), device.getModel(), device.getColor(), device.getPrice(), device.getPower(), device.getDisplayDiagonal());
 		this.cpu = device.getCpu();
 		this.ram = device.getRam();
 
@@ -65,6 +65,7 @@ public class CpuDisplayElectricDevice extends DisplayElectricDevice {
 		if (ram > 0) {
 			this.ram = ram;
 		} else {
+			log.warn("WrongSetRamException in" + this.getClass().getName());
 			throw new WrongSetRamException("Incorrect enter of " + this.getClass().getSimpleName() + " color");
 		}
 
@@ -86,6 +87,7 @@ public class CpuDisplayElectricDevice extends DisplayElectricDevice {
 		if (cpu != null && cpu != "") {
 			this.cpu = cpu;
 		} else {
+			log.warn("WrongSetCpuException in" + this.getClass().getName());
 			throw new WrongSetCpuException("Incorrect enter of " + this.getClass().getSimpleName() + " color");
 		}
 

@@ -15,4 +15,18 @@ public class PropertiesManager {
 		return rb.getString("status");
 	}
 
+	public static String getInputTextFileName() {
+
+		return rb.getString("input_text");
+	}
+
+	public static String getOutputTextFileName() {
+
+		return rb.getString("output_text");
+	}
+
+	public static String getFileName() {
+
+		return rb.getString("file_name");
+	}
 }

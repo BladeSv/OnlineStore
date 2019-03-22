@@ -6,6 +6,7 @@ import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.dao.DaoBase;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.dao.implementation.DaoStoreBaseCollection;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.base.Base;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.abstractentity.Device;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.util.basedecatator.BaseSerialization;
 
 public class DaoStoreBaseFactory {
 
@@ -25,8 +26,13 @@ public class DaoStoreBaseFactory {
 
 			break;
 
+		case "serialization":
+
+			storeBase = new DaoStoreBaseCollection(new BaseSerialization(new Base<Device>()));
+
+			break;
 		}
 		return storeBase;
-
 	}
+
 }

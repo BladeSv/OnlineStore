@@ -2,6 +2,8 @@ package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.dev
 
 import java.math.BigDecimal;
 
+import org.apache.log4j.Logger;
+
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.abstractentity.PortableCpuDisplayElectricDevice;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.type.DeviceType;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.exception.logic.device.WrongSetMobileConnectionException;
@@ -11,7 +13,7 @@ import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.exception.l
  *
  */
 public class MobilePhone extends PortableCpuDisplayElectricDevice {
-
+	private static final Logger log = Logger.getRootLogger();
 	private static final long serialVersionUID = 5408307092477179856L;
 	private String mobileConnection;
 
@@ -33,8 +35,7 @@ public class MobilePhone extends PortableCpuDisplayElectricDevice {
 	 * @param batteryCapacity
 	 * @param mobileConnection
 	 */
-	public MobilePhone(int id, DeviceType type, String manufacturer, String model, String color, BigDecimal price,
-			double power, double displayDiagonal, String cpu, int ram, int batteryCapacity, String mobileConnection) {
+	public MobilePhone(int id, DeviceType type, String manufacturer, String model, String color, BigDecimal price, double power, double displayDiagonal, String cpu, int ram, int batteryCapacity, String mobileConnection) {
 		super(id, type, manufacturer, model, color, price, power, displayDiagonal, cpu, ram, batteryCapacity);
 		this.mobileConnection = mobileConnection;
 	}
@@ -43,9 +44,7 @@ public class MobilePhone extends PortableCpuDisplayElectricDevice {
 	 * @param MobilePhone
 	 */
 	public MobilePhone(MobilePhone device) {
-		super(device.getId(), device.getType(), device.getManufacturer(), device.getModel(), device.getColor(),
-				device.getPrice(), device.getPower(), device.getDisplayDiagonal(), device.getCpu(), device.getRam(),
-				device.getBatteryCapacity());
+		super(device.getId(), device.getType(), device.getManufacturer(), device.getModel(), device.getColor(), device.getPrice(), device.getPower(), device.getDisplayDiagonal(), device.getCpu(), device.getRam(), device.getBatteryCapacity());
 		this.mobileConnection = device.getMobileConnection();
 	}
 
@@ -64,8 +63,8 @@ public class MobilePhone extends PortableCpuDisplayElectricDevice {
 		if (mobileConnection != null && mobileConnection != "") {
 			this.mobileConnection = mobileConnection;
 		} else {
-			throw new WrongSetMobileConnectionException(
-					"Incorrect enter of " + this.getClass().getSimpleName() + " color");
+			log.warn("WrongSetMobileConnectionException in" + this.getClass().getName());
+			throw new WrongSetMobileConnectionException("Incorrect enter of " + this.getClass().getSimpleName() + " color");
 		}
 
 	}

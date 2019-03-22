@@ -1,6 +1,7 @@
 package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.logic.service.calculator.implemenatation;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.math.BigDecimal;
 
@@ -23,7 +24,7 @@ public class CalculatorCollectionTest {
 	}
 
 	@Test
-	public void testSumPrice() {
+	public void testPositiveSumPrice() {
 
 		BigDecimal expected = new BigDecimal("0");
 
@@ -31,4 +32,11 @@ public class CalculatorCollectionTest {
 		assertEquals(expected, cal.sumPrice(db.getDaoBase()));
 	}
 
+	public void testNegativeSumPrice() {
+
+		BigDecimal expected = new BigDecimal("0");
+
+		expected = expected.add(db.d1.getPrice()).add(db.d2.getPrice());
+		assertNotEquals(expected, cal.sumPrice(db.getDaoBase()));
+	}
 }

@@ -3,6 +3,8 @@ package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.dev
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+import org.apache.log4j.Logger;
+
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.type.DeviceType;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.exception.logic.device.WrongSetColorException;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.exception.logic.device.WrongSetIdException;
@@ -16,7 +18,7 @@ import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.exception.l
  *
  */
 public class Device implements Serializable, Copyable {
-
+	private static final Logger log = Logger.getRootLogger();
 	private static final long serialVersionUID = -4862222841587226943L;
 	private int id;
 	private DeviceType type;
@@ -74,6 +76,7 @@ public class Device implements Serializable, Copyable {
 		if (id > 0) {
 			this.id = id;
 		} else {
+			log.warn("WrongSetIdException in" + this.getClass().getName());
 			throw new WrongSetIdException("Incorrect enter of " + this.getClass().getSimpleName() + " id");
 		}
 
@@ -94,6 +97,7 @@ public class Device implements Serializable, Copyable {
 		if (type != null) {
 			this.type = type;
 		} else {
+			log.warn("WrongSetTypeException in" + this.getClass().getName());
 			throw new WrongSetTypeException("Incorrect enter of " + this.getClass().getSimpleName() + " type");
 		}
 	}
@@ -113,8 +117,8 @@ public class Device implements Serializable, Copyable {
 		if (manufacturer != null && manufacturer != "") {
 			this.manufacturer = manufacturer;
 		} else {
-			throw new WrongSetManufacturerException(
-					"Incorrect enter of " + this.getClass().getSimpleName() + " manufacturer");
+			log.warn("WrongSetManufacturerException in" + this.getClass().getName());
+			throw new WrongSetManufacturerException("Incorrect enter of " + this.getClass().getSimpleName() + " manufacturer");
 		}
 
 	}
@@ -134,6 +138,7 @@ public class Device implements Serializable, Copyable {
 		if (model != null && model != "") {
 			this.model = model;
 		} else {
+			log.warn("WrongSetModelException in" + this.getClass().getName());
 			throw new WrongSetModelException("Incorrect enter of " + this.getClass().getSimpleName() + " model");
 		}
 
@@ -154,6 +159,7 @@ public class Device implements Serializable, Copyable {
 		if (color != null && color != "") {
 			this.color = color;
 		} else {
+			log.warn("WrongSetColorException in" + this.getClass().getName());
 			throw new WrongSetColorException("Incorrect enter of " + this.getClass().getSimpleName() + " color");
 		}
 
@@ -174,6 +180,7 @@ public class Device implements Serializable, Copyable {
 		if (price != null && price.compareTo(new BigDecimal(0)) >= 0) {
 			this.price = price;
 		} else {
+			log.warn("WrongSetPriceException in" + this.getClass().getName());
 			throw new WrongSetPriceException("Incorrect enter of " + this.getClass().getSimpleName() + " price");
 		}
 	}
@@ -229,8 +236,7 @@ public class Device implements Serializable, Copyable {
 
 	@Override
 	public String toString() {
-		return "id: " + id + ", device type: " + type + ", manufacturer: " + manufacturer + ", model: " + model
-				+ ", color: " + color + ", price: " + String.format("%.2f", price) + "$";
+		return "id: " + id + ", device type: " + type + ", manufacturer: " + manufacturer + ", model: " + model + ", color: " + color + ", price: " + String.format("%.2f", price) + "$";
 	}
 
 	/**

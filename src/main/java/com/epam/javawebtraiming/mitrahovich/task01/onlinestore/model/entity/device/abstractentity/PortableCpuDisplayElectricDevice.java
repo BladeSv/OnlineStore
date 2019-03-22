@@ -2,6 +2,8 @@ package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.dev
 
 import java.math.BigDecimal;
 
+import org.apache.log4j.Logger;
+
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.type.DeviceType;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.exception.logic.device.WrongSetBatteryCapacityException;
 
@@ -10,7 +12,7 @@ import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.exception.l
  *
  */
 public class PortableCpuDisplayElectricDevice extends CpuDisplayElectricDevice {
-
+	private static final Logger log = Logger.getRootLogger();
 	private static final long serialVersionUID = 5889305266388703238L;
 	private int batteryCapacity;
 
@@ -32,8 +34,7 @@ public class PortableCpuDisplayElectricDevice extends CpuDisplayElectricDevice {
 	 * @param ram
 	 * @param batteryCapacity
 	 */
-	public PortableCpuDisplayElectricDevice(int id, DeviceType type, String manufacturer, String model, String color,
-			BigDecimal price, double power, double displayDiagonal, String cpu, int ram, int batteryCapacity) {
+	public PortableCpuDisplayElectricDevice(int id, DeviceType type, String manufacturer, String model, String color, BigDecimal price, double power, double displayDiagonal, String cpu, int ram, int batteryCapacity) {
 		super(id, type, manufacturer, model, color, price, power, displayDiagonal, cpu, ram);
 		this.batteryCapacity = batteryCapacity;
 	}
@@ -42,8 +43,7 @@ public class PortableCpuDisplayElectricDevice extends CpuDisplayElectricDevice {
 	 * @param PortableCpuDisplayElectricDevice
 	 */
 	public PortableCpuDisplayElectricDevice(PortableCpuDisplayElectricDevice device) {
-		super(device.getId(), device.getType(), device.getManufacturer(), device.getModel(), device.getColor(),
-				device.getPrice(), device.getPower(), device.getDisplayDiagonal(), device.getCpu(), device.getRam());
+		super(device.getId(), device.getType(), device.getManufacturer(), device.getModel(), device.getColor(), device.getPrice(), device.getPower(), device.getDisplayDiagonal(), device.getCpu(), device.getRam());
 		this.batteryCapacity = device.getBatteryCapacity();
 	}
 
@@ -62,8 +62,8 @@ public class PortableCpuDisplayElectricDevice extends CpuDisplayElectricDevice {
 		if (batteryCapacity > 0) {
 			this.batteryCapacity = batteryCapacity;
 		} else {
-			throw new WrongSetBatteryCapacityException(
-					"Incorrect enter of " + this.getClass().getSimpleName() + " color");
+			log.warn("WrongSetBatteryCapacityException in" + this.getClass().getName());
+			throw new WrongSetBatteryCapacityException("Incorrect enter of " + this.getClass().getSimpleName() + " color");
 		}
 
 	}

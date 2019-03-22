@@ -34,8 +34,7 @@ public class BaseTest<T> {
 	@Test
 	void testPositiveSet() throws IndexOutOfRangeException {
 
-		Device expected = new Laptop(3, DeviceType.LAPTOP, "HP", "250 G6 4QW22ES", "Black", new BigDecimal(556.0), 31,
-				15.6, "Intel Celeron N4000", 8, 7000, 500);
+		Device expected = new Laptop(3, DeviceType.LAPTOP, "HP", "250 G6 4QW22ES", "Black", new BigDecimal(556.0), 31, 15.6, "Intel Celeron N4000", 8, 7000, 500);
 		base.add(expected);
 		assertEquals(expected, base.get(0));
 	}
@@ -43,10 +42,8 @@ public class BaseTest<T> {
 	@Test
 	void testNegativeSet() throws IndexOutOfRangeException {
 
-		Device expected = new Laptop(3, DeviceType.LAPTOP, "HP", "250 G6 4QW22ES", "Black", new BigDecimal(556.0), 31,
-				15.6, "Intel Celeron N4000", 8, 7000, 500);
-		Device notExpected = new MobilePhone(2, DeviceType.MOBILE_PHONE, "Huawei", "P20 Pro CLT-L29", "While",
-				new BigDecimal(1440.50), 5, 6.1, "HiSilicon Kirin 970", 6, 5000, "5G");
+		Device expected = new Laptop(3, DeviceType.LAPTOP, "HP", "250 G6 4QW22ES", "Black", new BigDecimal(556.0), 31, 15.6, "Intel Celeron N4000", 8, 7000, 500);
+		Device notExpected = new MobilePhone(2, DeviceType.MOBILE_PHONE, "Huawei", "P20 Pro CLT-L29", "While", new BigDecimal(1440.50), 5, 6.1, "HiSilicon Kirin 970", 6, 5000, "5G");
 		base.add(expected);
 		base.add(notExpected);
 		assertNotEquals(expected, base.get(1));
@@ -56,8 +53,7 @@ public class BaseTest<T> {
 	@Test
 	void testExceptionSet() throws IndexOutOfRangeException {
 
-		Device expected = new Laptop(3, DeviceType.LAPTOP, "HP", "250 G6 4QW22ES", "Black", new BigDecimal(556.0), 31,
-				15.6, "Intel Celeron N4000", 8, 7000, 500);
+		Device expected = new Laptop(3, DeviceType.LAPTOP, "HP", "250 G6 4QW22ES", "Black", new BigDecimal(556.0), 31, 15.6, "Intel Celeron N4000", 8, 7000, 500);
 
 		base.add(expected);
 
@@ -79,14 +75,12 @@ public class BaseTest<T> {
 	@Test
 	void testPositiveRevove() throws NotInCollectionException {
 
-		Device expected = new Laptop(3, DeviceType.LAPTOP, "HP", "250 G6 4QW22ES", "Black", new BigDecimal(556.0), 31,
-				15.6, "Intel Celeron N4000", 8, 7000, 500);
-		Device expected2 = new MobilePhone(2, DeviceType.MOBILE_PHONE, "Huawei", "P20 Pro CLT-L29", "While",
-				new BigDecimal(1440.50), 5, 6.1, "HiSilicon Kirin 970", 6, 5000, "5G");
+		Device expected = new Laptop(3, DeviceType.LAPTOP, "HP", "250 G6 4QW22ES", "Black", new BigDecimal(556.0), 31, 15.6, "Intel Celeron N4000", 8, 7000, 500);
+		Device expected2 = new MobilePhone(2, DeviceType.MOBILE_PHONE, "Huawei", "P20 Pro CLT-L29", "While", new BigDecimal(1440.50), 5, 6.1, "HiSilicon Kirin 970", 6, 5000, "5G");
 
 		base.add(expected);
 		base.add(expected2);
-		// System.out.println("expected-" + expected);
+
 		assertEquals(true, base.remove(expected));
 
 	}
@@ -94,14 +88,11 @@ public class BaseTest<T> {
 	@Test
 	void testExceptionRevove() {
 
-		Device expected = new Laptop(3, DeviceType.LAPTOP, "HP", "250 G6 4QW22ES", "Black", new BigDecimal(556.0), 31,
-				15.6, "Intel Celeron N4000", 8, 7000, 500);
-		Device notExpected = new MobilePhone(2, DeviceType.MOBILE_PHONE, "Huawei", "P20 Pro CLT-L29", "While",
-				new BigDecimal(1440.50), 5, 6.1, "HiSilicon Kirin 970", 6, 5000, "5G");
+		Device expected = new Laptop(3, DeviceType.LAPTOP, "HP", "250 G6 4QW22ES", "Black", new BigDecimal(556.0), 31, 15.6, "Intel Celeron N4000", 8, 7000, 500);
+		Device notExpected = new MobilePhone(2, DeviceType.MOBILE_PHONE, "Huawei", "P20 Pro CLT-L29", "While", new BigDecimal(1440.50), 5, 6.1, "HiSilicon Kirin 970", 6, 5000, "5G");
 		base.add(expected);
 
-		assertAll(() -> assertThrows(NotInCollectionException.class, () -> base.remove(notExpected)),
-				() -> assertEquals(false, base.remove(null))
+		assertAll(() -> assertThrows(NotInCollectionException.class, () -> base.remove(notExpected)), () -> assertEquals(false, base.remove(null))
 
 		);
 
@@ -110,11 +101,9 @@ public class BaseTest<T> {
 	@Test
 	void testPositiveCopy() throws NotCopybleElementException {
 
-		Device expected = new Laptop(3, DeviceType.LAPTOP, "HP", "250 G6 4QW22ES", "Black", new BigDecimal(556.0), 31,
-				15.6, "Intel Celeron N4000", 8, 7000, 500);
+		Device expected = new Laptop(3, DeviceType.LAPTOP, "HP", "250 G6 4QW22ES", "Black", new BigDecimal(556.0), 31, 15.6, "Intel Celeron N4000", 8, 7000, 500);
 
-		Device expected2 = new MobilePhone(2, DeviceType.MOBILE_PHONE, "Huawei", "P20 Pro CLT-L29", "While",
-				new BigDecimal(1440.50), 5, 6.1, "HiSilicon Kirin 970", 6, 5000, "5G");
+		Device expected2 = new MobilePhone(2, DeviceType.MOBILE_PHONE, "Huawei", "P20 Pro CLT-L29", "While", new BigDecimal(1440.50), 5, 6.1, "HiSilicon Kirin 970", 6, 5000, "5G");
 
 		base.add(expected);
 		base.add(expected2);

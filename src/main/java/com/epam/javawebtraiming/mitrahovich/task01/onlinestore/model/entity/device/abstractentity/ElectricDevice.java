@@ -2,6 +2,8 @@ package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.dev
 
 import java.math.BigDecimal;
 
+import org.apache.log4j.Logger;
+
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.type.DeviceType;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.exception.logic.device.WrongSetPowerException;
 
@@ -10,7 +12,7 @@ import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.exception.l
  *
  */
 public class ElectricDevice extends Device {
-
+	private static final Logger log = Logger.getRootLogger();
 	private static final long serialVersionUID = -4569752754226074162L;
 
 	private double power;
@@ -29,8 +31,7 @@ public class ElectricDevice extends Device {
 	 * @param price
 	 * @param power
 	 */
-	public ElectricDevice(int id, DeviceType type, String manufacturer, String model, String color, BigDecimal price,
-			double power) {
+	public ElectricDevice(int id, DeviceType type, String manufacturer, String model, String color, BigDecimal price, double power) {
 		super(id, type, manufacturer, model, color, price);
 		this.power = power;
 
@@ -40,8 +41,7 @@ public class ElectricDevice extends Device {
 	 * @param ElectricDevice
 	 */
 	public ElectricDevice(ElectricDevice device) {
-		super(device.getId(), device.getType(), device.getManufacturer(), device.getModel(), device.getColor(),
-				device.getPrice());
+		super(device.getId(), device.getType(), device.getManufacturer(), device.getModel(), device.getColor(), device.getPrice());
 		this.power = device.getPower();
 
 	}
@@ -61,6 +61,7 @@ public class ElectricDevice extends Device {
 		if (power > 0) {
 			this.power = power;
 		} else {
+			log.warn("WrongSetPowerException in" + this.getClass().getName());
 			throw new WrongSetPowerException("Incorrect enter of " + this.getClass().getSimpleName() + " color");
 		}
 

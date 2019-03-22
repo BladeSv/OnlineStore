@@ -2,6 +2,8 @@ package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.bas
 
 import java.io.Serializable;
 
+import org.apache.log4j.Logger;
+
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.exception.logic.base.WrongSetBaseExeption;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.util.collection.exception.IndexOutOfRangeException;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.util.collection.exception.NotCopybleElementException;
@@ -14,6 +16,7 @@ import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.util.collection.i
  *
  */
 public class Base<T> implements Serializable {
+	private static final Logger log = Logger.getRootLogger();
 
 	private static final long serialVersionUID = 5925438773205805016L;
 	protected Collection<T> base;
@@ -26,31 +29,36 @@ public class Base<T> implements Serializable {
 		this.base = base;
 	}
 
-	public Collection<T> getBase() {
-		return base;
-	}
-
 	public void setBase(Collection<T> base) throws WrongSetBaseExeption {
 		if (base != null) {
 			this.base = base;
 		} else {
+			log.warn("WrongSetBaseExeption in" + this.getClass().getName());
 			throw new WrongSetBaseExeption();
 		}
 
 	}
 
+	public Collection<T> getBase() {
+		return base;
+	}
+
 	public boolean add(T t) {
 		if (t != null) {
-			base.add(t);
-			return true;
+			return base.add(t);
+
 		} else {
 			return false;
 		}
 	}
 
 	public boolean set(int index, T t) throws IndexOutOfRangeException {
+		if (t != null) {
+			return base.set(index, t);
+		} else {
 
-		return base.set(index, t);
+			return false;
+		}
 
 	}
 
