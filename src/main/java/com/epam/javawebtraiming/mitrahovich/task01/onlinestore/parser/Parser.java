@@ -1,6 +1,11 @@
 package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.parser;
 
+import java.math.BigDecimal;
+
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.base.Base;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.Laptop;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.MobilePhone;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.Тelevision;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.abstractentity.Device;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.type.DeviceType;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.validator.ValidatorDevice;
@@ -44,13 +49,14 @@ public class Parser {
 	}
 
 	private Device parseTV(String text) {
-		Device temp = null;
+		Тelevision temp = null;
 
 		String[] fields = text.split(",");
 		if (fields != null) {
-			for (String str : fields) {
+			temp = new Тelevision(Integer.parseInt(fields[1].trim()), DeviceType.valueOf(fields[0].trim()),
+					fields[2].trim(), fields[3].trim(), fields[4].trim(), new BigDecimal(fields[5].trim()),
+					Double.parseDouble(fields[6].trim()), Double.parseDouble(fields[7].trim()), fields[8].trim());
 
-			}
 		}
 
 		return temp;
@@ -58,15 +64,30 @@ public class Parser {
 	}
 
 	private Device parseLaptop(String text) {
-		Device temp = null;
+		Laptop temp = null;
+		String[] fields = text.split(",");
+		if (fields != null) {
+			temp = new Laptop(Integer.parseInt(fields[1].trim()), DeviceType.valueOf(fields[0].trim()),
+					fields[2].trim(), fields[3].trim(), fields[4].trim(), new BigDecimal(fields[5].trim()),
+					Double.parseDouble(fields[6].trim()), Double.parseDouble(fields[7].trim()), fields[8].trim(),
+					Integer.parseInt(fields[9].trim()), Integer.parseInt(fields[10].trim()),
+					Integer.parseInt(fields[11].trim()));
 
+		}
 		return temp;
 
 	}
 
 	private Device parseMobilePhone(String text) {
-		Device temp = null;
+		MobilePhone temp = null;
+		String[] fields = text.split(",");
+		if (fields != null) {
+			temp = new MobilePhone(Integer.parseInt(fields[1].trim()), DeviceType.valueOf(fields[0].trim()),
+					fields[2].trim(), fields[3].trim(), fields[4].trim(), new BigDecimal(fields[5].trim()),
+					Double.parseDouble(fields[6].trim()), Double.parseDouble(fields[7].trim()), fields[8].trim(),
+					Integer.parseInt(fields[9].trim()), Integer.parseInt(fields[10].trim()), fields[11].trim());
 
+		}
 		return temp;
 
 	}

@@ -3,7 +3,7 @@ package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.validator;
 import java.util.regex.Pattern;
 
 public class ValidatorDevice {
-	public static final String REGEX_TV = "";
+	public static final String REGEX_TV = "*DeviceType.*,\s*[0-9]";
 	public static final String REGEX_LAPTOP = "";
 	public static final String REGEX_MOBILE_PHONE = "";
 
