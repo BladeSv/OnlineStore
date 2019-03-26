@@ -1,11 +1,12 @@
 package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.util.collection;
 
+import java.io.Serializable;
 import java.util.Iterator;
 
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.util.collection.exception.IndexOutOfRangeException;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.util.collection.interfacecollection.Collection;
 
-public abstract class AbstractCollection<T> implements Collection<T> {
+public abstract class AbstractCollection<T> implements Collection<T>, Serializable {
 
 	protected int size = 0;
 

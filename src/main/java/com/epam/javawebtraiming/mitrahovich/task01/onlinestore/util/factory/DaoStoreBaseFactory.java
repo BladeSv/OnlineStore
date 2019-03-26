@@ -28,7 +28,7 @@ public class DaoStoreBaseFactory {
 
 		case "serialization":
 
-			storeBase = new DaoStoreBaseCollection(new BaseSerialization(new Base<Device>()));
+			storeBase = new DaoStoreBaseCollection(new BaseSerialization());
 
 			break;
 		}

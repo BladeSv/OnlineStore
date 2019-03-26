@@ -53,6 +53,43 @@ public class Order {
 	}
 
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((clint == null) ? 0 : clint.hashCode());
+		result = prime * result + ((date == null) ? 0 : date.hashCode());
+		result = prime * result + ((device == null) ? 0 : device.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Order other = (Order) obj;
+		if (clint == null) {
+			if (other.clint != null)
+				return false;
+		} else if (!clint.equals(other.clint))
+			return false;
+		if (date == null) {
+			if (other.date != null)
+				return false;
+		} else if (!date.equals(other.date))
+			return false;
+		if (device == null) {
+			if (other.device != null)
+				return false;
+		} else if (!device.equals(other.device))
+			return false;
+		return true;
+	}
+
+	@Override
 	public String toString() {
 		return "clint: " + clint + ", device: " + device + ", date: " + date;
 	}

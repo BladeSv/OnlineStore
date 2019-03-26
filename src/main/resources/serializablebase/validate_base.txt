@@ -1,0 +1,8 @@
+DeviceType.LAPTOP, 4, Apple, MacBook Pro, Silver, 5953.0, 83.6 , 15.4 ,Intel Core i7 8850H, 16, 8600, 512
+dss
+ DeviceType.TV ,5, Samsung, UE43NU7120U , Black, 999.0, 115, 43,ЖК
+ DeviceType.TV ,5, Samsung5, UE43NU7120U , Black, 999.0, 115, 43,ЖК, 55
+ DeviceType.MOBILE_PHONE , 2, Huawei ,P20 Pro CLT-L29, While, 1440.50, 5, 6.1, HiSilicon Kirin 970, 6 , 5000, 5G
+ dsdsd,
+ DeviceType.LAPTOP, 4,
+ 

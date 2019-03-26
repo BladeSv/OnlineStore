@@ -53,8 +53,10 @@ public class Parser {
 
 		String[] fields = text.split(",");
 		if (fields != null) {
-			temp = new Тelevision(Integer.parseInt(fields[1].trim()), DeviceType.valueOf(fields[0].trim()),
-					fields[2].trim(), fields[3].trim(), fields[4].trim(), new BigDecimal(fields[5].trim()),
+			System.out.println(fields[1].trim());
+			temp = new Тelevision(Integer.parseInt(fields[1].trim()),
+					DeviceType.valueOf(fields[0].replace("DeviceType.", " ").trim()), fields[2].trim(),
+					fields[3].trim(), fields[4].trim(), new BigDecimal(fields[5].trim()),
 					Double.parseDouble(fields[6].trim()), Double.parseDouble(fields[7].trim()), fields[8].trim());
 
 		}
@@ -67,8 +69,9 @@ public class Parser {
 		Laptop temp = null;
 		String[] fields = text.split(",");
 		if (fields != null) {
-			temp = new Laptop(Integer.parseInt(fields[1].trim()), DeviceType.valueOf(fields[0].trim()),
-					fields[2].trim(), fields[3].trim(), fields[4].trim(), new BigDecimal(fields[5].trim()),
+			temp = new Laptop(Integer.parseInt(fields[1].trim()),
+					DeviceType.valueOf(fields[0].replace("DeviceType.", " ").trim()), fields[2].trim(),
+					fields[3].trim(), fields[4].trim(), new BigDecimal(fields[5].trim()),
 					Double.parseDouble(fields[6].trim()), Double.parseDouble(fields[7].trim()), fields[8].trim(),
 					Integer.parseInt(fields[9].trim()), Integer.parseInt(fields[10].trim()),
 					Integer.parseInt(fields[11].trim()));
@@ -82,8 +85,9 @@ public class Parser {
 		MobilePhone temp = null;
 		String[] fields = text.split(",");
 		if (fields != null) {
-			temp = new MobilePhone(Integer.parseInt(fields[1].trim()), DeviceType.valueOf(fields[0].trim()),
-					fields[2].trim(), fields[3].trim(), fields[4].trim(), new BigDecimal(fields[5].trim()),
+			temp = new MobilePhone(Integer.parseInt(fields[1].trim()),
+					DeviceType.valueOf(fields[0].replace("DeviceType.", " ").trim()), fields[2].trim(),
+					fields[3].trim(), fields[4].trim(), new BigDecimal(fields[5].trim()),
 					Double.parseDouble(fields[6].trim()), Double.parseDouble(fields[7].trim()), fields[8].trim(),
 					Integer.parseInt(fields[9].trim()), Integer.parseInt(fields[10].trim()), fields[11].trim());
 
@@ -93,7 +97,8 @@ public class Parser {
 	}
 
 	private DeviceType chooseDeviceType(String text) {
-		return DeviceType.valueOf(text.substring(0, text.indexOf(",")));
+
+		return DeviceType.valueOf(text.substring(0, text.indexOf(",")).replace("DeviceType.", " ").trim());
 
 	}
 }

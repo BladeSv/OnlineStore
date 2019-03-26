@@ -3,16 +3,16 @@ package com.epam.javawebtraiming.mitrahovich.task01.onlinestore.validator;
 import java.util.regex.Pattern;
 
 public class ValidatorDevice {
-	public static final String REGEX_TV = "*DeviceType.*,\s*[0-9]";
-	public static final String REGEX_LAPTOP = "";
-	public static final String REGEX_MOBILE_PHONE = "";
+	public static final String REGEX_TV = " *DeviceType\\.TV *, *[0-9]* *, *\\S* *, *\\S* *, *\\S* *, *[0-9]*\\.?[0-9]* *, *[0-9]*\\.?[0-9]* *, *[0-9]*\\.?[0-9]* *, *\\S* *";
+	public static final String REGEX_LAPTOP = " *DeviceType\\.LAPTOP *, *[0-9]* *, *\\S* *,.*, *\\S* *, *[0-9]*\\.?[0-9]* *, *[0-9]*\\.?[0-9]* *, *[0-9]*\\.?[0-9]* *,.*, *[0-9]* *, *[0-9]* *, *[0-9]* *";
+	public static final String REGEX_MOBILE_PHONE = " *DeviceType\\.MOBILE_PHONE *, *[0-9]* *, *\\S* *,.*, *\\S* *, *[0-9]*\\.?[0-9]* *, *[0-9]*\\.?[0-9]* *, *[0-9]*\\.?[0-9]* *,.*, *[0-9]* *, *[0-9]* *, *\\S* *";
 
 	public ValidatorDevice() {
 
 	}
 
 	public static String validate(String text) {
-
+		;
 		String[] tempBase = text.split("\n");
 		StringBuilder sb = new StringBuilder();
 		for (String str : tempBase) {
