@@ -16,10 +16,13 @@ import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.logic.servi
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.logic.service.sorter.Sorter;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.logic.service.sorter.implementation.SorterCollection;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.parser.Parser;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.util.PropertiesManager;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.util.factory.DaoStoreBaseFactory;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.util.factory.PrinterFactory;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.validator.ValidatorDevice;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.view.printer.IPrinter;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.xml.DOM.DeviceBaseDOMParser;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.xml.stax.DeviceBaseStAXParser;
 
 public class MainController {
 
@@ -51,6 +54,15 @@ public class MainController {
 		Parser parser = new Parser(validator);
 		Base b = parser.parse(WorkerTextFile.read("validate_base.txt"));
 		System.out.println("Valideted and parsed base-\n" + b);
+
+		DeviceBaseDOMParser baseDOMParser = DeviceBaseDOMParser.getUniqueInstance();
+		baseDOMParser.createDeviceBase(PropertiesManager.getXMLFileName());
+		printer.print(baseDOMParser.getBase());
+
+		DeviceBaseStAXParser baseStAXParser = DeviceBaseStAXParser.getUniqueInstance();
+		baseStAXParser.createDeviceBase(PropertiesManager.getXMLFileName());
+
+		printer.print(baseStAXParser.getBase());
 
 	}
 

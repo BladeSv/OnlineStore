@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<devices xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ 		 xmlns="http://www.example.com/DeviceBase"
+		 xsi:schemaLocation="http://www.example.com/DeviceBase DeviceXMLSchema.xsd">      
+              
+  <television id="1">
+	  <type>TV</type>
+	  <manufacturer>samsung</manufacturer>
+	  <model>Tv-101</model>
+	  <color>Black</color>
+	  <price>1503,33</price>
+	  <power>155,0</power>
+	  <displayDiagonal>55,3</displayDiagonal>
+	  <displayType>LCD</displayType>  
+  </television>    
+        
+   <laptop id="2">
+	   <type>LAPTOP</type>
+	   <manufacturer>Xiomy</manufacturer>
+	   <model>Cool112</model>
+	   <color>White</color>
+	   <price>800,30</price>
+	   <power>55,3</power>
+	   <displayDiagonal>15,5</displayDiagonal>
+	   <cpu>Intel X7</cpu>
+	   <ram>2000</ram>
+	   <batteryCapacity>3500</batteryCapacity>
+	   <hddCapacity>20</hddCapacity>   
+   </laptop>
+   
+   <mobile_phone id="3">
+	   <type>MOBILE_PHONE</type>
+	   <manufacturer>Xiomy</manufacturer>
+	   <model>Redmy 4A</model>
+	   <color>Silver</color>
+	   <price>530,30</price>
+	   <power>15,5</power>
+	   <displayDiagonal>5,5</displayDiagonal>
+	   <cpu>Snapdragon-450</cpu>
+	   <ram>2000</ram>
+	   <batteryCapacity>3000</batteryCapacity>
+	   <mobileConnection>4G</mobileConnection>
+   </mobile_phone>            
+   
+</devices>

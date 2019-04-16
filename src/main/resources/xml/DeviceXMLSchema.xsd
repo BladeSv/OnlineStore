@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema elementFormDefault="qualified" 
+		xmlns="http://www.w3.org/2001/XMLSchema" 
+		targetNamespace="http://www.example.org/DeviceBase" 
+		xmlns:tns="http://www.example.org/DeviceBase">
+		
+	<element name="device" type="tns:Device" abstract="true"></element>
+	<element name="television" type="tns:Тelevision" substitutionGroup="tns:device"></element>
+	<element name="mobile_phone" type="tns:MobilePhone" substitutionGroup="tns:device"></element>
+	<element name="laptop" type="tns:Laptop" substitutionGroup="tns:device"></element>
+	
+	<element name="devices">
+		<complexType>
+			<sequence>					
+	                <element ref="tns:device" minOccurs="1" maxOccurs="unbounded" />
+	            </sequence>
+		</complexType>
+		
+	</element>
+	
+	<complexType name="Device">
+		<sequence>
+			<element name="type" type="tns:DeviceType"/>
+			<element name="manufacturer" type="string"/>
+			<element name="model" type="string"/>
+			<element name="color" type="string"/>
+			<element name="price" type="tns:PositiveDecimal" />
+		</sequence>
+		<attribute name="id" type="ID" use="required"/>
+	</complexType>
+	
+	<complexType name="ElectricDevice" >
+		<complexContent>
+			<extension base="tns:Device">
+				<sequence>
+				
+					<element name="power" type="tns:PositiveDecimal" />
+				
+				</sequence>		
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	<complexType name="DisplayElectricDevice" >
+		<complexContent>
+			<extension base="tns:ElectricDevice">
+				<sequence>
+				
+					<element name="display_diagonal" type="tns:PositiveDecimal" />
+				
+				</sequence>		
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	<complexType name="Тelevision">
+		<complexContent>
+			<extension base="tns:DisplayElectricDevice">
+				<sequence>
+				
+					<element name="display_type" type="string"/>
+				
+				</sequence>		
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	<complexType name="CpuDisplayElectricDevice" >
+		<complexContent>
+			<extension base="tns:DisplayElectricDevice">
+				<sequence>
+				
+					<element name="cpu" type="string"/>
+					<element name="ram" type="positiveInteger" />
+				
+				</sequence>		
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	<complexType name="PortableCpuDisplayElectricDevice">
+		<complexContent>
+			<extension base="tns:CpuDisplayElectricDevice">
+				<sequence>
+								
+					<element name="battery_capacity" type="positiveInteger" />
+				
+				</sequence>		
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	<complexType name="MobilePhone">
+		<complexContent>
+			<extension base="tns:PortableCpuDisplayElectricDevice">
+				<sequence>
+								
+					<element name="mobile_connection" type="string"/>
+				
+				</sequence>		
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	<complexType name="Laptop">
+		<complexContent>
+			<extension base="tns:PortableCpuDisplayElectricDevice">
+				<sequence>
+								
+					<element name="hdd_capacity" type="string"/>
+				
+				</sequence>		
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	<simpleType name="DeviceType">
+		<restriction base="string">
+			<enumeration value="MOBILE_PHONE"></enumeration>
+			<enumeration value="LAPTOP"></enumeration>
+			<enumeration value="TV"></enumeration>
+		</restriction>
+	</simpleType>
+	
+	
+	<simpleType name="PositiveDecimal">
+		<restriction base="decimal">
+			<minExclusive value="0"></minExclusive>
+		</restriction>
+	</simpleType>
+</schema>

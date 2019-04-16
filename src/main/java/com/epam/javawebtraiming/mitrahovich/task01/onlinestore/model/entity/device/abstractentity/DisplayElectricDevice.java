@@ -14,6 +14,7 @@ import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.exception.l
 public class DisplayElectricDevice extends ElectricDevice {
 	private static final Logger log = Logger.getRootLogger();
 	private static final long serialVersionUID = 6510838978083857245L;
+
 	private double displayDiagonal;
 
 	public DisplayElectricDevice() {
@@ -30,7 +31,8 @@ public class DisplayElectricDevice extends ElectricDevice {
 	 * @param power
 	 * @param displayDiagonal
 	 */
-	public DisplayElectricDevice(int id, DeviceType type, String manufacturer, String model, String color, BigDecimal price, double power, double displayDiagonal) {
+	public DisplayElectricDevice(int id, DeviceType type, String manufacturer, String model, String color,
+			BigDecimal price, double power, double displayDiagonal) {
 		super(id, type, manufacturer, model, color, price, power);
 		this.displayDiagonal = displayDiagonal;
 	}
@@ -39,7 +41,8 @@ public class DisplayElectricDevice extends ElectricDevice {
 	 * @param DisplayElectricDevice
 	 */
 	public DisplayElectricDevice(DisplayElectricDevice device) {
-		super(device.getId(), device.getType(), device.getManufacturer(), device.getModel(), device.getColor(), device.getPrice(), device.getPower());
+		super(device.getId(), device.getType(), device.getManufacturer(), device.getModel(), device.getColor(),
+				device.getPrice(), device.getPower());
 		this.displayDiagonal = device.getDisplayDiagonal();
 	}
 

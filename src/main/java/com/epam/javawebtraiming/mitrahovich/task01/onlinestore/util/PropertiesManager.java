@@ -29,4 +29,14 @@ public class PropertiesManager {
 
 		return rb.getString("file_name");
 	}
+
+	public static String getXMLFileName() {
+
+		return rb.getString("input_xml");
+	}
+
+	public static String getXMLSchemaFileName() {
+
+		return rb.getString("input_xml_schema");
+	}
 }
