@@ -129,7 +129,7 @@ public class DeviceBaseStAXParser {
 					case TYPE:
 						device.setType(DeviceType.valueOf(getXMLText(reader)));
 						break;
-					case MANAFACTURER:
+					case MANUFACTURER:
 						device.setManufacturer(getXMLText(reader));
 						break;
 					case MODEL:
@@ -164,9 +164,15 @@ public class DeviceBaseStAXParser {
 							((PortableCpuDisplayElectricDevice) device).setRam(Integer.parseInt(getXMLText(reader)));
 						}
 						break;
-					case BATTARY_CAPACITY:
+					case BATTERY_CAPACITY:
 						if (device instanceof PortableCpuDisplayElectricDevice) {
 							((PortableCpuDisplayElectricDevice) device).setRam(Integer.parseInt(getXMLText(reader)));
+						}
+						break;
+
+					case DISPLAY_TYPE:
+						if (device instanceof Тelevision) {
+							((Тelevision) device).setDisplayType(getXMLText(reader));
 						}
 						break;
 

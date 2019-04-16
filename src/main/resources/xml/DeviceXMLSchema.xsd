@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema elementFormDefault="qualified" 
-		xmlns="http://www.w3.org/2001/XMLSchema" 
-		targetNamespace="http://www.example.org/DeviceBase" 
-		xmlns:tns="http://www.example.org/DeviceBase">
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		targetNamespace="http://www.example.org/devices" 
+		xmlns:tns="http://www.example.org/devices" elementFormDefault="qualified">
 		
 	<element name="device" type="tns:Device" abstract="true"></element>
 	<element name="television" type="tns:Тelevision" substitutionGroup="tns:device"></element>
 	<element name="mobile_phone" type="tns:MobilePhone" substitutionGroup="tns:device"></element>
 	<element name="laptop" type="tns:Laptop" substitutionGroup="tns:device"></element>
 	
-	<element name="devices">
+	<element name="base">
 		<complexType>
 			<sequence>					
 	                <element ref="tns:device" minOccurs="1" maxOccurs="unbounded" />
@@ -26,7 +25,7 @@
 			<element name="color" type="string"/>
 			<element name="price" type="tns:PositiveDecimal" />
 		</sequence>
-		<attribute name="id" type="ID" use="required"/>
+		<attribute name="id" type="positiveInteger" use="required"/>
 	</complexType>
 	
 	<complexType name="ElectricDevice" >

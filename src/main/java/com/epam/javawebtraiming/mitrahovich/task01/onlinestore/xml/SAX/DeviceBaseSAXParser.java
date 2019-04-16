@@ -37,7 +37,7 @@ public class DeviceBaseSAXParser {
 		return deviceBase;
 	}
 
-	public void buildEquipmentSet(String fileName) {
+	public void buildDeviceBase(String fileName) {
 		try {
 			reader.parse(fileName);
 		} catch (SAXException e) {

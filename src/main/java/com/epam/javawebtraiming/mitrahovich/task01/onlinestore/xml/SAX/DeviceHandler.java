@@ -89,7 +89,7 @@ public class DeviceHandler extends DefaultHandler {
 				if (choseEnum == DeviceBaseEnum.TYPE) {
 					choseDevice.setType(DeviceType.valueOf(s));
 
-				} else if (choseEnum == DeviceBaseEnum.MANAFACTURER) {
+				} else if (choseEnum == DeviceBaseEnum.MANUFACTURER) {
 					choseDevice.setManufacturer(s);
 
 				} else if (choseEnum == DeviceBaseEnum.MODEL) {
@@ -120,8 +120,15 @@ public class DeviceHandler extends DefaultHandler {
 						((PortableCpuDisplayElectricDevice) choseDevice).setCpu(s);
 					} else if (choseEnum == DeviceBaseEnum.RAM) {
 						((PortableCpuDisplayElectricDevice) choseDevice).setRam(Integer.parseInt(s));
-					} else if (choseEnum == DeviceBaseEnum.BATTARY_CAPACITY) {
+					} else if (choseEnum == DeviceBaseEnum.BATTERY_CAPACITY) {
 						((PortableCpuDisplayElectricDevice) choseDevice).setBatteryCapacity(Integer.parseInt(s));
+					}
+				}
+
+				if (choseDevice instanceof Тelevision) {
+
+					if (choseEnum == DeviceBaseEnum.DISPLAY_TYPE) {
+						((Тelevision) choseDevice).setDisplayType(s);
 					}
 				}
 

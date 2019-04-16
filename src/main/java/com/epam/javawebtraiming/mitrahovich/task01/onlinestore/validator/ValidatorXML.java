@@ -19,7 +19,7 @@ import org.xml.sax.SAXException;
 public class ValidatorXML {
 
 	public ValidatorXML() {
-		// TODO Auto-generated constructor stub
+
 	}
 
 	private static final Logger LOGGER;
@@ -34,10 +34,13 @@ public class ValidatorXML {
 	public static void validateScheme() {
 		Schema schema = null;
 		try {
+			System.out.println("---" + getXMLSchemaFileName());
 			schema = factory.newSchema(new File(getXMLSchemaFileName()));
+			System.out.println("1111111!!!!!!!!!!!");
 			SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
 			saxParserFactory.setSchema(schema);
 			SAXParser parser = saxParserFactory.newSAXParser();
+			System.out.println("!!!!!!!!!!!!!!!!!!");
 			parser.parse(getXMLFileName(), new DeviceBaseXMLErrorHandler());
 			LOGGER.info(getXMLFileName() + " is valid");
 		} catch (SAXException e) {

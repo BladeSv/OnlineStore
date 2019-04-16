@@ -19,6 +19,8 @@ import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.devi
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.MobilePhone;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.Тelevision;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.abstractentity.Device;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.abstractentity.DisplayElectricDevice;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.abstractentity.PortableCpuDisplayElectricDevice;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.type.DeviceType;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.exception.OnlineStoreException;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.xml.DeviceBaseEnum;
@@ -88,10 +90,7 @@ public class DeviceBaseDOMParser {
 			switch (temp) {
 			case TELEVISION:
 				Тelevision television = new Тelevision();
-				television.setPower(
-						Double.parseDouble(getElementTextContent(deviceElement, DeviceBaseEnum.POWER.toString())));
-				television.setDisplayDiagonal(Double
-						.parseDouble(getElementTextContent(deviceElement, DeviceBaseEnum.DISPLAY_DIAGONAL.toString())));
+
 				television.setDisplayType(getElementTextContent(deviceElement, DeviceBaseEnum.DISPLAY_TYPE.toString()));
 				device = television;
 
@@ -99,15 +98,7 @@ public class DeviceBaseDOMParser {
 			case MOBILE_PHONE:
 
 				MobilePhone mobilePhone = new MobilePhone();
-				mobilePhone.setPower(
-						Double.parseDouble(getElementTextContent(deviceElement, DeviceBaseEnum.POWER.toString())));
-				mobilePhone.setDisplayDiagonal(Double
-						.parseDouble(getElementTextContent(deviceElement, DeviceBaseEnum.DISPLAY_DIAGONAL.toString())));
-				mobilePhone.setCpu(getElementTextContent(deviceElement, DeviceBaseEnum.CPU.toString()));
-				mobilePhone
-						.setRam(Integer.parseInt(getElementTextContent(deviceElement, DeviceBaseEnum.RAM.toString())));
-				mobilePhone.setBatteryCapacity(Integer
-						.parseInt(getElementTextContent(deviceElement, DeviceBaseEnum.BATTARY_CAPACITY.toString())));
+
 				mobilePhone.setMobileConnection(
 						getElementTextContent(deviceElement, DeviceBaseEnum.MOBILE_CONNECTION.toString()));
 				device = mobilePhone;
@@ -115,23 +106,35 @@ public class DeviceBaseDOMParser {
 				break;
 			case LAPTOP:
 				Laptop laptop = new Laptop();
-				laptop.setPower(
-						Double.parseDouble(getElementTextContent(deviceElement, DeviceBaseEnum.POWER.toString())));
-				laptop.setDisplayDiagonal(Double
-						.parseDouble(getElementTextContent(deviceElement, DeviceBaseEnum.DISPLAY_DIAGONAL.toString())));
-				laptop.setCpu(getElementTextContent(deviceElement, DeviceBaseEnum.CPU.toString()));
-				laptop.setRam(Integer.parseInt(getElementTextContent(deviceElement, DeviceBaseEnum.RAM.toString())));
-				laptop.setBatteryCapacity(Integer
-						.parseInt(getElementTextContent(deviceElement, DeviceBaseEnum.BATTARY_CAPACITY.toString())));
+
 				laptop.setHddCapacity(
 						Integer.parseInt(getElementTextContent(deviceElement, DeviceBaseEnum.HDD_CAPACITY.toString())));
 				device = laptop;
 				break;
 			}
 
+			if (device instanceof DisplayElectricDevice) {
+				((DisplayElectricDevice) device).setPower(
+						Double.parseDouble(getElementTextContent(deviceElement, DeviceBaseEnum.POWER.toString())));
+				((DisplayElectricDevice) device).setDisplayDiagonal(Double
+						.parseDouble(getElementTextContent(deviceElement, DeviceBaseEnum.DISPLAY_DIAGONAL.toString())));
+
+			}
+
+			if (device instanceof PortableCpuDisplayElectricDevice) {
+
+				((PortableCpuDisplayElectricDevice) device)
+						.setCpu(getElementTextContent(deviceElement, DeviceBaseEnum.CPU.toString()));
+				((PortableCpuDisplayElectricDevice) device)
+						.setRam(Integer.parseInt(getElementTextContent(deviceElement, DeviceBaseEnum.RAM.toString())));
+				((PortableCpuDisplayElectricDevice) device).setBatteryCapacity(Integer
+						.parseInt(getElementTextContent(deviceElement, DeviceBaseEnum.BATTERY_CAPACITY.toString())));
+
+			}
+
 			device.setId(Integer.parseInt(deviceElement.getAttribute(DeviceBaseEnum.ID.toString())));
 			device.setType(DeviceType.valueOf(getElementTextContent(deviceElement, DeviceBaseEnum.TYPE.toString())));
-			device.setManufacturer(getElementTextContent(deviceElement, DeviceBaseEnum.MANAFACTURER.toString()));
+			device.setManufacturer(getElementTextContent(deviceElement, DeviceBaseEnum.MANUFACTURER.toString()));
 			device.setModel(getElementTextContent(deviceElement, DeviceBaseEnum.MODEL.toString()));
 			device.setColor(getElementTextContent(deviceElement, DeviceBaseEnum.COLOR.toString()));
 			device.setPrice(new BigDecimal(getElementTextContent(deviceElement, DeviceBaseEnum.PRICE.toString())));
