@@ -14,7 +14,6 @@ import javax.xml.stream.XMLStreamReader;
 
 import org.apache.log4j.Logger;
 
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.base.Base;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.Laptop;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.MobilePhone;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.Тelevision;
@@ -25,16 +24,16 @@ import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.devi
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.exception.OnlineStoreException;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.exception.logic.device.WrongSetIdException;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.xml.DeviceBaseEnum;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.xml.XMLParser;
 
-public class DeviceBaseStAXParser {
+public class DeviceBaseStAXParser extends XMLParser {
 
 	private static final Logger LOGGER;
 
-	private static DeviceBaseStAXParser uniqueInstance;
+	private static DeviceBaseStAXParser baseStAXParser;
 
 	private XMLInputFactory inputXMLFactory;
 	private EnumSet<DeviceBaseEnum> DeviceEnumTypes;
-	private Base<Device> devaceBase;
 
 	static {
 		LOGGER = Logger.getRootLogger();
@@ -44,20 +43,16 @@ public class DeviceBaseStAXParser {
 	private DeviceBaseStAXParser() {
 		inputXMLFactory = XMLInputFactory.newInstance();
 		DeviceEnumTypes = EnumSet.range(DeviceBaseEnum.TELEVISION, DeviceBaseEnum.LAPTOP);
-		devaceBase = new Base<>();
+
 	}
 
-	public static DeviceBaseStAXParser getUniqueInstance() {
+	public static DeviceBaseStAXParser getInstance() {
 
-		if (uniqueInstance == null) {
-			uniqueInstance = new DeviceBaseStAXParser();
+		if (baseStAXParser == null) {
+			baseStAXParser = new DeviceBaseStAXParser();
 		}
 
-		return uniqueInstance;
-	}
-
-	public Base getBase() {
-		return devaceBase;
+		return baseStAXParser;
 	}
 
 	public void createDeviceBase(String filename) {
@@ -77,7 +72,7 @@ public class DeviceBaseStAXParser {
 
 					if (DeviceEnumTypes.contains(DeviceBaseEnum.valueOf(name.toUpperCase()))) {
 						Device device = buildDevice(reader);
-						devaceBase.add(device);
+						deviceBase.add(device);
 					}
 				}
 			}

@@ -22,9 +22,9 @@ import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.util.factory.Prin
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.validator.ValidatorDevice;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.validator.ValidatorXML;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.view.printer.IPrinter;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.xml.DOM.DeviceBaseDOMParser;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.xml.SAX.DeviceBaseSAXParser;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.xml.stax.DeviceBaseStAXParser;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.xml.XMLParser;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.xml.XMLParserFactory;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.xml.XMLParserFactory.XMLParserType;
 
 public class MainController {
 
@@ -59,19 +59,22 @@ public class MainController {
 
 		System.out.println("START XML");
 		ValidatorXML.validateScheme();
-		System.out.println("START DOM XML");
-		DeviceBaseDOMParser baseDOMParser = DeviceBaseDOMParser.getUniqueInstance();
-		baseDOMParser.createDeviceBase(PropertiesManager.getXMLFileName());
-		printer.print(baseDOMParser.getBase());
-		System.out.println("START StAX XML");
-		DeviceBaseStAXParser baseStAXParser = DeviceBaseStAXParser.getUniqueInstance();
-		baseStAXParser.createDeviceBase(PropertiesManager.getXMLFileName());
-		printer.print(baseStAXParser.getBase());
-		System.out.println("START SAX XML");
 
-		DeviceBaseSAXParser baseSAXParser = new DeviceBaseSAXParser();
-		baseSAXParser.buildDeviceBase(PropertiesManager.getXMLFileName());
-		printer.print(baseSAXParser.getBase());
+		System.out.println("START DOM XML");
+		XMLParser parserXML = XMLParserFactory.getXMLParser(XMLParserType.DOM);
+		parserXML.createDeviceBase(PropertiesManager.getXMLFileName());
+		printer.print(parserXML.getBase());
+
+		System.out.println("START StAX XML");
+		parserXML = XMLParserFactory.getXMLParser(XMLParserType.StAX);
+		parserXML.createDeviceBase(PropertiesManager.getXMLFileName());
+		printer.print(parserXML.getBase());
+
+		System.out.println("START SAX XML");
+		parserXML = XMLParserFactory.getXMLParser(XMLParserType.SAX);
+		parserXML.createDeviceBase(PropertiesManager.getXMLFileName());
+		printer.print(parserXML.getBase());
+
 	}
 
 }

@@ -7,22 +7,19 @@ import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
 
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.base.Base;
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.abstractentity.Device;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.xml.XMLParser;
 
-public class DeviceBaseSAXParser {
+public class DeviceBaseSAXParser extends XMLParser {
 	public static final Logger LOGGER;
 
-	private Base<Device> deviceBase;
-	private DeviceHandler handler;
+	private static DeviceBaseSAXParser baseSAXParser;
+	private static DeviceHandler handler;
 	private XMLReader reader;
 	static {
 		LOGGER = Logger.getRootLogger();
 	}
 
-	public DeviceBaseSAXParser() {
-
-		handler = new DeviceHandler();
+	private DeviceBaseSAXParser() {
 
 		try {
 			reader = XMLReaderFactory.createXMLReader();
@@ -33,11 +30,27 @@ public class DeviceBaseSAXParser {
 		}
 	}
 
-	public Base<Device> getBase() {
-		return deviceBase;
+	public static DeviceBaseSAXParser getInstance() {
+
+		if (baseSAXParser == null) {
+			baseSAXParser = new DeviceBaseSAXParser();
+
+		}
+		if (handler == null) {
+			handler = new DeviceHandler();
+		}
+		return baseSAXParser;
 	}
 
-	public void buildDeviceBase(String fileName) {
+	public static void setHandler(DeviceHandler setHandler) {
+		if (setHandler != null) {
+			handler = setHandler;
+		}
+
+	}
+
+	@Override
+	public void createDeviceBase(String fileName) {
 		try {
 			reader.parse(fileName);
 		} catch (SAXException e) {
@@ -45,6 +58,9 @@ public class DeviceBaseSAXParser {
 		} catch (IOException e) {
 			LOGGER.error("IO error: " + e);
 		}
+		System.out.println("!!!!!!!!!!!!" + handler.getClass());
+
 		deviceBase = handler.getDeviceBase();
+
 	}
 }

@@ -14,7 +14,6 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.base.Base;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.Laptop;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.MobilePhone;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.Тelevision;
@@ -24,13 +23,14 @@ import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.devi
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.entity.device.type.DeviceType;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.model.exception.OnlineStoreException;
 import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.xml.DeviceBaseEnum;
+import com.epam.javawebtraiming.mitrahovich.task01.onlinestore.xml.XMLParser;
 
-public class DeviceBaseDOMParser {
+public class DeviceBaseDOMParser extends XMLParser {
 
 	private static final Logger LOGGER;
 
 	private static DeviceBaseDOMParser baseDOMParser;
-	private Base<Device> deviceBase;
+
 	private DocumentBuilder documentBuilder;
 
 	static {
@@ -39,7 +39,7 @@ public class DeviceBaseDOMParser {
 	}
 
 	private DeviceBaseDOMParser() {
-		this.deviceBase = new Base();
+
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		try {
 			documentBuilder = factory.newDocumentBuilder();
@@ -48,7 +48,7 @@ public class DeviceBaseDOMParser {
 		}
 	}
 
-	public static DeviceBaseDOMParser getUniqueInstance() {
+	public static DeviceBaseDOMParser getInstance() {
 
 		if (baseDOMParser == null) {
 			baseDOMParser = new DeviceBaseDOMParser();
@@ -57,6 +57,7 @@ public class DeviceBaseDOMParser {
 		return baseDOMParser;
 	}
 
+	@Override
 	public void createDeviceBase(String fileName) {
 		Document document = null;
 		try {
@@ -76,10 +77,6 @@ public class DeviceBaseDOMParser {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-
-	public Base getBase() {
-		return deviceBase;
 	}
 
 	private Device buildDevice(Element deviceElement) {
