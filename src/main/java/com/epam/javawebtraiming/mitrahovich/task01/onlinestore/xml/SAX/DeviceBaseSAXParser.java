@@ -13,20 +13,21 @@ public class DeviceBaseSAXParser extends XMLParser {
 	public static final Logger LOGGER;
 
 	private static DeviceBaseSAXParser baseSAXParser;
-	private static DeviceHandler handler;
+	private DeviceHandler handler = new DeviceHandler();
 	private XMLReader reader;
 	static {
 		LOGGER = Logger.getRootLogger();
 	}
 
 	private DeviceBaseSAXParser() {
-
+		handler = new DeviceHandler();
 		try {
 			reader = XMLReaderFactory.createXMLReader();
 			reader.setContentHandler(handler);
 
 		} catch (SAXException e) {
-			LOGGER.error("SAX error: " + e.getMessage());
+
+			LOGGER.error("SAX error: " + e.getStackTrace());
 		}
 	}
 
@@ -36,13 +37,11 @@ public class DeviceBaseSAXParser extends XMLParser {
 			baseSAXParser = new DeviceBaseSAXParser();
 
 		}
-		if (handler == null) {
-			handler = new DeviceHandler();
-		}
+
 		return baseSAXParser;
 	}
 
-	public static void setHandler(DeviceHandler setHandler) {
+	public void setHandler(DeviceHandler setHandler) {
 		if (setHandler != null) {
 			handler = setHandler;
 		}
@@ -54,11 +53,10 @@ public class DeviceBaseSAXParser extends XMLParser {
 		try {
 			reader.parse(fileName);
 		} catch (SAXException e) {
-			LOGGER.error("SAX error: " + e);
+			LOGGER.error("SAX error: " + e.getStackTrace());
 		} catch (IOException e) {
-			LOGGER.error("IO error: " + e);
+			LOGGER.error("IO error: " + e.getStackTrace());
 		}
-		System.out.println("!!!!!!!!!!!!" + handler.getClass());
 
 		deviceBase = handler.getDeviceBase();
 

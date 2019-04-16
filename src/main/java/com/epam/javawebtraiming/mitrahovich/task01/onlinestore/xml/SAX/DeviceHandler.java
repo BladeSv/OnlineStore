@@ -27,20 +27,21 @@ public class DeviceHandler extends DefaultHandler {
 		LOGGER = Logger.getRootLogger();
 	}
 
-	private Base<Device> deviceBase;
+	private Base<Device> tempDeviceBase;
 	private Device choseDevice;
 	private DeviceBaseEnum choseEnum;
 	private EnumSet<DeviceBaseEnum> types;
 	private EnumSet<DeviceBaseEnum> fields;
 
 	public DeviceHandler() {
-		deviceBase = new Base();
+		tempDeviceBase = new Base();
 		types = EnumSet.range(DeviceBaseEnum.TELEVISION, DeviceBaseEnum.LAPTOP);
 		fields = EnumSet.range(DeviceBaseEnum.ID, DeviceBaseEnum.HDD_CAPACITY);
 	}
 
 	public Base getDeviceBase() {
-		return deviceBase;
+
+		return tempDeviceBase;
 	}
 
 	@Override
@@ -65,7 +66,8 @@ public class DeviceHandler extends DefaultHandler {
 			try {
 				choseDevice.setId(Integer.parseInt(attrs.getValue(0)));
 			} catch (WrongSetIdException | NumberFormatException e) {
-				LOGGER.warn("SAX parser XML " + e.getStackTrace());
+
+				LOGGER.warn("SAX parser XML 2" + e.getStackTrace());
 
 			}
 
@@ -75,7 +77,8 @@ public class DeviceHandler extends DefaultHandler {
 	@Override
 	public void endElement(String uri, String localName, String qName) {
 		if (types.contains(DeviceBaseEnum.valueOf(localName.toUpperCase()))) {
-			deviceBase.add(choseDevice);
+
+			tempDeviceBase.add(choseDevice);
 		}
 	}
 

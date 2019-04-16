@@ -25,7 +25,7 @@ public class XMLParserFactory {
 			parser = DeviceBaseSAXParser.getInstance();
 			break;
 		}
-		System.out.println(parser.getClass());
+		// System.out.println(parser.getClass());
 		return parser;
 
 	}
